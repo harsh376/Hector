@@ -1,0 +1,14 @@
+server:
+    container_name: server
+    image: server
+    ports:
+        - "5000:8080"
+
+frontend:
+    container_name: frontend
+    image: frontend
+    ports:
+        - "8000:3000"
+    environment:
+        - NODE_ENV=development
+        - SERVER_ADDR=http://192.168.99.100:5000

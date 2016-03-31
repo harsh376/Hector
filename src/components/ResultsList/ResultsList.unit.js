@@ -1,21 +1,21 @@
 import React from 'react';
-import ReactTestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
 import { List } from 'immutable';
+import { shallow } from 'enzyme';
 
 import ResultsList from './ResultsList';
+import Item from '../Item/Item';
 
-const { renderIntoDocument, scryRenderedDOMComponentsWithClass } = ReactTestUtils;
-
-describe('ResultsList', () => {
+describe('<ResultsList />', () => {
   it('renders a list of items', () => {
     const list = List.of('Ross', 'Rachel', 'Chandler');
-    const component = renderIntoDocument(
-      <ResultsList list={list} />
-    );
-    const items = scryRenderedDOMComponentsWithClass(component, 'item');
+    const wrapper = shallow(<ResultsList list={list} />);
 
-    expect(items.length).to.equal(3);
-    expect(items[0].textContent).to.equal('Ross');
+    expect(wrapper.find('div').children()).to.have.length(3);
+    expect(wrapper.contains([
+      <Item value="Ross" />,
+      <Item value="Rachel" />,
+      <Item value="Chandler" />,
+    ])).to.equal(true);
   });
 });

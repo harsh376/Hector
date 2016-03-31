@@ -1,19 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Item extends Component {
-  render() {
-    const styles = {
-      background: '#e5f0ff',
-      borderBottom: '2px solid white',
-      padding: '10 0 0 10',
-    };
-    return (
-      <div style={styles} className="item">
-        <p><i>{this.props.value}</i></p>
-      </div>
-    );
-  }
-}
+const styles = {
+  background: '#e5f0ff',
+  borderBottom: '2px solid white',
+  padding: '10 0 0 10',
+};
+
+const Item = (props) => (
+  <div style={styles} className="item">
+    <p><i>{props.value}</i></p>
+  </div>
+);
 
 Item.propTypes = {
   item: React.PropTypes.string,
@@ -25,3 +22,5 @@ Item.defaultProps = {
   key: '',
   value: '',
 };
+
+export default Item;

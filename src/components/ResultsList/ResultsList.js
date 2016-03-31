@@ -1,20 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { List } from 'immutable';
 
 import Item from '../Item/Item';
 
-export default class ResultsList extends Component {
-  render() {
-    const itemNodes = this.props.list.map(item =>
+const ResultsList = (props) => (
+  <div>
+    {props.list.map(item =>
       <Item value={item} key={item} />
-    );
-    return (
-      <div>
-          {itemNodes}
-      </div>
-    );
-  }
-}
+    )}
+  </div>
+);
 
 ResultsList.propTypes = {
   list: React.PropTypes.instanceOf(List),
@@ -22,3 +17,5 @@ ResultsList.propTypes = {
 ResultsList.defaultProps = {
   list: new List(),
 };
+
+export default ResultsList;

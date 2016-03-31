@@ -5,4 +5,3 @@ export default socket => store => next => action => {
   }
   return next(action);
 };
-/* eslint no-unused-vars: ["error", { "args": "after-used" }]*/

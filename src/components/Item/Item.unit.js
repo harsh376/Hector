@@ -1,19 +1,15 @@
 import React from 'react';
-import ReactTestUtils from 'react-addons-test-utils';
 import { expect } from 'chai';
+import { shallow } from 'enzyme';
 
 import Item from './Item';
 
-const { renderIntoDocument, scryRenderedDOMComponentsWithClass } = ReactTestUtils;
-
-describe('Item', () => {
+describe('<Item />', () => {
   it('renders an item', () => {
     const item = 'Ross';
-    const component = renderIntoDocument(
-      <Item value={item} key={item} />
-    );
-    const p = scryRenderedDOMComponentsWithClass(component, 'item');
-    expect(p.length).to.equal(1);
-    expect(p[0].textContent).to.equal('Ross');
+    const wrapper = shallow(<Item value={item} key={item} />);
+
+    expect(wrapper.find('.item')).to.have.length(1);
+    expect(wrapper.text()).to.equal('Ross');
   });
 });

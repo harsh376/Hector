@@ -16,7 +16,7 @@ describe('reducer', () => {
     };
     const nextState = reducer(initialState, action);
 
-    expect(nextState).to.equal(fromJS({
+    expect(nextState).to.deep.equal(fromJS({
       input: 'R',
       filtered_text: ['Ross', 'Rachel'],
       entries: ['Ross', 'Rachel', 'Chandler'],
@@ -34,7 +34,7 @@ describe('reducer', () => {
     };
     const nextState = reducer(undefined, action);
 
-    expect(nextState).to.equal(fromJS({
+    expect(nextState).to.deep.equal(fromJS({
       input: 'R',
       filtered_text: ['Ross', 'Rachel'],
       entries: ['Ross', 'Rachel', 'Chandler'],

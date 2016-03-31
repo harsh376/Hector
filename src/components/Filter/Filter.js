@@ -1,23 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { List } from 'immutable';
 
 import SearchBar from '../SearchBar/SearchBar';
 import ResultsList from '../ResultsList/ResultsList';
 
-export default class Filter extends Component {
-  render() {
-    const styles = {
-      border: '1px solid',
-      width: 400,
-    };
-    return (
-      <div style={styles}>
-          <SearchBar handleEnter={this.props.filterEntries} />
-          <ResultsList list={this.props.entries} />
-      </div>
-    );
-  }
-}
+const styles = {
+  border: '1px solid',
+  width: 400,
+};
+
+const Filter = (props) => (
+  <div style={styles}>
+    <SearchBar handleEnter={props.filterEntries} />
+    <ResultsList list={props.entries} />
+  </div>
+);
 
 Filter.propTypes = {
   entries: React.PropTypes.instanceOf(List),
@@ -26,3 +23,5 @@ Filter.propTypes = {
 Filter.defaultProps = {
   entries: new List(),
 };
+
+export default Filter;

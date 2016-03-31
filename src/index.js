@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import Router, { Route } from 'react-router';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { List } from 'immutable';
 import io from 'socket.io-client';
 
 import App from './containers/App';
@@ -16,23 +15,23 @@ const addr = process.env.SERVER_ADDR ? process.env.SERVER_ADDR : 'http://localho
 const socket = io.connect(addr);
 
 const createStoreWithMiddleware = applyMiddleware(
-    remoteActionMiddleware(socket)
+  remoteActionMiddleware(socket)
 )(createStore);
 const store = createStoreWithMiddleware(reducer);
 
 socket.on('state', state => {
-    store.dispatch(setState(state));
+  store.dispatch(setState(state));
 });
 
 const routes = (
-    <Route component={App}>
-        <Route path="/" component={IndexPage} />
-    </Route>
+  <Route component={App}>
+    <Route path="/" component={IndexPage} />
+  </Route>
 );
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Router>{routes}</Router>
-    </Provider>,
-    document.getElementById('root')
+  <Provider store={store}>
+    <Router>{routes}</Router>
+  </Provider>,
+  document.getElementById('root')
 );

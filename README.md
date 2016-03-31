@@ -51,8 +51,8 @@
 # Things to refactor
 ---
 
-- client side redux
 - babel configuration: babel presets etc
+- client side redux
 - update dependencies: react, redux, react-redux react-router etc
 - mocha/test setup script
 - remote middlewares
@@ -62,6 +62,8 @@
 # Things to do after that
 ---
 
+- eslint (airbnb)
+- redux thunk/ react, redux dev tools
 - SCSS for styling
 - Animations
 - combined reducers

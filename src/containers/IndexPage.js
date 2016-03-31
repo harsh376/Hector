@@ -1,31 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { List } from 'immutable';
 
 import Filter from '../components/Filter/Filter';
 import { filterEntries } from '../actions/action_creators';
 
-export class IndexPage extends Component {
-    render() {
-        return (
-            <Filter {...this.props} />
-        );
-    }
-}
+export const IndexPage = (props) => (
+  <Filter {...props} />
+);
 
 IndexPage.propTypes = {
-    input: React.PropTypes.string,
-    entries: React.PropTypes.instanceOf(List),
-    filterEntries: React.PropTypes.func.isRequired
-}
+  input: React.PropTypes.string,
+  entries: React.PropTypes.instanceOf(List),
+  filterEntries: React.PropTypes.func.isRequired,
+};
 
 function mapStateToProps(state) {
-    return {
-        input: state.get('input'),
-        entries: state.get('filtered_text')
-    };
+  return {
+    input: state.get('input'),
+    entries: state.get('filtered_text'),
+  };
 }
 
 export default connect(mapStateToProps, {
-    filterEntries
+  filterEntries,
 })(IndexPage);

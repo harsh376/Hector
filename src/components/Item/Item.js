@@ -1,14 +1,9 @@
+import '../../../stylesheets/ItemClass.scss';
 import React from 'react';
 
 function Item({ value }) {
-  const styles = {
-    background: '#e5f0ff',
-    borderBottom: '2px solid white',
-    padding: '10 0 0 10',
-  };
-
   return (
-    <div style={styles} className="item">
+    <div className="item">
       <p><i>{value}</i></p>
     </div>
   );

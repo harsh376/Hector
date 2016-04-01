@@ -68,7 +68,7 @@
 - redux thunk/ react, redux dev tools
 - Animations
 - combined reducers
-- async requests, isLoading
+- async requests, isLoading - `isomorphic-fetch`
 - integration testing with enzyme(airbnb) - karma/phantomjs
 - logging
 - error handling

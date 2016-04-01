@@ -4,17 +4,18 @@ import { List } from 'immutable';
 import SearchBar from '../SearchBar/SearchBar';
 import ResultsList from '../ResultsList/ResultsList';
 
-const styles = {
-  border: '1px solid',
-  width: 400,
-};
-
-const Filter = (props) => (
-  <div style={styles}>
-    <SearchBar handleEnter={props.filterEntries} />
-    <ResultsList list={props.entries} />
-  </div>
-);
+function Filter({ filterEntries, entries }) {
+  const styles = {
+    border: '1px solid',
+    width: 400,
+  };
+  return (
+    <div style={styles}>
+      <SearchBar handleEnter={filterEntries} />
+      <ResultsList list={entries} />
+    </div>
+  );
+}
 
 Filter.propTypes = {
   entries: React.PropTypes.instanceOf(List),

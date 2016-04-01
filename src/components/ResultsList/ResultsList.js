@@ -3,13 +3,16 @@ import { List } from 'immutable';
 
 import Item from '../Item/Item';
 
-const ResultsList = (props) => (
-  <div>
-    {props.list.map(item =>
-      <Item value={item} key={item} />
-    )}
-  </div>
-);
+function ResultsList({ list }) {
+  const itemNodes = list.map(item =>
+    <Item value={item} key={item} />
+  );
+  return (
+    <div>
+      {itemNodes}
+    </div>
+  );
+}
 
 ResultsList.propTypes = {
   list: React.PropTypes.instanceOf(List),

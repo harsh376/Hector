@@ -51,10 +51,13 @@
 # Things to refactor
 ---
 
-- babel configuration: babel presets etc
+- babel configuration: babel presets etc    *done*
+- update dependencies: react, redux, react-redux react-router etc   *done*
+- eslint (airbnb)   *done*
+- mocha/test setup script   *done*
+- unit testing with enzyme(airbnb)  *done*
+- SCSS for styling
 - client side redux
-- update dependencies: react, redux, react-redux react-router etc
-- mocha/test setup script
 - remote middlewares
 - remove socket io, do an initial fetch instead
 
@@ -62,13 +65,11 @@
 # Things to do after that
 ---
 
-- eslint (airbnb)
 - redux thunk/ react, redux dev tools
-- SCSS for styling
 - Animations
 - combined reducers
 - async requests, isLoading
-- unit testing, integration testing with enzyme(airbnb), shallow renderer
+- integration testing with enzyme(airbnb) - karma/phantomjs
 - logging
 - error handling
 - complex middlewares

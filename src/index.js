@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import io from 'socket.io-client';
 
 import App from './containers/App';
-import IndexPage from './containers/IndexPage';
+import IndexPageContainer from './containers/IndexPageContainer';
 import reducer from './reducers/reducer';
 import { setState } from './actions/action_creators';
 import remoteActionMiddleware from './middlewares/remote_action_middleware';
@@ -25,7 +25,7 @@ socket.on('state', state => {
 
 const routes = (
   <Route component={App}>
-    <Route path="/" component={IndexPage} />
+    <Route path="/" component={IndexPageContainer} />
   </Route>
 );
 

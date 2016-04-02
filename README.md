@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/harsh376/Hector.svg?branch=master)](https://travis-ci.org/harsh376/Hector)
+
 - webpack, webpack-dev-server
 - babel
     + babel-presets

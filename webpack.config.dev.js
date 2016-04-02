@@ -18,10 +18,12 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
-      'process.env': Object.keys(process.env).reduce(function(o, k) {
-        o[k] = JSON.stringify(process.env[k]);
-        return o;
-      }, {})
+      'process.env': {
+        'SERVER_ADDR': JSON.stringify(process.env.SERVER_ADDR),
+
+        // http://stackoverflow.com/questions/30347722/importing-css-files-in-isomorphic-react-components
+        'BROWSER': JSON.stringify(true)
+      }
     }),
     new ExtractTextPlugin('style.css', {
       allChunks: true
@@ -39,6 +41,7 @@ module.exports = {
         loader: 'file?name=[name].[ext]',
       },
       {
+        // http://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-application-with-sass.html
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('css!sass'),
         include: path.join(__dirname, 'stylesheets')

@@ -4,14 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "//": "prod scripts",
     "clean": "rimraf dist",
     "build:webpack": "webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
-    "start": "node server.js",
     "deploy": "NODE_ENV=production PORT=4000 npm run build && NODE_ENV=production PORT=4000 npm start",
-    "test": "npm run lint && mocha ./test_setup.js 'src/**/*.unit.@(js)'",
+
+    "//": "dev scripts",
+    "start": "node server.js",
+    "test": "npm run lint && npm run mocha",
     "test:watch": "npm run test -- --watch",
-    "lint": "node_modules/eslint/bin/eslint.js src/"
+    "lint": "node_modules/eslint/bin/eslint.js src/",
+    "mocha": "mocha ./test_setup.js 'src/**/*.unit.@(js)'"
   },
   "keywords": [],
   "author": "",

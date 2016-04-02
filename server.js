@@ -3,6 +3,8 @@ const express = require('express');
 const webpack = require('webpack');
 const config = require('./webpack.config.dev');
 
+delete process.env.BROWSER;
+
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
 const app = express();

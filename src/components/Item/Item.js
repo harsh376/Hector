@@ -1,14 +1,15 @@
 import React from 'react';
 
-function Item({ value }) {
-  const styles = {
-    background: '#e5f0ff',
-    borderBottom: '2px solid white',
-    padding: '10 0 0 10',
-  };
+/**
+ * http://stackoverflow.com/questions/30347722/importing-css-files-in-isomorphic-react-components
+ */
+if (process.env.BROWSER) {
+  require('../../../stylesheets/ItemClass.scss');
+}
 
+function Item({ value }) {
   return (
-    <div style={styles} className="item">
+    <div className="item">
       <p><i>{value}</i></p>
     </div>
   );

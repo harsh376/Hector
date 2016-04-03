@@ -48,3 +48,7 @@
     + connect containers to state
 - create action creators file
 - create middleware
+
+## License
+
+See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).

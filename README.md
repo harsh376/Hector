@@ -48,3 +48,5 @@
     + connect containers to state
 - create action creators file
 - create middleware
+
+- do something issue

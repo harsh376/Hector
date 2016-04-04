@@ -1,23 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Router, { Route } from 'react-router';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import io from 'socket.io-client';
 
 import App from './containers/App';
 import IndexPageContainer from './containers/IndexPageContainer';
-import reducer from './reducers/reducer';
+import rootReducer from './reducers/reducer';
 import { setState } from './actions/action_creators';
-import remoteActionMiddleware from './middlewares/remote_action_middleware';
+import configureStore from './store/configureStore';
 
 const addr = process.env.SERVER_ADDR ? process.env.SERVER_ADDR : 'http://localhost:8080';
 const socket = io.connect(addr);
 
-const createStoreWithMiddleware = applyMiddleware(
-  remoteActionMiddleware(socket)
-)(createStore);
-const store = createStoreWithMiddleware(reducer);
+const store = configureStore(rootReducer, socket);
 
 socket.on('state', state => {
   store.dispatch(setState(state));

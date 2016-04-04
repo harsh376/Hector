@@ -19,6 +19,7 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         'SERVER_ADDR': JSON.stringify(process.env.SERVER_ADDR),
 
         // http://stackoverflow.com/questions/30347722/importing-css-files-in-isomorphic-react-components

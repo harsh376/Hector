@@ -1,34 +1,44 @@
 /* eslint no-console: ["error", { allow: ["log", "error"] }] */
-const path = require('path');
-const express = require('express');
-const webpack = require('webpack');
-const config = require('../../webpack.config.dev');
+import path from 'path';
+import webpack from 'webpack';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import express from 'express';
+import config from '../../webpack.config.dev';
+import ajaxProxyRouter from './lib/ajaxProxyRouter';
 
 delete process.env.BROWSER;
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
-const app = express();
+const server = express();
+
+server.use('/api', ajaxProxyRouter());
 
 if (isDeveloping) {
   console.log('DEVELOPMENT');
   const compiler = webpack(config);
-  const middleware = require('webpack-dev-middleware')(compiler, {
+  const middleware = webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath,
     noInfo: true,
   });
 
-  app.use(middleware);
-  app.use(require('webpack-hot-middleware')(compiler));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../dist/index.html'));
+  server.use(middleware);
+  server.use(webpackHotMiddleware(compiler));
+  server.get('/app', (req, res) => {
+    res.sendFile(path.join(__dirname, '../app/index.html'));
   });
 } else {
   console.log('PRODUCTION');
-  app.use(express.static(path.join(__dirname, '../../dist')));
+  server.use(express.static(path.join(__dirname, '../app')));
 }
 
-app.listen(port, '0.0.0.0', (err) => {
+server.get('/ping', (req, res) => {
+  res.header('Content-Type', 'text/plain');
+  res.send(new Date().toISOString());
+});
+
+server.listen(port, '0.0.0.0', (err) => {
   if (err) {
     console.error(err);
   }

@@ -9,7 +9,7 @@ module.exports = {
     './src/app/index.html'
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.join(__dirname, 'dist/app'),
     filename: 'bundle.js'
   },
   plugins: [
@@ -34,7 +34,7 @@ module.exports = {
       {
         test: /\.js$/,
         loaders: ['babel'],
-        include: path.join(__dirname, 'src')
+        include: path.join(__dirname, 'src/app')
       }, {
         test: /\.html$/,
         loader: 'file?name=[name].[ext]',

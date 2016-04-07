@@ -5,8 +5,8 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   devtool: 'source-map',
   entry: [
-    './src/index.js',
-    './src/index.html'
+    './src/app/index.js',
+    './src/app/index.html'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -41,7 +41,7 @@ module.exports = {
       }, {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('css!sass'),
-        include: path.join(__dirname, 'stylesheets')
+        include: path.join(__dirname, 'src/app/stylesheets')
       }
     ]
   }

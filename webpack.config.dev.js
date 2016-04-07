@@ -6,8 +6,8 @@ module.exports = {
   devtool: 'eval',
   entry: [
     'webpack-hot-middleware/client?reload=true',
-    './src/index.js',
-    './src/index.html'
+    './src/app/index.js',
+    './src/app/index.html'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -45,7 +45,7 @@ module.exports = {
         // http://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-application-with-sass.html
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('css!sass'),
-        include: path.join(__dirname, 'stylesheets')
+        include: path.join(__dirname, 'src/app/stylesheets')
       }
     ]
   }

@@ -8,11 +8,11 @@
     "build:webpack": "webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
     "deploy": "NODE_ENV=production PORT=4000 npm run build && NODE_ENV=production PORT=4000 npm start",
-    "start": "node server.js",
+    "start": "node src/server/server.js",
     "test": "npm run lint && npm run mocha",
     "test:watch": "npm run test -- --watch",
     "lint": "node_modules/eslint/bin/eslint.js src/",
-    "mocha": "mocha ./test_setup.js 'src/**/*.unit.@(js)'"
+    "mocha": "mocha ./test_setup.js 'src/**/**/*.unit.@(js)'"
   },
   "keywords": [],
   "author": "",

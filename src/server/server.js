@@ -1,7 +1,8 @@
+/* eslint no-console: ["error", { allow: ["log", "error"] }] */
 const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
-const config = require('./webpack.config.dev');
+const config = require('../../webpack.config.dev');
 
 delete process.env.BROWSER;
 
@@ -20,16 +21,16 @@ if (isDeveloping) {
   app.use(middleware);
   app.use(require('webpack-hot-middleware')(compiler));
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './dist/index.html'));
+    res.sendFile(path.join(__dirname, '../../dist/index.html'));
   });
 } else {
   console.log('PRODUCTION');
-  app.use(express.static(path.join(__dirname, 'dist')));
+  app.use(express.static(path.join(__dirname, '../../dist')));
 }
 
 app.listen(port, '0.0.0.0', (err) => {
   if (err) {
-    console.log(err);
+    console.error(err);
   }
-  console.info('Listening at http://0.0.0.0:%s/', port);
+  console.log('Listening at http://0.0.0.0:%s/', port);
 });

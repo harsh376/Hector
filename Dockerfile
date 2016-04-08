@@ -1,4 +1,4 @@
-FROM node:argon
+FROM nodesource/wheezy:5.2.0
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -11,11 +11,7 @@ RUN npm install
 # Bundle app source
 COPY . /usr/src/app
 
-# Default Environment variables
-ENV NODE_ENV=production
-ENV PORT=4000
+ENV NODE_ENV=development
 
-# dev: 3000, prod: 4000
-EXPOSE 3000 4000
-
-CMD [ "npm", "run", "deploy" ]
+EXPOSE 3000
+CMD [ "npm", "start" ]

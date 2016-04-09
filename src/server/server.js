@@ -20,7 +20,15 @@ if (isDeveloping) {
   const compiler = webpack(config);
   const middleware = webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath,
+    // https://webpack.github.io/docs/webpack-dev-middleware.html
     noInfo: true,
+    // for hot-reloading with docker
+    watchOptions: {
+      poll: true,
+    },
+    stats: {
+      colors: true,
+    },
   });
 
   server.use(middleware);

@@ -1,14 +1,20 @@
-server:
-    container_name: server
-    image: server
-    ports:
-        - "5000:8080"
-
-frontend:
-    container_name: frontend
-    image: frontend
-    ports:
-        - "8000:3000"
-    environment:
-        - NODE_ENV=development
-        - SERVER_ADDR=http://192.168.99.100:5000
+web:
+  build: .
+  # image: hector
+  ports:
+  - "8000:3000"
+  volumes:
+  - .:/usr/src/app/:rw
+  environment:
+  - NODE_ENV=dev
+  # Before you run this file for the first time, make sure
+  # you remove node_modules/ folders in your host machine
+  command: >
+    sh -c '
+    if test -d node_modules;
+    then
+      echo node_modules_exists ;
+    fi &&
+    npm install &&
+    npm start
+    '

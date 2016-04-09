@@ -1,21 +1,15 @@
-FROM node:argon
+FROM nodesource/wheezy:5.2.0
 
-# Create app directory
-RUN mkdir -p /usr/src/app
+WORKDIR /tmp
+COPY package.json /tmp/
+RUN npm config set registry http://registry.npmjs.org/ && npm install
+
 WORKDIR /usr/src/app
+COPY . /usr/src/app/
+RUN cp -a /tmp/node_modules /usr/src/app/
 
-# Install app dependencies
-COPY package.json /usr/src/app/
-RUN npm install
-
-# Bundle app source
-COPY . /usr/src/app
-
-# Default Environment variables
 ENV NODE_ENV=production
-ENV PORT=4000
+ENV PORT=3000
 
-# dev: 3000, prod: 4000
-EXPOSE 3000 4000
-
-CMD [ "npm", "run", "deploy" ]
+CMD [ "npm", "start" ]
+EXPOSE 3000

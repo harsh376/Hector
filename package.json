@@ -9,7 +9,7 @@
     "build:server": "babel src/server --out-dir dist/server --copy-files",
     "build": "npm run clean && npm run build:webpack && npm run build:server",
     "deploy": "NODE_ENV=production PORT=4000 npm run build && NODE_ENV=production PORT=4000 node dist/server/server.js",
-    "start": "babel-node src/server/server.js",
+    "start": "npm rebuild node-sass && babel-node src/server/server.js",
     "test": "npm run lint && npm run mocha",
     "test:watch": "npm run test -- --watch",
     "lint": "node_modules/eslint/bin/eslint.js src/",

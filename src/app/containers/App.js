@@ -1,9 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router';
 
-export default class App extends Component {
-  render() {
-    return this.props.children;
-  }
+function App(props) {
+  return (
+  <div>
+    <h1>App</h1>
+    <ul>
+      <li><Link to="/filter">filter</Link></li>
+      <li><Link to="/todo">todo</Link></li>
+    </ul>
+    {props.children}
+  </div>
+  );
 }
 
 App.propTypes = {
@@ -12,7 +20,8 @@ App.propTypes = {
     React.PropTypes.node,
   ]),
 };
-
 App.defaultProps = {
   children: null,
 };
+
+export default App;

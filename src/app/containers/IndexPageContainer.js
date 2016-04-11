@@ -18,10 +18,10 @@ IndexPageContainer.propTypes = {
 };
 
 function mapStateToProps(state) {
-  return {
-    input: state.get('input'),
-    entries: state.get('filtered_text'),
-  };
+  const { filterState } = state;
+  const entries = filterState.get('filtered_text') || new List();
+
+  return { input: '', entries };
 }
 
 export default connect(mapStateToProps, {

@@ -9,9 +9,9 @@ import App from './containers/App';
 import IndexPageContainer from './containers/IndexPageContainer';
 import TodoPageContainer from './containers/TodoPageContainer';
 import NomatchContainer from './containers/NomatchContainer';
-import rootReducer from './reducers/reducer';
 import { setState } from './actions/action_creators';
 import configureStore from './store/configureStore';
+import rootReducer from './reducers/index';
 
 const addr = process.env.SERVER_ADDR ? process.env.SERVER_ADDR : 'http://localhost:8080';
 const socket = io.connect(addr);

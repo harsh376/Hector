@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Router, { Route } from 'react-router';
-import createBrowserHistory from 'history/lib/createBrowserHistory';
+import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import io from 'socket.io-client';
 
@@ -32,7 +31,7 @@ const routes = (
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={createBrowserHistory()}>{routes}</Router>
+    <Router history={browserHistory}>{routes}</Router>
   </Provider>,
   document.getElementById('root')
 );

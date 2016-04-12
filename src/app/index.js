@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Router, { Route } from 'react-router';
+import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import io from 'socket.io-client';
 
 import App from './containers/App';
 import IndexPageContainer from './containers/IndexPageContainer';
-import rootReducer from './reducers/reducer';
+import TodoPageContainer from './containers/TodoPageContainer';
+import NomatchContainer from './containers/NomatchContainer';
 import { setState } from './actions/action_creators';
 import configureStore from './store/configureStore';
+import rootReducer from './reducers/index';
 
 const addr = process.env.SERVER_ADDR ? process.env.SERVER_ADDR : 'http://localhost:8080';
 const socket = io.connect(addr);
@@ -20,14 +22,16 @@ socket.on('state', state => {
 });
 
 const routes = (
-  <Route component={App}>
-    <Route path="/" component={IndexPageContainer} />
+  <Route path="/" component={App}>
+    <Route path="filter" component={IndexPageContainer} />
+    <Route path="todo" component={TodoPageContainer} />
+    <Route path="*" component={NomatchContainer} />
   </Route>
 );
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>{routes}</Router>
+    <Router history={browserHistory}>{routes}</Router>
   </Provider>,
   document.getElementById('root')
 );

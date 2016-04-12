@@ -14,6 +14,10 @@ const port = isDeveloping ? 3000 : process.env.PORT;
 const server = express();
 
 server.use('/api', ajaxProxyRouter());
+server.get('/ping', (req, res) => {
+  res.header('Content-Type', 'text/plain');
+  res.send(new Date().toISOString());
+});
 
 if (isDeveloping) {
   console.log('DEVELOPMENT');
@@ -33,18 +37,13 @@ if (isDeveloping) {
 
   server.use(middleware);
   server.use(webpackHotMiddleware(compiler));
-  server.get('/app', (req, res) => {
+  server.use('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../app/index.html'));
   });
 } else {
   console.log('PRODUCTION');
   server.use(express.static(path.join(__dirname, '../app')));
 }
-
-server.get('/ping', (req, res) => {
-  res.header('Content-Type', 'text/plain');
-  res.send(new Date().toISOString());
-});
 
 server.listen(port, '0.0.0.0', (err) => {
   if (err) {

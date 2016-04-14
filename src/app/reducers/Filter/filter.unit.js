@@ -3,7 +3,7 @@ import { expect } from 'chai';
 
 import reducer from './filter';
 
-describe('reducer', () => {
+describe('reducers/filter', () => {
   it('handles SET_STATE', () => {
     const initialState = new Map();
     const action = {

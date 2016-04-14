@@ -1,10 +1,40 @@
 import React from 'react';
-import Todo from '../components/Todo/Todo';
+import { connect } from 'react-redux';
+import { List } from 'immutable';
 
-function TodoPageContainer() {
-  return (
-    <Todo value="wooohooo" />
-  );
+import TodoList from '../components/TodoList/TodoList';
+import { fetchItems } from '../actions/action_creators';
+
+export class TodoPageContainer extends React.Component {
+  componentDidMount() {
+    this.props.fetchItems();
+  }
+  render() {
+    return (
+      <div>
+        <button onClick={this.props.fetchItems}>Refresh items</button>
+        {!this.props.isFetching && (
+          <TodoList list={this.props.data} />
+        )}
+      </div>
+    );
+  }
 }
 
-export default TodoPageContainer;
+TodoPageContainer.propTypes = {
+  isFetching: React.PropTypes.bool,
+  data: React.PropTypes.instanceOf(List),
+  fetchItems: React.PropTypes.func.isRequired,
+};
+
+function mapStateToProps(state) {
+  const { todo } = state;
+  return {
+    isFetching: todo.get('isFetching'),
+    data: todo.get('data'),
+  };
+}
+
+export default connect(mapStateToProps, {
+  fetchItems,
+})(TodoPageContainer);

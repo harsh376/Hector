@@ -1,5 +1,6 @@
 require('babel-register')();
-
+var chai = require('chai');
+var chaiImmutable = require('chai-immutable');
 var jsdom = require('jsdom').jsdom;
 
 var exposedProperties = ['window', 'navigator', 'document'];
@@ -18,3 +19,4 @@ global.navigator = {
 };
 
 documentRef = document;
+chai.use(chaiImmutable);

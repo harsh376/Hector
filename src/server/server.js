@@ -7,11 +7,70 @@ import express from 'express';
 import config from '../../webpack.config.dev';
 import ajaxProxyRouter from './lib/ajaxProxyRouter';
 
+import morgan from 'morgan';
+import session from 'express-session';
+import passport from 'passport';
+import { OAuth2Strategy as GoogleStrategy } from 'passport-google-oauth';
+import authConfig from './auth/credentials';
+
 delete process.env.BROWSER;
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
 const server = express();
+
+
+// **********************************************************
+// setting up passport stuff
+// **********************************************************
+
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  done(null, id);
+});
+
+passport.use(new GoogleStrategy(
+  authConfig.google,
+  function(accessToken, refreshToken, profile, done) {
+
+    // Typically you would query the database to find the user record
+    // associated with this Google profile, then pass that object to the `done`
+    // callback.
+    return done(null, profile);
+  }
+));
+
+// **********************************************************
+
+// Log requests to stdout
+server.use(morgan(':remote-addr - - :date[clf] :method :url HTTP/:http-version :status -'))
+
+server.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false,
+}));
+
+server.use(passport.initialize());
+server.use(passport.session());
+
+server.get('/auth/google',
+  passport.authenticate('google', { scope: ['openid email profile'] })
+);
+
+server.get('/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/'}),
+  (req, res) => {
+    res.send(req.user.id);
+  }
+);
+
+
+// *********************************************************
+
 
 server.use('/api', ajaxProxyRouter());
 server.get('/ping', (req, res) => {

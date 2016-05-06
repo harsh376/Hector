@@ -6,8 +6,7 @@ function App(props) {
   <div>
     <h1>App</h1>
     <ul>
-      <li><Link to="/filter">filter</Link></li>
-      <li><Link to="/todo">todo</Link></li>
+      <li><a href='/auth/google'>Log in with Google</a></li>
     </ul>
     {props.children}
   </div>

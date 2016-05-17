@@ -1,1 +1,2 @@
 export const FETCH_ITEMS = 'FETCH_ITEMS';
+export const AUTHENTICATE_USER = 'AUTHENTICATE_USER';

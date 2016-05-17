@@ -6,8 +6,8 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import express from 'express';
 import config from '../../webpack.config.dev';
 import ajaxProxyRouter from './lib/ajaxProxyRouter';
-
 import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import passport from 'passport';
 import { OAuth2Strategy as GoogleStrategy } from 'passport-google-oauth';
@@ -20,9 +20,11 @@ const port = isDeveloping ? 3000 : process.env.PORT;
 const server = express();
 
 
-// **********************************************************
-// setting up passport stuff
-// **********************************************************
+/*
+ **********************************************************
+ setting up passport stuff
+ **********************************************************
+ */
 
 passport.serializeUser(function(user, done) {
   done(null, user.id);
@@ -35,10 +37,6 @@ passport.deserializeUser(function(id, done) {
 passport.use(new GoogleStrategy(
   authConfig.google,
   function(accessToken, refreshToken, profile, done) {
-
-    // Typically you would query the database to find the user record
-    // associated with this Google profile, then pass that object to the `done`
-    // callback.
     return done(null, profile);
   }
 ));
@@ -48,14 +46,21 @@ passport.use(new GoogleStrategy(
 // Log requests to stdout
 server.use(morgan(':remote-addr - - :date[clf] :method :url HTTP/:http-version :status -'))
 
+server.use(cookieParser());
 server.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: false,
+  secret: 'some',
+  resave: true,
+  saveUninitialized: true,
+  cookie: { maxAge: 2419200000 },
 }));
-
 server.use(passport.initialize());
 server.use(passport.session());
+
+
+server.use((req, res, next) => {
+  console.log(req.sessionID);
+  next();
+})
 
 server.get('/auth/google',
   passport.authenticate('google', { scope: ['openid email profile'] })
@@ -64,10 +69,13 @@ server.get('/auth/google',
 server.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/'}),
   (req, res) => {
-    res.send(req.user.id);
+    res.redirect('/todo');
   }
 );
 
+server.get('/user', ensureAuthenticated, (req, res) => {
+  res.send(req.user);
+});
 
 // *********************************************************
 
@@ -110,3 +118,11 @@ server.listen(port, '0.0.0.0', (err) => {
   }
   console.log('Listening at http://0.0.0.0:%s/', port);
 });
+
+
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/');
+}

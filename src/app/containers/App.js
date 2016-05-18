@@ -7,6 +7,7 @@ function App(props) {
     <h1>App</h1>
     <ul>
       <li><a href='/auth/google'>Log in with Google</a></li>
+      <li><a href='/logout'>Log out</a></li>
     </ul>
     {props.children}
   </div>

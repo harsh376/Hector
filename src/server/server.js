@@ -73,9 +73,20 @@ server.get('/auth/google/callback',
   }
 );
 
-server.get('/user', ensureAuthenticated, (req, res) => {
+server.get('/account', ensureAuthenticated, (req, res) => {
   res.send(req.user);
 });
+
+server.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if(err) {
+      console.log(err);
+    } else {
+      res.redirect('/todo');
+    }
+  });
+});
+
 
 // *********************************************************
 

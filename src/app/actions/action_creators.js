@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import { FETCH_ITEMS, AUTHENTICATE_USER } from '../constants/actionTypes';
+import { FETCH_ITEMS, FETCH_ACCOUNT_DETAILS } from '../constants/actionTypes';
 
 export function setState(state) {
   return {
@@ -27,12 +27,13 @@ export function fetchItems() {
   };
 }
 
-export function authenticateUser() {
+export function fetchAccountDetails() {
   return {
-    type: AUTHENTICATE_USER,
+    type: FETCH_ACCOUNT_DETAILS,
     payload: {
-      promise: fetch('/user', {credentials: 'include'})
-                .then(response => (response.ok ? response : Promise.reject(response))),
+      promise: fetch('/account', {credentials: 'include'})
+                .then(response => (response.ok ? response : Promise.reject(response)))
+                .then(response => response.json()),
     },
   };
 }

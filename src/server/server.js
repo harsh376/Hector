@@ -20,47 +20,71 @@ const port = isDeveloping ? 3000 : process.env.PORT;
 const server = express();
 
 
-/*
- **********************************************************
- setting up passport stuff
- **********************************************************
+/**
+ ******************************************
+ passport stuff - TODO: Move into separate file
+ ******************************************
  */
+passport.serializeUser((user, done) => done(null, user.id));
 
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
-
-passport.deserializeUser(function(id, done) {
-  done(null, id);
-});
+passport.deserializeUser((id, done) => done(null, id));
 
 passport.use(new GoogleStrategy(
   authConfig.google,
-  function(accessToken, refreshToken, profile, done) {
-    return done(null, profile);
-  }
+  (accessToken, refreshToken, profile, done) => done(null, profile)
 ));
 
-// **********************************************************
+/**
+ ******************************************
+ * helper functions
+ ******************************************
+ */
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    next();
+  }
+  res.redirect('/');
+}
 
+/**
+ ******************************************
+ * middlewares
+ ******************************************
+ */
+
+// TODO: Move log format into server config file
 // Log requests to stdout
-server.use(morgan(':remote-addr - - :date[clf] :method :url HTTP/:http-version :status -'))
+server.use(
+  morgan(':remote-addr - - :date[clf] :method :url HTTP/:http-version :status -')
+);
+
 server.use(cookieParser());
+
+// TODO: move session config into server config file
 server.use(session({
   secret: 'some',
   resave: true,
   saveUninitialized: true,
   cookie: { maxAge: 2419200000 },
 }));
+
 server.use(passport.initialize());
+
 server.use(passport.session());
+
+/**
+ ******************************************
+ * user auth endpoints
+ ******************************************
+ */
+
 
 server.get('/auth/google',
   passport.authenticate('google', { scope: ['openid email profile'] })
 );
 
 server.get('/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/'}),
+  passport.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
     res.redirect('/');
   }
@@ -72,7 +96,7 @@ server.get('/account', ensureAuthenticated, (req, res) => {
 
 server.get('/logout', (req, res) => {
   req.session.destroy((err) => {
-    if(err) {
+    if (err) {
       console.log(err);
     } else {
       res.redirect('/');
@@ -80,15 +104,23 @@ server.get('/logout', (req, res) => {
   });
 });
 
-
-// *********************************************************
-
+/**
+ ******************************************
+ * api/ping endpoints
+ ******************************************
+ */
 
 server.use('/api', ajaxProxyRouter());
 server.get('/ping', (req, res) => {
   res.header('Content-Type', 'text/plain');
   res.send(new Date().toISOString());
 });
+
+/**
+ ******************************************
+ * serving front-end application
+ ******************************************
+ */
 
 if (isDeveloping) {
   console.log('DEVELOPMENT');
@@ -122,16 +154,3 @@ server.listen(port, '0.0.0.0', (err) => {
   }
   console.log('Listening at http://0.0.0.0:%s/', port);
 });
-
-
-function ensureAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect('/');
-}
-
-function logSessionId(req, res, next) {
-  console.log(req.sessionID);
-  next();
-}

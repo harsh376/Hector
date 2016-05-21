@@ -46,7 +46,11 @@ module.exports = {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('css!sass'),
         include: path.join(__dirname, 'src/app/stylesheets')
-      }
+      },
+      {
+        test: /\.json$/,
+        loader: 'json'
+      },
     ]
   }
 };

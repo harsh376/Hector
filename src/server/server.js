@@ -19,6 +19,7 @@ const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
 const server = express();
 
+// TODO: write tests for server.js
 
 /**
  ******************************************

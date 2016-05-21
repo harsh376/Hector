@@ -45,7 +45,6 @@ passport.use(new GoogleStrategy(
 
 // Log requests to stdout
 server.use(morgan(':remote-addr - - :date[clf] :method :url HTTP/:http-version :status -'))
-
 server.use(cookieParser());
 server.use(session({
   secret: 'some',
@@ -56,12 +55,6 @@ server.use(session({
 server.use(passport.initialize());
 server.use(passport.session());
 
-
-server.use((req, res, next) => {
-  console.log(req.sessionID);
-  next();
-})
-
 server.get('/auth/google',
   passport.authenticate('google', { scope: ['openid email profile'] })
 );
@@ -69,7 +62,7 @@ server.get('/auth/google',
 server.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/'}),
   (req, res) => {
-    res.redirect('/todo');
+    res.redirect('/');
   }
 );
 
@@ -82,7 +75,7 @@ server.get('/logout', (req, res) => {
     if(err) {
       console.log(err);
     } else {
-      res.redirect('/todo');
+      res.redirect('/');
     }
   });
 });
@@ -136,4 +129,9 @@ function ensureAuthenticated(req, res, next) {
     return next();
   }
   res.redirect('/');
+}
+
+function logSessionId(req, res, next) {
+  console.log(req.sessionID);
+  next();
 }

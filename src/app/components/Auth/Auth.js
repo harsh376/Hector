@@ -19,7 +19,13 @@ export default class Auth extends React.Component {
         )}
         {!isLoggedIn && (
           <div className="loggedOut">
-            <a href="/auth/google">Log in with Google</a>
+            <a href="/auth/google">
+              <img
+                src="/static/google_signin.png"
+                alt="Sign in with Google"
+                height="40"
+              />
+            </a>
           </div>
         )}
       </div>

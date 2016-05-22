@@ -141,9 +141,7 @@ if (isDeveloping) {
 
   server.use(middleware);
   server.use(webpackHotMiddleware(compiler));
-  server.use('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../app/index.html'));
-  });
+  server.use(express.static(path.join(__dirname, '../app')));
 } else {
   console.log('PRODUCTION');
   server.use(express.static(path.join(__dirname, '../app')));

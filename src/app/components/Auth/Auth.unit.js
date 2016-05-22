@@ -28,7 +28,7 @@ describe('<Auth />', () => {
     expect(wrapper.find('a').text()).to.equal('Log out');
   });
 
-  it('renders `!loggedIn` state', () => {
+  it('renders `!isloggedIn` state', () => {
     const user = null;
     const stub = () => user;
     const wrapper = shallow(
@@ -36,6 +36,14 @@ describe('<Auth />', () => {
     );
 
     expect(wrapper.find('.loggedOut')).to.have.length(1);
-    expect(wrapper.find('a').text()).to.equal('Log in with Google');
+    expect(wrapper.find('.loggedOut').children().equals(
+      <a href="/auth/google">
+        <img
+          src="/static/google_signin.png"
+          alt="Sign in with Google"
+          height="40"
+        />
+      </a>
+    )).to.equal(true);
   });
 });

@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .git/
+.github/
 .gitignore
 LICENSE.md
 README.md

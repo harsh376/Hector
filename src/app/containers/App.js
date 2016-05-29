@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import { fetchAccountDetails } from '../actions/action_creators';
 import Auth from '../components/Auth/Auth';
 
@@ -11,6 +12,10 @@ function App(props) {
         user={props.user}
         fetchAccountDetails={props.fetchAccountDetails}
       />
+      <ul>
+        <li><Link to="/filter">filter</Link></li>
+        <li><Link to="/todo">todo</Link></li>
+      </ul>
       {props.children}
     </div>
   );

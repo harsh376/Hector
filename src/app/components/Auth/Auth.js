@@ -13,7 +13,7 @@ export default class Auth extends React.Component {
       <div>
         {isLoggedIn && (
           <div className="loggedIn">
-            <h3>Welcome, {this.props.user}!</h3>
+            <h3>Welcome, {this.props.user.first_name}!</h3>
             <a href="/logout">Log out</a>
           </div>
         )}
@@ -34,6 +34,6 @@ export default class Auth extends React.Component {
 }
 
 Auth.propTypes = {
-  user: React.PropTypes.number,
+  user: React.PropTypes.object,
   fetchAccountDetails: React.PropTypes.func.isRequired,
 };

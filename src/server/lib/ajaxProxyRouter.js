@@ -1,5 +1,6 @@
 import express from 'express';
 import proxyMiddleware from 'http-proxy-middleware';
+import config from './config';
 
 export default function ajaxProxyRouter() {
   const router = express.Router(); // eslint-disable-line new-cap
@@ -11,7 +12,7 @@ export default function ajaxProxyRouter() {
   // configure proxy middleware options
   const options = {
     // target host
-    target: 'http://localhost:5000',
+    target: config.Ajax.host,
     // needed for virtual hosted sites
     changeOrigin: true,
     pathRewrite: {

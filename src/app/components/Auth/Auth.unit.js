@@ -5,9 +5,19 @@ import sinon from 'sinon';
 import Auth from './Auth';
 
 describe('<Auth />', () => {
+  let user;
+
+  beforeEach(() => {
+    user = {
+      first_name: 'joe',
+      last_name: 'baker',
+      email: 'joe@email.com',
+      photo_url: 'www.google.com/some.jpg',
+    };
+  });
+
   it('calls componentDidMount', () => {
     let x = 0;
-    const user = 123;
     const stub = () => {x = 1000;};
     const componentDidMount = sinon.spy(Auth.prototype, 'componentDidMount');
 
@@ -17,19 +27,18 @@ describe('<Auth />', () => {
   });
 
   it('renders `isLoggedIn` state', () => {
-    const user = 123;
     const stub = () => user;
     const wrapper = shallow(
       <Auth user={user} fetchAccountDetails={stub} />
     );
 
     expect(wrapper.find('.loggedIn')).to.have.length(1);
-    expect(wrapper.find('h3').text()).to.equal('Welcome, 123!');
+    expect(wrapper.find('h3').text()).to.equal('Welcome, joe!');
     expect(wrapper.find('a').text()).to.equal('Log out');
   });
 
   it('renders `!isloggedIn` state', () => {
-    const user = null;
+    user = null;
     const stub = () => user;
     const wrapper = shallow(
       <Auth user={user} fetchAccountDetails={stub} />

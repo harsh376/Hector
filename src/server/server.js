@@ -4,7 +4,7 @@ import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import express from 'express';
-import config from '../../webpack.config.dev';
+import webpackConfig from '../../webpack.config.dev';
 import ajaxProxyRouter from './lib/ajaxProxyRouter';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
@@ -12,6 +12,7 @@ import session from 'express-session';
 import passport from 'passport';
 import { OAuth2Strategy as GoogleStrategy } from 'passport-google-oauth';
 import authConfig from './auth/credentials';
+import { upsert } from './lib/util';
 
 delete process.env.BROWSER;
 
@@ -26,13 +27,38 @@ const server = express();
  passport stuff - TODO: Move into separate file
  ******************************************
  */
-passport.serializeUser((user, done) => done(null, user.id));
+passport.serializeUser((user, done) => {
+  const sessionUser = {
+    first_name: user.first_name,
+    last_name: user.last_name,
+    email: user.email,
+    photo_url: user.photo_url,
+  };
+  done(null, sessionUser);
+});
 
-passport.deserializeUser((id, done) => done(null, id));
+passport.deserializeUser((sessionUser, done) => done(null, sessionUser));
 
 passport.use(new GoogleStrategy(
   authConfig.google,
-  (accessToken, refreshToken, profile, done) => done(null, profile)
+  (accessToken, refreshToken, profile, done) => {
+    const params = {
+      email: profile.emails[0].value,
+      external_auth_type: 'google',
+    };
+    const data = {
+      first_name: profile.name.givenName,
+      last_name: profile.name.familyName,
+      email: profile.emails.length && profile.emails[0].value,
+      photo_url: profile.photos.length && profile.photos[0].value,
+      external_auth_type: 'google',
+      external_auth_id: profile.id,
+    };
+
+    upsert('/users', params, data)
+      .then(resp => done(null, resp))
+      .catch(err => done(err));
+  }
 ));
 
 /**
@@ -125,9 +151,9 @@ server.get('/ping', (req, res) => {
 
 if (isDeveloping) {
   console.log('DEVELOPMENT');
-  const compiler = webpack(config);
+  const compiler = webpack(webpackConfig);
   const middleware = webpackDevMiddleware(compiler, {
-    publicPath: config.output.publicPath,
+    publicPath: webpackConfig.output.publicPath,
     // https://webpack.github.io/docs/webpack-dev-middleware.html
     noInfo: true,
     // for hot-reloading with docker

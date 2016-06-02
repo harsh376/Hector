@@ -167,7 +167,12 @@ if (isDeveloping) {
 
   server.use(middleware);
   server.use(webpackHotMiddleware(compiler));
+
+  // serving the static assets
   server.use(express.static(path.join(__dirname, '../app')));
+  server.use('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../app/index.html'));
+  });
 } else {
   console.log('PRODUCTION');
   server.use(express.static(path.join(__dirname, '../app')));

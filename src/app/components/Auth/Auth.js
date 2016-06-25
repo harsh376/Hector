@@ -1,5 +1,12 @@
 import React from 'react';
 
+import randomText from '../../constants/randomText';
+import Sidebar from '../Sidebar/Sidebar';
+
+if (process.env.BROWSER) {
+  require('../../stylesheets/layout.scss');
+}
+
 export default class Auth extends React.Component {
   componentDidMount() {
     this.props.fetchAccountDetails();
@@ -9,12 +16,27 @@ export default class Auth extends React.Component {
   }
   render() {
     const isLoggedIn = this.isLoggedIn(this.props.user);
+
     return (
       <div>
         {isLoggedIn && (
-          <div className="loggedIn">
-            <h3>Welcome, {this.props.user.first_name}!</h3>
-            <a href="/logout">Log out</a>
+          <div>
+            <div className="header">
+              <div className="profile">
+                <span>{this.props.user.first_name}</span>
+                <a href="/logout"><button>Log out</button></a>
+              </div>
+            </div>
+
+            <div className="middle">
+              <Sidebar />
+
+              <div className="content">
+                {this.props.children || <div>{randomText.long}</div>}
+              </div>
+            </div>
+
+            <div className="footer"></div>
           </div>
         )}
         {!isLoggedIn && (
@@ -36,4 +58,8 @@ export default class Auth extends React.Component {
 Auth.propTypes = {
   user: React.PropTypes.object,
   fetchAccountDetails: React.PropTypes.func.isRequired,
+  children: React.PropTypes.oneOfType([
+    React.PropTypes.arrayOf(React.PropTypes.node),
+    React.PropTypes.node,
+  ]),
 };

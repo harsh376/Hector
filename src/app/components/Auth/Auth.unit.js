@@ -32,9 +32,9 @@ describe('<Auth />', () => {
       <Auth user={user} fetchAccountDetails={stub} />
     );
 
-    expect(wrapper.find('.loggedIn')).to.have.length(1);
-    expect(wrapper.find('h3').text()).to.equal('Welcome, joe!');
-    expect(wrapper.find('a').text()).to.equal('Log out');
+    expect(wrapper.find('.header')).to.have.length(1);
+    expect(wrapper.find('.middle')).to.have.length(1);
+    expect(wrapper.find('.footer')).to.have.length(1);
   });
 
   it('renders `!isloggedIn` state', () => {

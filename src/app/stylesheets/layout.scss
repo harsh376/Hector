@@ -1,0 +1,63 @@
+/**
+ * LAYOUT
+ */
+
+$headerHeight: 50px;
+$footerHeight: 40px;
+$sidebarWidth: 150px;
+
+.header {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: $headerHeight;
+  overflow: hidden;
+
+  background: #167C38;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: $footerHeight;
+  overflow: hidden;
+
+  background: #D0BB5E;
+}
+
+.middle {
+  position: absolute;
+  top: $headerHeight;
+  bottom: $footerHeight;
+  left: 0px;
+  right: 0px;
+  overflow: auto;
+
+  background: red;
+}
+
+.sidebar {
+  position: fixed;
+  float: left;
+  width: $sidebarWidth;
+
+  background: #BDFA4F;
+}
+
+.content {
+  margin-left: $sidebarWidth;
+  overflow: auto;
+
+  background: #65B9FF;
+}
+
+/**
+ * PROFILE
+ */
+
+.profile {
+  float: right;
+}

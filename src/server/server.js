@@ -168,9 +168,13 @@ if (isDeveloping) {
   server.use(middleware);
   server.use(webpackHotMiddleware(compiler));
 
-  // serving the static assets
+  // serve static assets normally
   server.use(express.static(path.join(__dirname, '../app')));
-  server.use('/*', (req, res) => {
+
+  // handle every other route with index.html, which will
+  // contain a script tag to your application's JavaScript
+  // file(s).
+  server.use('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../app/index.html'));
   });
 } else {

@@ -4,9 +4,10 @@ import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import io from 'socket.io-client';
 
+import { isLoggedIn } from './auth';
 import App from './containers/App';
-import IndexPageContainer from './containers/IndexPageContainer';
 import TodoPageContainer from './containers/TodoPageContainer';
+import FilterPageContainer from './containers/FilterPageContainer';
 import NomatchContainer from './containers/NomatchContainer';
 import { setState } from './actions/action_creators';
 import configureStore from './store/configureStore';
@@ -21,10 +22,23 @@ socket.on('state', state => {
   store.dispatch(setState(state));
 });
 
+function requireAuth(nextState, replace, cb) {
+  isLoggedIn()
+    .then(
+      () => cb(),
+      () => {
+        replace({
+          pathname: '/',
+          state: { nextPathname: nextState.location.pathname },
+        });
+        cb();
+      });
+}
+
 const routes = (
   <Route path="/" component={App}>
-    <Route path="filter" component={IndexPageContainer} />
-    <Route path="todo" component={TodoPageContainer} />
+    <Route path="todo" component={TodoPageContainer} onEnter={requireAuth} />
+    <Route path="filter" component={FilterPageContainer} onEnter={requireAuth} />
     <Route path="*" component={NomatchContainer} />
   </Route>
 );

@@ -5,13 +5,13 @@ import { List } from 'immutable';
 import Filter from '../components/Filter/Filter';
 import { filterEntries } from '../actions/action_creators';
 
-function IndexPageContainer(props) {
+function FilterPageContainer(props) {
   return (
     <Filter {...props} />
   );
 }
 
-IndexPageContainer.propTypes = {
+FilterPageContainer.propTypes = {
   input: React.PropTypes.string,
   entries: React.PropTypes.instanceOf(List),
   filterEntries: React.PropTypes.func.isRequired,
@@ -26,4 +26,4 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
   filterEntries,
-})(IndexPageContainer);
+})(FilterPageContainer);

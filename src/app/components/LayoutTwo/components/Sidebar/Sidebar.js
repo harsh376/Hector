@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router';
 
 if (process.env.BROWSER) {
-  require('../../stylesheets/layout.scss');
+  require('../../../../stylesheets/layout.scss');
 }
 
-function Sidebar({ className }) {
+function Sidebar() {
   const items = [
-    { path: '/', label: 'Home' },
-    { path: '/todo', label: 'Todo' },
-    { path: '/filter', label: 'Filter' },
+    { path: '/', label: 'HOME' },
+    { path: '/todo', label: 'TODO' },
+    { path: '/filter', label: 'FILTER' },
   ];
   const nodes = items.map(item =>
     <li key={item.label}>
@@ -24,16 +24,16 @@ function Sidebar({ className }) {
   );
 
   return (
-    <div className={className}>
-      <ul>
+    <div className="sidebarTwo">
+      <div className="sidebarHeader"></div>
+
+      <ul className="sidebarContent">
         {nodes}
       </ul>
+
+      <div className="sidebarFooter"></div>
     </div>
   );
 }
-
-Sidebar.propTypes = {
-  className: React.PropTypes.string,
-};
 
 export default Sidebar;

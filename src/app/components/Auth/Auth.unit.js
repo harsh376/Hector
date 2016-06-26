@@ -2,7 +2,9 @@ import React from 'react';
 import { expect } from 'chai';
 import { mount, shallow } from 'enzyme';
 import sinon from 'sinon';
+
 import Auth from './Auth';
+import LayoutTwo from '../LayoutTwo/LayoutTwo';
 
 describe('<Auth />', () => {
   let user;
@@ -32,9 +34,7 @@ describe('<Auth />', () => {
       <Auth user={user} fetchAccountDetails={stub} />
     );
 
-    expect(wrapper.find('.header')).to.have.length(1);
-    expect(wrapper.find('.middle')).to.have.length(1);
-    expect(wrapper.find('.footer')).to.have.length(1);
+    expect(wrapper.find(LayoutTwo).at(0).props().user).to.equal(user);
   });
 
   it('renders `!isloggedIn` state', () => {

@@ -1,11 +1,6 @@
 import React from 'react';
 
-import randomText from '../../constants/randomText';
-import Sidebar from '../Sidebar/Sidebar';
-
-if (process.env.BROWSER) {
-  require('../../stylesheets/layout.scss');
-}
+import LayoutTwo from '../LayoutTwo/LayoutTwo';
 
 export default class Auth extends React.Component {
   componentDidMount() {
@@ -20,24 +15,10 @@ export default class Auth extends React.Component {
     return (
       <div>
         {isLoggedIn && (
-          <div>
-            <div className="header">
-              <div className="profile">
-                <span>{this.props.user.first_name}</span>
-                <a href="/logout"><button>Log out</button></a>
-              </div>
-            </div>
-
-            <div className="middle">
-              <Sidebar />
-
-              <div className="content">
-                {this.props.children || <div>{randomText.long}</div>}
-              </div>
-            </div>
-
-            <div className="footer"></div>
-          </div>
+          <LayoutTwo
+            user={this.props.user}
+            content={this.props.children}
+          />
         )}
         {!isLoggedIn && (
           <div className="loggedOut">

@@ -1,6 +1,6 @@
-/**
- * LAYOUT
- */
+/******************
+ * LAYOUT 1
+ ******************/
 
 $headerHeight: 50px;
 $footerHeight: 40px;
@@ -25,7 +25,7 @@ $sidebarWidth: 150px;
   height: $footerHeight;
   overflow: hidden;
 
-  background: #D0BB5E;
+  background: #D9D5D5;
 }
 
 .middle {
@@ -39,7 +39,7 @@ $sidebarWidth: 150px;
   background: red;
 }
 
-.sidebar {
+.sidebarOne {
   position: fixed;
   float: left;
   width: $sidebarWidth;
@@ -47,17 +47,104 @@ $sidebarWidth: 150px;
   background: #BDFA4F;
 }
 
-.content {
+.contentOne {
   margin-left: $sidebarWidth;
   overflow: auto;
 
   background: #65B9FF;
 }
 
-/**
- * PROFILE
- */
+/******************
+ * LAYOUT 2
+ ******************/
 
-.profile {
-  float: right;
+$sidebarTwoWidth: 250px;
+$sidebarHeaderHeight: 200px;
+$sidebarFooterHeight: 50px;
+$sidebarItemHeight: 40px;
+
+$sidebarColorDark: #212328;
+$sidebarColorLight: #2D3037;
+$itemTextColor: #80807e;
+$itemTextColorActive: white;
+$itemBgColorActive: #16171B;
+
+.contentTwo {
+  position: absolute;
+  margin-left: $sidebarTwoWidth;
+  overflow: auto;
+  top: 0px;
+  left: 0px;
+
+  background: #65B9FF;
+}
+
+.sidebarTwo {
+  position: fixed;
+  float: left;
+  width: $sidebarTwoWidth;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+
+  background: $sidebarColorDark;
+}
+
+.sidebarHeader {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: $sidebarHeaderHeight;
+  overflow: hidden;
+
+  background: $sidebarColorLight;
+}
+
+.sidebarContent {
+  position: absolute;
+  top: $sidebarHeaderHeight;
+  bottom: $sidebarFooterHeight;
+  left: 0px;
+  right: 0px;
+
+  // for some reason, there was extra margin at top, bottom
+  margin: 0px;
+
+  // unordered list
+  list-style-type: none;
+  padding: 0px;
+
+  font-family: Inconsolata;
+  background: $sidebarColorDark;
+}
+
+.sidebarContent li a {
+  display: block;
+  height: $sidebarItemHeight;
+  color: $itemTextColor;
+  text-decoration: none;
+  line-height: $sidebarItemHeight;
+  padding-left: 25px;
+}
+
+.sidebarContent li a:not(.breadcrumb-active) {
+  font-weight: bold;
+}
+
+.sidebarContent li a.breadcrumb-active {
+  font-weight: bold;
+  color: $itemTextColorActive;
+  background: $itemBgColorActive;
+}
+
+.sidebarFooter {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  height: $sidebarFooterHeight;
+  overflow: hidden;
+
+  background: $sidebarColorLight;
 }

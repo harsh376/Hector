@@ -18,6 +18,12 @@
 
 `npm test`
 
+**Adding npm dependencies**
+
+`npm install --save-dev <package>`
+
+`npm run shonkwrap`
+
 ---
 
 ### Documentation

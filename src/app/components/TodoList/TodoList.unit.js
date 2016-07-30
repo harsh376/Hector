@@ -9,9 +9,9 @@ import Todo from '../Todo/Todo';
 describe('<TodoList />', () => {
   it('renders a list of items', () => {
     const list = new List([
-      { name: 'Ross' },
-      { name: 'Rachel' },
-      { name: 'Chandler' },
+      { name: 'Ross', id: 'Ross' },
+      { name: 'Rachel', id: 'Rachel' },
+      { name: 'Chandler', id: 'Chandler' },
     ]);
     const wrapper = shallow(<TodoList list={list} />);
 

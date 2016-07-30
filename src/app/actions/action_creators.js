@@ -1,5 +1,9 @@
 import fetch from 'isomorphic-fetch';
-import { FETCH_ITEMS, FETCH_ACCOUNT_DETAILS } from '../constants/actionTypes';
+import {
+  FETCH_ITEMS,
+  FETCH_ACCOUNT_DETAILS,
+  UPDATE_LOCALE,
+} from '../constants/actionTypes';
 
 export function setState(state) {
   return {
@@ -35,5 +39,12 @@ export function fetchAccountDetails() {
                 .then(response => (response.ok ? response : Promise.reject(response)))
                 .then(response => response.json()),
     },
+  };
+}
+
+export function updateLocale(payload) {
+  return {
+    type: UPDATE_LOCALE,
+    payload,
   };
 }

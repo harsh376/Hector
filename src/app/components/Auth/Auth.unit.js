@@ -1,7 +1,6 @@
 import React from 'react';
 import { expect } from 'chai';
-import { mount, shallow } from 'enzyme';
-import sinon from 'sinon';
+import { shallow } from 'enzyme';
 
 import Auth from './Auth';
 import LayoutTwo from '../LayoutTwo/LayoutTwo';
@@ -16,16 +15,6 @@ describe('<Auth />', () => {
       email: 'joe@email.com',
       photo_url: 'www.google.com/some.jpg',
     };
-  });
-
-  it('calls componentDidMount', () => {
-    let x = 0;
-    const stub = () => {x = 1000;};
-    const componentDidMount = sinon.spy(Auth.prototype, 'componentDidMount');
-
-    mount(<Auth user={user} fetchAccountDetails={stub} />);
-    expect(componentDidMount.calledOnce).to.equal(true);
-    expect(x).to.equal(1000);
   });
 
   it('renders `isLoggedIn` state', () => {

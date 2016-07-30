@@ -30,14 +30,29 @@
 
 **Component hierarchy**
 
-- App (Container)
-  + Auth (Component)
-  + IndexPage (Container)
-    * Filter (Component)
-      - SearchBar
-      - ResultsList
-        + Item
-  + OtherPage (Container)
+- App
+  + Auth
+    * LayoutTwo
+      - SidebarContainer
+        + Sidebar
+          * div: sidebarHeader
+          * div: sidebarContent
+          * div: sidebarFooter
+      - div: contentTwo
+        + TodoPageContainer
+        + FilterPageContainer
+        + NoMatchContainer
+
+---
+
+### Translations
+
+- Add locale in `index.js` using `addLocaleData`
+  + `TODO`: Move this into separate file
+- Add translations for the supported locales in `translations/translations.json`
+  + The build step, `npm run start`, parses the components and extracts the text tagged for translation into `extracted-messages/`
+  + `TODO`: Combine the extracted messages --> `translations/translations.json`
+- More info: [https://github.com/yahoo/react-intl]
 
 ---
 

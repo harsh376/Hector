@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Sidebar from './components/Sidebar/Sidebar';
+import SidebarContainer from './components/SidebarContainer';
 import randomText from '../../constants/randomText';
 
 if (process.env.BROWSER) {
@@ -10,7 +10,7 @@ if (process.env.BROWSER) {
 function LayoutTwo({ content }) {
   return (
     <div>
-      <Sidebar />
+      <SidebarContainer />
       <div className="contentTwo">
         {content || <div>{randomText.long}</div>}
       </div>

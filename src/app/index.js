@@ -13,10 +13,24 @@ import { setState } from './actions/action_creators';
 import configureStore from './store/configureStore';
 import rootReducer from './reducers/index';
 
+import { addLocaleData } from 'react-intl';
+import ConnectedIntlProvider from './components/ConnectedIntlProvider/ConnectedIntlProvider';
+import translations from './translations/translations';
+import it from 'react-intl/locale-data/it';
+
+// TODO: Move initialization into separate file
+addLocaleData(it);
+
 const addr = process.env.SERVER_ADDR ? process.env.SERVER_ADDR : 'http://localhost:8080';
 const socket = io.connect(addr);
+const initialState = {
+  intl: {
+    locale: 'en',
+    messages: translations.en,
+  },
+};
 
-const store = configureStore(rootReducer, socket);
+const store = configureStore(rootReducer, socket, initialState);
 
 socket.on('state', state => {
   store.dispatch(setState(state));
@@ -45,7 +59,9 @@ const routes = (
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={browserHistory}>{routes}</Router>
+    <ConnectedIntlProvider>
+      <Router history={browserHistory}>{routes}</Router>
+    </ConnectedIntlProvider>
   </Provider>,
   document.getElementById('root')
 );

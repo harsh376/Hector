@@ -1,0 +1,12 @@
+{
+  "en": {
+    "app.home": "Home",
+    "app.todo": "Todo",
+    "app.filter": "Filter"
+  },
+  "it": {
+    "app.home": "Casa",
+    "app.todo": "Fare",
+    "app.filter": "Filtro"
+  }
+}

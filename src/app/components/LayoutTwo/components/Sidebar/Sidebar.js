@@ -72,6 +72,7 @@ export default class Sidebar extends React.Component {
         </ul>
 
         <div className="sidebarFooter">
+          {/* TODO: Update styling */}
           <input type="button" value="en" onClick={this.changeLocale} />
           <input type="button" value="it" onClick={this.changeLocale} />
         </div>

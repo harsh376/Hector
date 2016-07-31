@@ -1,5 +1,3 @@
-// TODO: Add tests
-
 import React from 'react';
 import { Link } from 'react-router';
 import { defineMessages, FormattedMessage } from 'react-intl';
@@ -63,6 +61,13 @@ export default class Sidebar extends React.Component {
   }
 
   render() {
+    const locales = ['en', 'it'];
+    const localeNodes = locales.map(locale =>
+      <li key={locale}>
+        <input type="button" value={locale} onClick={this.changeLocale} />
+      </li>
+    );
+
     return (
       <div className="sidebarTwo">
         <div className="sidebarHeader"></div>
@@ -73,8 +78,9 @@ export default class Sidebar extends React.Component {
 
         <div className="sidebarFooter">
           {/* TODO: Update styling */}
-          <input type="button" value="en" onClick={this.changeLocale} />
-          <input type="button" value="it" onClick={this.changeLocale} />
+          <ul className="locales">
+            {localeNodes}
+          </ul>
         </div>
       </div>
     );

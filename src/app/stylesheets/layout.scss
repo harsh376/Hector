@@ -148,3 +148,11 @@ $itemBgColorActive: #16171B;
 
   background: $sidebarColorLight;
 }
+
+.locales {
+  list-style: none;
+}
+
+.locales li {
+  display: inline;
+}

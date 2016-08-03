@@ -20,6 +20,7 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV),
         'SERVER_ADDR': JSON.stringify(process.env.SERVER_ADDR),
+        'ENABLE_AUTH': JSON.stringify(process.env.ENABLE_AUTH == 'true'),
 
         // http://stackoverflow.com/questions/30347722/importing-css-files-in-isomorphic-react-components
         'BROWSER': JSON.stringify(true)

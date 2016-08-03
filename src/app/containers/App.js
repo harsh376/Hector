@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchAccountDetails } from '../actions/action_creators';
 import Auth from '../components/Auth/Auth';
 
-const enableAuth = process.env.ENABLE_AUTH;
+const enableAuth = process.env.USER_AUTH === 'enabled';
 
 function App(props) {
   return (

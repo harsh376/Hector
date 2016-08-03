@@ -4,7 +4,8 @@ import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import io from 'socket.io-client';
 
-import { isLoggedIn } from './auth';
+// TODO: Uncomment on adding `onEnter` to routes
+// import { isLoggedIn } from './auth';
 import App from './containers/App';
 import TodoPageContainer from './containers/TodoPageContainer';
 import FilterPageContainer from './containers/FilterPageContainer';
@@ -36,23 +37,27 @@ socket.on('state', state => {
   store.dispatch(setState(state));
 });
 
-function requireAuth(nextState, replace, cb) {
-  isLoggedIn()
-    .then(
-      () => cb(),
-      () => {
-        replace({
-          pathname: '/',
-          state: { nextPathname: nextState.location.pathname },
-        });
-        cb();
-      });
-}
+// TODO: Uncomment on adding `onEnter` to routes
+// function requireAuth(nextState, replace, cb) {
+//   isLoggedIn()
+//     .then(
+//       () => cb(),
+//       () => {
+//         replace({
+//           pathname: '/',
+//           state: { nextPathname: nextState.location.pathname },
+//         });
+//         cb();
+//       });
+// }
 
+// TODO: Add `onEnter={requireAuth}` later
+// Right now we authenticate only when `Auth` component
+// is mounted (i.e on refresh), and not when the route changes
 const routes = (
   <Route path="/" component={App}>
-    <Route path="todo" component={TodoPageContainer} onEnter={requireAuth} />
-    <Route path="filter" component={FilterPageContainer} onEnter={requireAuth} />
+    <Route path="todo" component={TodoPageContainer} />
+    <Route path="filter" component={FilterPageContainer} />
     <Route path="*" component={NomatchContainer} />
   </Route>
 );

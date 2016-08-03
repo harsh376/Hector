@@ -10,7 +10,10 @@ export default class Auth extends React.Component {
     return user || false;
   }
   render() {
-    const isLoggedIn = this.isLoggedIn(this.props.user);
+    const isLoggedIn = (
+      !this.props.enableAuth ||
+      (this.props.enableAuth && this.isLoggedIn(this.props.user))
+    );
 
     return (
       <div>
@@ -37,6 +40,7 @@ export default class Auth extends React.Component {
 }
 
 Auth.propTypes = {
+  enableAuth: React.PropTypes.bool,
   user: React.PropTypes.object,
   fetchAccountDetails: React.PropTypes.func.isRequired,
   children: React.PropTypes.oneOfType([

@@ -4,10 +4,13 @@ import { connect } from 'react-redux';
 import { fetchAccountDetails } from '../actions/action_creators';
 import Auth from '../components/Auth/Auth';
 
+const enableAuth = process.env.ENABLE_AUTH;
+
 function App(props) {
   return (
     <div>
       <Auth
+        enableAuth={enableAuth}
         user={props.user}
         fetchAccountDetails={props.fetchAccountDetails}
       >

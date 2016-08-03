@@ -31,6 +31,9 @@ export function fetchItems() {
   };
 }
 
+// TODO: fix: on refresh -> anon user -> raises an exception
+// needs to be caught
+// however, then breaks logging functionality
 export function fetchAccountDetails() {
   return {
     type: FETCH_ACCOUNT_DETAILS,

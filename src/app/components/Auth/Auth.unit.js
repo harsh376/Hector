@@ -17,20 +17,28 @@ describe('<Auth />', () => {
     };
   });
 
-  it('renders `isLoggedIn` state', () => {
+  it('auth enabled and user logged in', () => {
     const stub = () => user;
     const wrapper = shallow(
-      <Auth user={user} fetchAccountDetails={stub} />
+      <Auth
+        enableAuth
+        user={user}
+        fetchAccountDetails={stub}
+      />
     );
 
     expect(wrapper.find(LayoutTwo).at(0).props().user).to.equal(user);
   });
 
-  it('renders `!isloggedIn` state', () => {
+  it('auth enabled and user not logged in', () => {
     user = null;
     const stub = () => user;
     const wrapper = shallow(
-      <Auth user={user} fetchAccountDetails={stub} />
+      <Auth
+        enableAuth
+        user={user}
+        fetchAccountDetails={stub}
+      />
     );
 
     expect(wrapper.find('.loggedOut')).to.have.length(1);
@@ -43,5 +51,19 @@ describe('<Auth />', () => {
         />
       </a>
     )).to.equal(true);
+  });
+
+  it('auth disabled', () => {
+    user = null;
+    const stub = () => user;
+    const wrapper = shallow(
+      <Auth
+        enableAuth={false}
+        user={user}
+        fetchAccountDetails={stub}
+      />
+    );
+
+    expect(wrapper.find(LayoutTwo).at(0).props().user).to.equal(null);
   });
 });

@@ -6,7 +6,7 @@ module.exports = {
   devtool: 'source-map',
   entry: [
     './src/app/index.js',
-    './src/app/index.html'
+    './src/app/index.html',
   ],
   output: {
     path: path.join(__dirname, 'dist/app'),
@@ -35,14 +35,20 @@ module.exports = {
         test: /\.js$/,
         loaders: ['babel'],
         include: path.join(__dirname, 'src/app')
-      }, {
+      },
+      {
         test: /\.html$/,
         loader: 'file?name=[name].[ext]',
-      }, {
+      },
+      {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('css!sass'),
         include: path.join(__dirname, 'src/app/stylesheets')
-      }
+      },
+      {
+        test: /\.json$/,
+        loader: 'json'
+      },
     ]
   }
 };

@@ -1,6 +1,7 @@
 const config = {
   Ajax: {
-    host: 'http://localhost:5000',
+    // using the local ip of the machine
+    host: 'http://192.168.43.47:5000',
   },
 };
 

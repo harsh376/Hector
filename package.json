@@ -1,16 +1,16 @@
 {
   "name": "client",
   "version": "1.0.0",
-  "description": "",
+  "description": "React app",
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
     "build:webpack": "webpack --config webpack.config.prod.js",
     "build:server": "babel src/server --out-dir dist/server --copy-files",
     "build": "npm run clean && npm run build:webpack && npm run build:server",
-    "deploy": "NODE_ENV=production PORT=4000 npm run build && NODE_ENV=production PORT=4000 node dist/server/server.js",
-    "start": "npm rebuild node-sass && ENABLE_AUTH=true babel-node src/server/server.js",
-    "start:noauth": "npm rebuild node-sass && ENABLE_AUTH=false babel-node src/server/server.js",
+    "deploy": "NODE_ENV=production PORT=4000 USER_AUTH=disabled npm run build && NODE_ENV=production PORT=4000 node dist/server/server.js",
+    "start": "npm rebuild node-sass && USER_AUTH=enabled babel-node src/server/server.js",
+    "start:noauth": "npm rebuild node-sass && USER_AUTH=disabled babel-node src/server/server.js",
     "test": "npm run lint && npm run mocha",
     "test:watch": "npm run test -- --watch",
     "lint": "node_modules/eslint/bin/eslint.js src/",
@@ -20,6 +20,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/harsh376/Hector.git"
+  },
   "devDependencies": {
     "babel-cli": "^6.6.5",
     "babel-core": "^6.4.0",

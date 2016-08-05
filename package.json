@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "1.0.0",
-  "description": "",
+  "description": "React app",
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
@@ -20,6 +20,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/harsh376/Hector.git"
+  },
   "devDependencies": {
     "babel-cli": "^6.6.5",
     "babel-core": "^6.4.0",

@@ -1,0 +1,12 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "harsh376/bean",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "4000"
+    }
+  ]
+}

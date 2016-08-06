@@ -9,21 +9,30 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import passport from 'passport';
 
+import createRedisClient from './lib/redisClient';
 import webpackConfig from '../../webpack.config.dev';
 import ajaxProxyRouter from './lib/ajaxProxyRouter';
 import passportGoogle from './auth/strategies/google';
 
 delete process.env.BROWSER;
 
+const RedisStore = require('connect-redis')(session);
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
 const server = express();
+// TODO: move session options into server config file
+const sessionOptions = {
+  secret: 'some',
+  resave: true,
+  saveUninitialized: true,
+  cookie: { maxAge: 2419200000 },
+};
 
 // TODO: write tests for server.js
 
 /**
  ******************************************
- * helper functions
+ * custom middlewares
  ******************************************
  */
 function ensureAuthenticated(req, res, next) {
@@ -47,14 +56,16 @@ server.use(
 );
 
 server.use(cookieParser());
-
-// TODO: move session config into server config file
-server.use(session({
-  secret: 'some',
-  resave: true,
-  saveUninitialized: true,
-  cookie: { maxAge: 2419200000 },
-}));
+if (isDeveloping) {
+  server.use(session(sessionOptions));
+} else {
+  const options = Object.assign(sessionOptions, {
+    store: new RedisStore({
+      client: createRedisClient(),
+    }),
+  });
+  server.use(session(options));
+}
 
 server.use(passport.initialize());
 server.use(passport.session());

@@ -540,6 +540,9 @@
         }
       }
     },
+    "connect-redis": {
+      "version": "3.1.0"
+    },
     "console-browserify": {
       "version": "1.1.0"
     },
@@ -711,6 +714,9 @@
     },
     "domutils": {
       "version": "1.5.1"
+    },
+    "double-ended-queue": {
+      "version": "2.1.0-0"
     },
     "ecc-jsbn": {
       "version": "0.1.1"
@@ -2374,6 +2380,15 @@
     },
     "redent": {
       "version": "1.0.0"
+    },
+    "redis": {
+      "version": "2.6.2"
+    },
+    "redis-commands": {
+      "version": "1.2.0"
+    },
+    "redis-parser": {
+      "version": "2.0.4"
     },
     "reduce-css-calc": {
       "version": "1.2.4",

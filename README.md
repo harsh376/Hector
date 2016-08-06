@@ -57,9 +57,16 @@ Dockerfile -> docker-compose.yml -> docker-compose.override.yml
 
 #### Docker: prod
 
-**Configure IP for Ajax in `Hector/src/server/lib/config.js`**
+**Configure IP in:
+
+1. `Hector/src/server/lib/config.js`
+2. `server/lib/redisClient.js`
 
 `ifconfig -a` (en0: inet)
+
+**Start Redis server**
+
+`redis-server --protected-mode no`
 
 **Build image**
 

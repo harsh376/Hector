@@ -59,12 +59,12 @@ server.use(cookieParser());
 if (isDeveloping) {
   server.use(session(sessionOptions));
 } else {
-  const options = Object.assign(sessionOptions, {
+  Object.assign(sessionOptions, {
     store: new RedisStore({
       client: createRedisClient(),
     }),
   });
-  server.use(session(options));
+  server.use(session(sessionOptions));
 }
 
 server.use(passport.initialize());

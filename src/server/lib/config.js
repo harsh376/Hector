@@ -1,7 +1,8 @@
 const config = {
   Ajax: {
-    // using the local ip of the machine
-    host: 'http://192.168.43.47:5000',
+    // env variable `AJAX_HOST` provided when running docker
+    // containers
+    host: process.env.AJAX_HOST ? process.env.AJAX_HOST : 'http://localhost:5000',
   },
 };
 

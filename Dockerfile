@@ -6,6 +6,8 @@ ADD package.json /usr/src/app/package.json
 RUN npm install
 ADD . /usr/src/app
 
+ENV DOCKER_ENABLED=true
+
 EXPOSE 4000
 
 CMD ["sh", "-c", "npm run deploy"]

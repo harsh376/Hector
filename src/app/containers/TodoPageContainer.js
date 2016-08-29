@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from 'react-bootstrap/lib/Button';
 import { connect } from 'react-redux';
 import { List } from 'immutable';
 
@@ -12,7 +13,7 @@ export class TodoPageContainer extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.props.fetchItems}>Refresh items</button>
+        <Button bsStyle="primary" onClick={this.props.fetchItems}>Refresh items</Button>
         {!this.props.isFetching && (
           <TodoList list={this.props.data} />
         )}

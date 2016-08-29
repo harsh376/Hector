@@ -1,4 +1,5 @@
 import React from 'react';
+import 'bootstrap/less/bootstrap.less';
 import { connect } from 'react-redux';
 
 import { fetchAccountDetails } from '../actions/action_creators';

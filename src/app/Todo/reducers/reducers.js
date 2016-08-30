@@ -1,5 +1,5 @@
 import { List, Map } from 'immutable';
-import { FETCH_ITEMS } from '../../constants/actionTypes';
+import { FETCH_ITEMS } from '../constants/actionTypes';
 
 export default function (state = new Map(), action) {
   switch (action.type) {

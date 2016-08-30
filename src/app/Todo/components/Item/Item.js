@@ -1,18 +1,18 @@
 import React from 'react';
 
-function Todo({ value }) {
+function Item({ value }) {
   return (
-    <div className="todo">
+    <div className="item">
       <p>{value}</p>
     </div>
   );
 }
 
-Todo.propTypes = {
+Item.propTypes = {
   value: React.PropTypes.string,
 };
-Todo.defaultProps = {
+Item.defaultProps = {
   value: '',
 };
 
-export default Todo;
+export default Item;

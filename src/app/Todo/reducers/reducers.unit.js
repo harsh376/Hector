@@ -1,7 +1,7 @@
 import { Map, fromJS } from 'immutable';
 import { expect } from 'chai';
 
-import reducer from './todo';
+import reducer from './reducers';
 
 describe('reducers/todo', () => {
   it('handles FETCH_ITEMS_PENDING', () => {

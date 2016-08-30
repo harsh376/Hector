@@ -3,23 +3,23 @@ import { expect } from 'chai';
 import { List } from 'immutable';
 import { shallow } from 'enzyme';
 
-import TodoList from './TodoList';
-import Todo from '../Todo/Todo';
+import ItemList from './ItemList';
+import Item from '../Item/Item';
 
-describe('<TodoList />', () => {
+describe('<ItemList />', () => {
   it('renders a list of items', () => {
     const list = new List([
       { name: 'Ross', id: 'Ross' },
       { name: 'Rachel', id: 'Rachel' },
       { name: 'Chandler', id: 'Chandler' },
     ]);
-    const wrapper = shallow(<TodoList list={list} />);
+    const wrapper = shallow(<ItemList list={list} />);
 
     expect(wrapper.find('div').children()).to.have.length(3);
     expect(wrapper.contains([
-      <Todo value="Ross" />,
-      <Todo value="Rachel" />,
-      <Todo value="Chandler" />,
+      <Item value="Ross" />,
+      <Item value="Rachel" />,
+      <Item value="Chandler" />,
     ])).to.equal(true);
   });
 });

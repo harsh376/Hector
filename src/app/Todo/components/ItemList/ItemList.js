@@ -1,11 +1,11 @@
 import React from 'react';
 import { List } from 'immutable';
 
-import Todo from '../Todo/Todo';
+import Item from '../Item/Item';
 
-function TodoList({ list }) {
+function ItemList({ list }) {
   const itemNodes = list.map(item =>
-    <Todo value={item.name} key={item.id} />
+    <Item value={item.name} key={item.id} />
   );
   return (
     <div>
@@ -14,11 +14,11 @@ function TodoList({ list }) {
   );
 }
 
-TodoList.propTypes = {
+ItemList.propTypes = {
   list: React.PropTypes.instanceOf(List),
 };
-TodoList.defaultProps = {
+ItemList.defaultProps = {
   list: new List(),
 };
 
-export default TodoList;
+export default ItemList;

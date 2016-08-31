@@ -3,10 +3,6 @@ import React from 'react';
 import SidebarContainer from './components/SidebarContainer';
 import randomText from '../../constants/randomText';
 
-if (process.env.BROWSER) {
-  require('../../stylesheets/layout.scss');
-}
-
 function LayoutTwo({ content }) {
   return (
     <div>

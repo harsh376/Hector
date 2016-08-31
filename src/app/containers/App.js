@@ -5,6 +5,12 @@ import { connect } from 'react-redux';
 import { fetchAccountDetails } from '../actions/action_creators';
 import Auth from '../components/Auth/Auth';
 
+// http://stackoverflow.com/questions/30347722/importing-css-files-in-isomorphic-react-components
+if (process.env.BROWSER) {
+  require('../stylesheets/layout.scss');
+  require('../Todo/stylesheets/Item.scss');
+}
+
 const enableAuth = process.env.USER_AUTH === 'enabled';
 
 function App(props) {

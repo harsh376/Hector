@@ -3,10 +3,6 @@ import React from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import randomText from '../../constants/randomText';
 
-if (process.env.BROWSER) {
-  require('../../stylesheets/layout.scss');
-}
-
 function LayoutOne({ user, content }) {
   return (
     <div>

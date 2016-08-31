@@ -4,10 +4,6 @@ import { defineMessages, FormattedMessage } from 'react-intl';
 
 import translations from '../../../../translations/translations';
 
-if (process.env.BROWSER) {
-  require('../../../../stylesheets/layout.scss');
-}
-
 // Needed for extracting text tagged for translations
 const componentMessages = defineMessages({
   home: {

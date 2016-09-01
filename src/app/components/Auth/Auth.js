@@ -1,10 +1,11 @@
 import React from 'react';
 
 import LayoutTwo from '../LayoutTwo/LayoutTwo';
+import { fetchAccountDetails } from '../../actions/action_creators';
 
 export default class Auth extends React.Component {
   componentDidMount() {
-    this.props.fetchAccountDetails();
+    this.props.dispatch(fetchAccountDetails());
   }
   isLoggedIn(user) {
     return user || false;
@@ -42,9 +43,9 @@ export default class Auth extends React.Component {
 Auth.propTypes = {
   enableAuth: React.PropTypes.bool,
   user: React.PropTypes.object,
-  fetchAccountDetails: React.PropTypes.func.isRequired,
   children: React.PropTypes.oneOfType([
     React.PropTypes.arrayOf(React.PropTypes.node),
     React.PropTypes.node,
   ]),
+  dispatch: React.PropTypes.func,
 };

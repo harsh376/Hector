@@ -1,11 +1,11 @@
 import { compose, createStore, applyMiddleware } from 'redux';
-import promiseMiddleware from 'redux-promise-middleware';
+import thunk from 'redux-thunk';
 import remoteActionMiddleware from '../middlewares/remote_action_middleware';
 
 export default function configureStore(rootReducer, socket, initialState) {
   const createStoreWithMiddleware = compose(
     applyMiddleware(
-      promiseMiddleware(),
+      thunk,
       remoteActionMiddleware(socket)
     )
   )(createStore);

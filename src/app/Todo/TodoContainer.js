@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/lib/Button';
 import { connect } from 'react-redux';
-import { List } from 'immutable';
 
 import ItemList from './components/ItemList/ItemList';
 import { fetchItems } from './actions/action_creators';
@@ -24,15 +23,15 @@ export class TodoContainer extends React.Component {
 
 TodoContainer.propTypes = {
   isFetching: React.PropTypes.bool,
-  data: React.PropTypes.instanceOf(List),
+  data: React.PropTypes.array,
   fetchItems: React.PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
   const { todo } = state;
   return {
-    isFetching: todo.get('isFetching'),
-    data: todo.get('data'),
+    isFetching: todo.isFetching,
+    data: todo.data,
   };
 }
 

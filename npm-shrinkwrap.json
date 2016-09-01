@@ -2439,9 +2439,6 @@
     "redux": {
       "version": "3.5.2"
     },
-    "redux-promise-middleware": {
-      "version": "3.3.2"
-    },
     "redux-thunk": {
       "version": "2.1.0"
     },

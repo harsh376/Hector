@@ -1,16 +1,14 @@
 import { expect } from 'chai';
 
 import {
-  USER_REQUEST,
-  USER_SUCCESS,
-  USER_FAILURE,
+  FETCH_USER,
 } from '../../constants/actionTypes';
 import reducer from './account';
 
 describe('reducers/account', () => {
-  it(`handles ${USER_REQUEST}`, () => {
+  it(`handles ${FETCH_USER}_REQUEST`, () => {
     const initialState = {};
-    const action = { type: USER_REQUEST };
+    const action = { type: `${FETCH_USER}_REQUEST` };
     const nextState = reducer(initialState, action);
 
     expect(nextState).to.deep.equal({
@@ -20,7 +18,7 @@ describe('reducers/account', () => {
     });
   });
 
-  it(`handles ${USER_SUCCESS}`, () => {
+  it(`handles ${FETCH_USER}_SUCCESS`, () => {
     const initialState = {};
     const user = {
       first_name: 'Joe',
@@ -29,7 +27,7 @@ describe('reducers/account', () => {
       photo_url: 'https://example.com/one.jpeg',
     };
     const action = {
-      type: USER_SUCCESS,
+      type: `${FETCH_USER}_SUCCESS`,
       user,
     };
     const nextState = reducer(initialState, action);
@@ -41,10 +39,10 @@ describe('reducers/account', () => {
     });
   });
 
-  it(`handles ${USER_FAILURE}`, () => {
+  it(`handles ${FETCH_USER}_FAILURE`, () => {
     const initialState = {};
     const action = {
-      type: USER_FAILURE,
+      type: `${FETCH_USER}_FAILURE`,
       error: 'Some error',
     };
     const nextState = reducer(initialState, action);

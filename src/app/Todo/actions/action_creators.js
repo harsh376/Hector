@@ -2,13 +2,34 @@ import fetch from 'isomorphic-fetch';
 
 import { FETCH_ITEMS } from '../constants/actionTypes';
 
-export function fetchItems() {
+function fetchItemsSuccess(items) {
   return {
-    type: FETCH_ITEMS,
-    payload: {
-      promise: fetch('/api/items', { credentials: 'include' })
-                .then(response => (response.ok ? response : Promise.reject(response)))
-                .then(response => response.json()),
-    },
+    type: `${FETCH_ITEMS}_SUCCESS`,
+    items,
+  };
+}
+
+function fetchItemsFailure(error) {
+  return {
+    type: `${FETCH_ITEMS}_FAILURE`,
+    error,
+  };
+}
+
+export function fetchItems() {
+  return function getItems(dispatch) {
+    dispatch({ type: `${FETCH_ITEMS}_REQUEST` });
+
+    return fetch('/api/items', { credentials: 'include' })
+    .then(
+      response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error(response.statusText);
+      }
+    )
+    .then(items => dispatch(fetchItemsSuccess(items)))
+    .catch(e => dispatch(fetchItemsFailure(e)));
   };
 }

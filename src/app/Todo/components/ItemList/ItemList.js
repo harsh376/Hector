@@ -1,5 +1,4 @@
 import React from 'react';
-import { List } from 'immutable';
 
 import Item from '../Item/Item';
 
@@ -15,10 +14,10 @@ function ItemList({ list }) {
 }
 
 ItemList.propTypes = {
-  list: React.PropTypes.instanceOf(List),
+  list: React.PropTypes.array,
 };
 ItemList.defaultProps = {
-  list: new List(),
+  list: [],
 };
 
 export default ItemList;

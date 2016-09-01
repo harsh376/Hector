@@ -1,9 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import {
   UPDATE_LOCALE,
-  USER_REQUEST,
-  USER_SUCCESS,
-  USER_FAILURE,
+  FETCH_USER,
 } from '../constants/actionTypes';
 
 export function setState(state) {
@@ -21,23 +19,23 @@ export function filterEntries(input) {
   };
 }
 
-function userSuccess(user) {
+function fetchUserSuccess(user) {
   return {
-    type: USER_SUCCESS,
+    type: `${FETCH_USER}_SUCCESS`,
     user,
   };
 }
 
-function userFailure(error) {
+function fetchUserFailure(error) {
   return {
-    type: USER_FAILURE,
+    type: `${FETCH_USER}_FAILURE`,
     error,
   };
 }
 
 export function fetchAccountDetails() {
   return function getUser(dispatch) {
-    dispatch({ type: USER_REQUEST });
+    dispatch({ type: `${FETCH_USER}_REQUEST` });
 
     return fetch('/account', { credentials: 'include' }).then(
       response => {
@@ -47,8 +45,8 @@ export function fetchAccountDetails() {
         throw new Error(response.statusText);
       }
     )
-    .then(user => dispatch(userSuccess(user)))
-    .catch(e => dispatch(userFailure(e)));
+    .then(user => dispatch(fetchUserSuccess(user)))
+    .catch(e => dispatch(fetchUserFailure(e)));
   };
 }
 

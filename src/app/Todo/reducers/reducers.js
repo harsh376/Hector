@@ -1,16 +1,23 @@
-import { List, Map } from 'immutable';
 import { FETCH_ITEMS } from '../constants/actionTypes';
 
-export default function (state = new Map(), action) {
+export default function (state = {}, action) {
   switch (action.type) {
-    case `${FETCH_ITEMS}_PENDING`:
-      return state.set('isFetching', true);
-    case `${FETCH_ITEMS}_FULFILLED`:
-      return state.set('isFetching', false)
-                  .set('data', new List(action.payload));
-    case `${FETCH_ITEMS}_REJECTED`:
-      return state.set('isFetching', false)
-                  .set('error', action.payload);
+    case `${FETCH_ITEMS}_REQUEST`:
+      return Object.assign({}, state, {
+        isFetching: true,
+        error: null,
+      });
+    case `${FETCH_ITEMS}_SUCCESS`:
+      return Object.assign({}, state, {
+        isFetching: false,
+        data: action.items,
+        error: null,
+      });
+    case `${FETCH_ITEMS}_FAILURE`:
+      return Object.assign({}, state, {
+        isFetching: false,
+        error: String(action.error),
+      });
     default:
       return state;
   }

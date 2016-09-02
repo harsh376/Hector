@@ -1,18 +1,18 @@
 import React from 'react';
 
-function Item({ value }) {
+function Item({ id, value, deleteItem }) {
   return (
-    <div className="item">
-      <p>{value}</p>
+    <div id={id} className="item">
+      <p className="itemText">{value}</p>
+      <button className="btnDelete" onClick={() => deleteItem(id)}>Delete</button>
     </div>
   );
 }
 
 Item.propTypes = {
+  id: React.PropTypes.string,
   value: React.PropTypes.string,
-};
-Item.defaultProps = {
-  value: '',
+  deleteItem: React.PropTypes.func,
 };
 
 export default Item;

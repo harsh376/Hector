@@ -2,9 +2,27 @@ import React from 'react';
 
 import Item from '../Item/Item';
 
-function ItemList({ list }) {
+function sortList(list) {
+  list.sort((a, b) => {
+    if (a.order > b.order) {
+      return 1;
+    }
+    if (a.order < b.order) {
+      return -1;
+    }
+    return 0;
+  });
+}
+
+function ItemList({ list, deleteItem }) {
+  sortList(list);
   const itemNodes = list.map(item =>
-    <Item value={item.name} key={item.id} />
+    <Item
+      key={item.id}
+      id={item.id}
+      value={item.name}
+      deleteItem={deleteItem}
+    />
   );
   return (
     <div>
@@ -15,6 +33,7 @@ function ItemList({ list }) {
 
 ItemList.propTypes = {
   list: React.PropTypes.array,
+  deleteItem: React.PropTypes.func,
 };
 ItemList.defaultProps = {
   list: [],

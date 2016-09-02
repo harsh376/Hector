@@ -4,6 +4,7 @@ import {
   FETCH_ITEMS,
   DELETE_ITEM,
   ADD_ITEM,
+  UPDATE_ITEM,
 } from '../constants/actionTypes';
 
 /*
@@ -144,6 +145,61 @@ export function addItem(itemName) {
     )
     .then(item => dispatch(addItemSuccess(item)))
     .catch(e => dispatch(addItemFailure(e)));
+  };
+}
+
+/*
+ ***************
+ * UPDATE_ITEM
+ ***************
+ */
+
+function updateItemRequest(itemId) {
+  return {
+    type: `${UPDATE_ITEM}_REQUEST`,
+    itemId,
+  };
+}
+
+function updateItemSuccess(item) {
+  return {
+    type: `${UPDATE_ITEM}_SUCCESS`,
+    item,
+  };
+}
+
+function updateItemFailure(itemId, error) {
+  return {
+    type: `${UPDATE_ITEM}_FAILURE`,
+    itemId,
+    error,
+  };
+}
+
+export function updateItem(id, value) {
+  return function uItem(dispatch) {
+    dispatch(updateItemRequest(id));
+
+    return fetch(`/api/items/${id}`, {
+      method: 'PATCH',
+      credentials: 'include',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+      }),
+      body: JSON.stringify({
+        name: value,
+      }),
+    })
+    .then(
+      response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error(response.statusText);
+      }
+    )
+    .then(item => dispatch(updateItemSuccess(item)))
+    .catch(e => dispatch(updateItemFailure(id, e)));
   };
 }
 

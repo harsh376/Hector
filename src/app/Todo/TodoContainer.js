@@ -7,6 +7,7 @@ import {
   fetchItems,
   deleteItem,
   addItem,
+  updateItem,
 } from './actions/action_creators';
 
 export class TodoContainer extends React.Component {
@@ -37,6 +38,7 @@ export class TodoContainer extends React.Component {
           <ItemList
             list={this.props.data}
             deleteItem={this.props.deleteItem}
+            updateItem={this.props.updateItem}
           />
         )}
       </div>
@@ -50,6 +52,7 @@ TodoContainer.propTypes = {
   fetchItems: React.PropTypes.func.isRequired,
   deleteItem: React.PropTypes.func.isRequired,
   addItem: React.PropTypes.func.isRequired,
+  updateItem: React.PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -64,4 +67,5 @@ export default connect(mapStateToProps, {
   fetchItems,
   deleteItem,
   addItem,
+  updateItem,
 })(TodoContainer);

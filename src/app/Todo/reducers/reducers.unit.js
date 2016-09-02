@@ -5,9 +5,16 @@ import {
   FETCH_ITEMS,
   DELETE_ITEM,
   ADD_ITEM,
+  UPDATE_ITEM,
 } from '../constants/actionTypes';
 
 describe('Todo: reducers', () => {
+  /*
+   *********************
+   * FETCH_ITEMS
+   *********************
+   */
+
   it(`handles ${FETCH_ITEMS}_REQUEST`, () => {
     const initialState = { deleteItem: '1233' };
     const action = {
@@ -55,6 +62,12 @@ describe('Todo: reducers', () => {
       error: 'some error',
     });
   });
+
+  /*
+   *********************
+   * DELETE_ITEM
+   *********************
+   */
 
   it(`handles ${DELETE_ITEM}_REQUEST`, () => {
     const id = '91875ABB-02DE-4821-892D-E326D83348F3';
@@ -114,6 +127,12 @@ describe('Todo: reducers', () => {
       deleteItem: itemId,
     });
   });
+
+  /*
+   *********************
+   * ADD_ITEM
+   *********************
+   */
 
   it(`handles ${ADD_ITEM}_REQUEST`, () => {
     const initialState = {};
@@ -218,6 +237,81 @@ describe('Todo: reducers', () => {
     expect(nextState).to.deep.equal({
       error: 'some error',
       isAdding: false,
+    });
+  });
+
+  /*
+   *********************
+   * UPDATE_ITEM
+   *********************
+   */
+
+  it(`handles ${UPDATE_ITEM}_REQUEST`, () => {
+    const initialState = {};
+    const itemId = 'D98DB385-BF15-4EA5-A10A-90E7A98F106F';
+    const action = {
+      type: `${UPDATE_ITEM}_REQUEST`,
+      itemId,
+    };
+    const nextState = reducer(initialState, action);
+
+    expect(nextState).to.deep.equal({
+      error: null,
+      isUpdating: true,
+      updatingItem: itemId,
+    });
+  });
+
+  it(`handles ${UPDATE_ITEM}_SUCCESS`, () => {
+    const itemId = 'D98DB385-BF15-4EA5-A10A-90E7A98F106F';
+    const initialState = {
+      error: null,
+      isUpdating: true,
+      updatingItem: itemId,
+      data: [
+        { id: '12323', order: 0, name: 'Mon' },
+        { id: itemId, order: 2, name: 'Wed' },
+      ],
+    };
+    const action = {
+      type: `${UPDATE_ITEM}_SUCCESS`,
+      item: {
+        id: itemId,
+        order: 1,
+        name: 'something',
+      },
+    };
+    const nextState = reducer(initialState, action);
+
+    expect(nextState).to.deep.equal({
+      error: null,
+      isUpdating: false,
+      updatingItem: itemId,
+      data: [
+        { id: '12323', order: 0, name: 'Mon' },
+        { id: itemId, order: 1, name: 'something' },
+      ],
+    });
+  });
+
+  it(`handles ${UPDATE_ITEM}_FAILURE`, () => {
+    const itemId = 'D98DB385-BF15-4EA5-A10A-90E7A98F106F';
+    const initialState = {
+      error: null,
+      isUpdating: true,
+      updatingItem: itemId,
+    };
+    const action = {
+      type: `${UPDATE_ITEM}_FAILURE`,
+      error: 'some error',
+      itemId,
+    };
+    const nextState = reducer(initialState, action);
+
+    expect(nextState).to.deep.equal({
+      error: 'some error',
+      isUpdating: false,
+      updatingItem: itemId,
     });
   });
 });

@@ -14,7 +14,7 @@ function sortList(list) {
   });
 }
 
-function ItemList({ list, deleteItem }) {
+function ItemList({ list, deleteItem, updateItem }) {
   sortList(list);
   const itemNodes = list.map(item =>
     <Item
@@ -22,6 +22,7 @@ function ItemList({ list, deleteItem }) {
       id={item.id}
       value={item.name}
       deleteItem={deleteItem}
+      updateItem={updateItem}
     />
   );
   return (
@@ -34,6 +35,7 @@ function ItemList({ list, deleteItem }) {
 ItemList.propTypes = {
   list: React.PropTypes.array,
   deleteItem: React.PropTypes.func,
+  updateItem: React.PropTypes.func,
 };
 ItemList.defaultProps = {
   list: [],

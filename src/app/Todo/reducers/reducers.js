@@ -2,7 +2,23 @@ import {
   FETCH_ITEMS,
   DELETE_ITEM,
   ADD_ITEM,
+  UPDATE_ITEM,
 } from '../constants/actionTypes';
+
+function fetchItemRequest(state) {
+  const newState = Object.assign({}, state, {
+    isFetching: true,
+    error: null,
+  });
+  delete newState.deleteItem;
+  return newState;
+}
+
+/*
+ *******************
+ * DELETE_ITEM
+ *******************
+ */
 
 function removeFromList(list, itemId) {
   for (let i = list.length - 1; i >= 0; i--) {
@@ -12,32 +28,6 @@ function removeFromList(list, itemId) {
   }
   // returns a copy
   return list.slice(0);
-}
-
-function addToList(list, item) {
-  let itemAdded = false;
-  for (let i = 0; i < list.length && !itemAdded; i++) {
-    if (list[i].order >= item.order) {
-      list.splice(i, 0, item);
-      itemAdded = true;
-    }
-  }
-
-  if (!itemAdded) {
-    list.push(item);
-  }
-
-  // returns a copy
-  return list.slice(0);
-}
-
-function fetchItemRequest(state) {
-  const newState = Object.assign({}, state, {
-    isFetching: true,
-    error: null,
-  });
-  delete newState.deleteItem;
-  return newState;
 }
 
 function deleteItemRequest(state, itemId) {
@@ -69,6 +59,29 @@ function deleteItemFailure(state, itemId, error) {
   return newState;
 }
 
+/*
+ *******************
+ * ADD_ITEM
+ *******************
+ */
+
+function addToList(list, item) {
+  let itemAdded = false;
+  for (let i = 0; i < list.length && !itemAdded; i++) {
+    if (list[i].order >= item.order) {
+      list.splice(i, 0, item);
+      itemAdded = true;
+    }
+  }
+
+  if (!itemAdded) {
+    list.push(item);
+  }
+
+  // returns a copy
+  return list.slice(0);
+}
+
 function addItemRequest(state) {
   const newState = Object.assign({}, state, {
     error: null,
@@ -91,6 +104,52 @@ function addItemFailure(state, error) {
   const newState = Object.assign({}, state, {
     error: String(error),
     isAdding: false,
+  });
+  return newState;
+}
+
+/*
+ *******************
+ * UPDATE_ITEM
+ *******************
+ */
+
+function updateItem(list, item) {
+  for (let i = list.length - 1; i >= 0; i--) {
+    if (list[i].id === item.id) {
+      Object.assign(list[i], item);
+    }
+  }
+
+  // returns a copy
+  return list.slice(0);
+}
+
+function updateItemRequest(state, itemId) {
+  const newState = Object.assign({}, state, {
+    error: null,
+    isUpdating: true,
+    updatingItem: itemId,
+  });
+  return newState;
+}
+
+function updateItemSuccess(state, item) {
+  const items = state.data;
+  const newState = Object.assign({}, state, {
+    error: null,
+    isUpdating: false,
+    updatingItem: item.id,
+    data: updateItem(items, item),
+  });
+  return newState;
+}
+
+function updateItemFailure(state, itemId, error) {
+  const newState = Object.assign({}, state, {
+    error: String(error),
+    isUpdating: false,
+    updatingItem: itemId,
   });
   return newState;
 }
@@ -124,6 +183,13 @@ export default function (state = {}, action) {
       return addItemSuccess(state, action.item);
     case `${ADD_ITEM}_FAILURE`:
       return addItemFailure(state, action.error);
+
+    case `${UPDATE_ITEM}_REQUEST`:
+      return updateItemRequest(state, action.itemId);
+    case `${UPDATE_ITEM}_SUCCESS`:
+      return updateItemSuccess(state, action.item);
+    case `${UPDATE_ITEM}_FAILURE`:
+      return updateItemFailure(state, action.itemId, action.error);
 
     default:
       return state;

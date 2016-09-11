@@ -1,24 +1,25 @@
-import { Map, fromJS } from 'immutable';
 import { expect } from 'chai';
 
-import { FETCH_ACCOUNT_DETAILS } from '../../constants/actionTypes';
+import {
+  FETCH_USER,
+} from '../../constants/actionTypes';
 import reducer from './account';
 
 describe('reducers/account', () => {
-  it(`handles ${FETCH_ACCOUNT_DETAILS}_PENDING`, () => {
-    const initialState = new Map();
-    const action = {
-      type: `${FETCH_ACCOUNT_DETAILS}_PENDING`,
-    };
+  it(`handles ${FETCH_USER}_REQUEST`, () => {
+    const initialState = {};
+    const action = { type: `${FETCH_USER}_REQUEST` };
     const nextState = reducer(initialState, action);
 
-    expect(nextState).to.deep.equal(fromJS({
+    expect(nextState).to.deep.equal({
       is_pending: true,
-    }));
+      user: null,
+      error: null,
+    });
   });
 
-  it(`handles ${FETCH_ACCOUNT_DETAILS}_FULFILLED`, () => {
-    const initialState = new Map();
+  it(`handles ${FETCH_USER}_SUCCESS`, () => {
+    const initialState = {};
     const user = {
       first_name: 'Joe',
       last_name: 'Baker',
@@ -26,27 +27,30 @@ describe('reducers/account', () => {
       photo_url: 'https://example.com/one.jpeg',
     };
     const action = {
-      type: `${FETCH_ACCOUNT_DETAILS}_FULFILLED`,
-      payload: user,
+      type: `${FETCH_USER}_SUCCESS`,
+      user,
     };
     const nextState = reducer(initialState, action);
 
-    expect(nextState).to.deep.equal(fromJS({
+    expect(nextState).to.deep.equal({
       is_pending: false,
       user,
-    }));
+      error: null,
+    });
   });
 
-  it(`handles ${FETCH_ACCOUNT_DETAILS}_REJECTED`, () => {
-    const initialState = new Map();
+  it(`handles ${FETCH_USER}_FAILURE`, () => {
+    const initialState = {};
     const action = {
-      type: `${FETCH_ACCOUNT_DETAILS}_REJECTED`,
+      type: `${FETCH_USER}_FAILURE`,
+      error: 'Some error',
     };
     const nextState = reducer(initialState, action);
 
-    expect(nextState).to.deep.equal(fromJS({
+    expect(nextState).to.deep.equal({
       is_pending: false,
       user: null,
-    }));
+      error: 'Some error',
+    });
   });
 });

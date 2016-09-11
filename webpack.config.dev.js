@@ -7,10 +7,11 @@ module.exports = {
   entry: [
     'webpack-hot-middleware/client?reload=true',
     './src/app/index.js',
+    './src/app/index.html',
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js'
+    path: path.join(__dirname, 'dist/app'),
+    filename: 'bundle.js',
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
@@ -45,12 +46,19 @@ module.exports = {
         // http://www.jonathan-petitcolas.com/2015/05/15/howto-setup-webpack-on-es6-react-application-with-sass.html
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('css!sass'),
-        include: path.join(__dirname, 'src/app/stylesheets')
+      },
+      {
+        test: /\.less/,
+        loader: 'style!css!less',
       },
       {
         test: /\.json$/,
-        loader: 'json'
+        loader: 'json',
       },
+      {
+        test: /\.(woff2|woff|ttf|svg|eot)$/,
+        loader: 'file',
+      }
     ]
   }
 };

@@ -1,8 +1,7 @@
 import fetch from 'isomorphic-fetch';
 import {
-  FETCH_ITEMS,
-  FETCH_ACCOUNT_DETAILS,
   UPDATE_LOCALE,
+  FETCH_USER,
 } from '../constants/actionTypes';
 
 export function setState(state) {
@@ -20,28 +19,34 @@ export function filterEntries(input) {
   };
 }
 
-export function fetchItems() {
+function fetchUserSuccess(user) {
   return {
-    type: FETCH_ITEMS,
-    payload: {
-      promise: fetch('/api/items', { credentials: 'include' })
-                .then(response => (response.ok ? response : Promise.reject(response)))
-                .then(response => response.json()),
-    },
+    type: `${FETCH_USER}_SUCCESS`,
+    user,
   };
 }
 
-// TODO: fix: on refresh -> anon user -> raises an exception
-// needs to be caught
-// however, then breaks logging functionality
-export function fetchAccountDetails() {
+function fetchUserFailure(error) {
   return {
-    type: FETCH_ACCOUNT_DETAILS,
-    payload: {
-      promise: fetch('/account', { credentials: 'include' })
-                .then(response => (response.ok ? response : Promise.reject(response)))
-                .then(response => response.json()),
-    },
+    type: `${FETCH_USER}_FAILURE`,
+    error,
+  };
+}
+
+export function fetchAccountDetails() {
+  return function getUser(dispatch) {
+    dispatch({ type: `${FETCH_USER}_REQUEST` });
+
+    return fetch('/account', { credentials: 'include' }).then(
+      response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error(response.statusText);
+      }
+    )
+    .then(user => dispatch(fetchUserSuccess(user)))
+    .catch(e => dispatch(fetchUserFailure(e)));
   };
 }
 

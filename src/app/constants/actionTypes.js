@@ -1,3 +1,3 @@
-export const FETCH_ITEMS = 'FETCH_ITEMS';
-export const FETCH_ACCOUNT_DETAILS = 'FETCH_ACCOUNT_DETAILS';
 export const UPDATE_LOCALE = 'UPDATE_LOCALE';
+
+export const FETCH_USER = 'FETCH_USER';

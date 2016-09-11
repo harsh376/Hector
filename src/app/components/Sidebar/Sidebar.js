@@ -1,10 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-if (process.env.BROWSER) {
-  require('../../stylesheets/layout.scss');
-}
-
 function Sidebar({ className }) {
   const items = [
     { path: '/', label: 'Home' },

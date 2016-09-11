@@ -1,8 +1,15 @@
 import React from 'react';
+import 'bootstrap/less/bootstrap.less';
 import { connect } from 'react-redux';
 
-import { fetchAccountDetails } from '../actions/action_creators';
 import Auth from '../components/Auth/Auth';
+import { fetchAccountDetails } from '../actions/action_creators';
+
+// http://stackoverflow.com/questions/30347722/importing-css-files-in-isomorphic-react-components
+if (process.env.BROWSER) {
+  require('../stylesheets/layout.scss');
+  require('../Todo/stylesheets/Item.scss');
+}
 
 const enableAuth = process.env.USER_AUTH === 'enabled';
 
@@ -26,7 +33,7 @@ App.propTypes = {
     React.PropTypes.arrayOf(React.PropTypes.node),
     React.PropTypes.node,
   ]),
-  fetchAccountDetails: React.PropTypes.func.isRequired,
+  fetchAccountDetails: React.PropTypes.func,
 };
 App.defaultProps = {
   children: null,
@@ -34,7 +41,7 @@ App.defaultProps = {
 
 function mapStateToProps(state) {
   const { account } = state;
-  return { user: account.get('user') };
+  return { user: account.user };
 }
 
 export default connect(mapStateToProps, {

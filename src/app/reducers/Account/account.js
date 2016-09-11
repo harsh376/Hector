@@ -1,16 +1,27 @@
-import { Map } from 'immutable';
-import { FETCH_ACCOUNT_DETAILS } from '../../constants/actionTypes';
+import {
+  FETCH_USER,
+} from '../../constants/actionTypes';
 
-export default function (state = new Map(), action) {
+export default function (state = {}, action) {
   switch (action.type) {
-    case `${FETCH_ACCOUNT_DETAILS}_PENDING`:
-      return state.set('is_pending', true);
-    case `${FETCH_ACCOUNT_DETAILS}_FULFILLED`:
-      return state.set('is_pending', false)
-                  .set('user', new Map(action.payload));
-    case `${FETCH_ACCOUNT_DETAILS}_REJECTED`:
-      return state.set('is_pending', false)
-                  .set('user', null);
+    case `${FETCH_USER}_REQUEST`:
+      return Object.assign({}, state, {
+        is_pending: true,
+        user: null,
+        error: null,
+      });
+    case `${FETCH_USER}_SUCCESS`:
+      return Object.assign({}, state, {
+        is_pending: false,
+        user: action.user,
+        error: null,
+      });
+    case `${FETCH_USER}_FAILURE`:
+      return Object.assign({}, state, {
+        is_pending: false,
+        user: null,
+        error: String(action.error),
+      });
     default:
       return state;
   }

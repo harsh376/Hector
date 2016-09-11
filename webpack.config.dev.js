@@ -7,10 +7,11 @@ module.exports = {
   entry: [
     'webpack-hot-middleware/client?reload=true',
     './src/app/index.js',
+    './src/app/index.html',
   ],
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js'
+    path: path.join(__dirname, 'dist/app'),
+    filename: 'bundle.js',
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),

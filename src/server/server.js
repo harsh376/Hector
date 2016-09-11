@@ -149,6 +149,11 @@ if (isDeveloping) {
 } else {
   console.log('PRODUCTION');
   server.use(express.static(path.join(__dirname, '../app')));
+
+  // sending file so that on page refresh app doesn't break
+  server.use('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../app/index.html'));
+  });
 }
 
 server.listen(port, '0.0.0.0', (err) => {

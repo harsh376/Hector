@@ -8,11 +8,15 @@
 
 `npm install`
 
+#### Dev
+
 **Running the application**
 
 `nvm use`
 
-`npm start`
+`npm run build:dev`
+
+`npm run start`
 
 **Running tests**
 
@@ -24,61 +28,25 @@
 
 `npm run shonkwrap`
 
+#### Prod
+
+`npm run deploy`
+
 ---
 
 ### Docker
 
 #### Docker: dev
 
-**Configure IP for Ajax in `Hector/src/server/lib/config.js`**
-
-`ifconfig -a` (en0: inet)
-
 **Need node_modules since we are mounting the directory**
 
 `cd ~/Desktop/dev/hector && npm install`
-
-**Building image and running container**
-
-*Method 1*
-
-`docker build -t hector_web .`
-
-`docker-compose up`
-
-*Method 2*
-
-In `docker-compose.override.yml`, replace
-`image: hector_web` with `build: .`
-
-`docker-compose up`
-
-Dockerfile -> docker-compose.yml -> docker-compose.override.yml
-
-#### Docker: prod
-
-**Configure IP in:**
-
-1. `Hector/src/server/lib/config.js`
-2. `server/lib/redisClient.js`
-
-`ifconfig -a` (en0: inet)
-
-**Start Redis server**
-
-`redis-server --protected-mode no`
 
 **Build image**
 
 `docker build -t hector .`
 
-**Run container**
-
-`docker-compose -f docker-compose.yml -f docker-compose.prod.yml up`
-
-Dockerfile -> docker-compose.yml -> docker-compose.prod.yml
-
-#### Pushing an image to docker hub
+**Pushing an image to docker hub**
 
 [https://docs.docker.com/engine/getstarted/step_six/]
 

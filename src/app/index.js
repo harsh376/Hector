@@ -8,7 +8,6 @@ import io from 'socket.io-client';
 // import { isLoggedIn } from './auth';
 import App from './containers/App';
 import TodoContainer from './Todo/TodoContainer';
-import FilterPageContainer from './containers/FilterPageContainer';
 import NomatchContainer from './containers/NomatchContainer';
 import { setState } from './actions/action_creators';
 import configureStore from './store/configureStore';
@@ -56,8 +55,7 @@ socket.on('state', state => {
 // is mounted (i.e on refresh), and not when the route changes
 const routes = (
   <Route path="/" component={App}>
-    <Route path="todo" component={TodoContainer} />
-    <Route path="filter" component={FilterPageContainer} />
+    <Route path="projects" component={TodoContainer} />
     <Route path="*" component={NomatchContainer} />
   </Route>
 );

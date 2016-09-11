@@ -10,20 +10,15 @@ const componentMessages = defineMessages({
     id: 'app.home',
     defaultMessage: 'Home',
   },
-  todo: {
-    id: 'app.todo',
-    defaultMessage: 'Todo',
-  },
-  filter: {
-    id: 'app.filter',
-    defaultMessage: 'Filter',
+  projects: {
+    id: 'app.projects',
+    defaultMessage: 'Projects',
   },
 });
 
 const items = [
   { path: '/', label: 'home' },
-  { path: '/todo', label: 'todo' },
-  { path: '/filter', label: 'filter' },
+  { path: '/projects', label: 'projects' },
 ];
 const nodes = items.map(item =>
   <li key={item.label}>

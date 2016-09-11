@@ -11,9 +11,9 @@ describe('LayoutTwo: <Sidebar />', () => {
       <Sidebar updateLocale={data => data} />
     );
 
-    expect(wrapper.find('.sidebarContent').children()).to.have.length(3);
+    expect(wrapper.find('.sidebarContent').children()).to.have.length(2);
     const keys = wrapper.find('.sidebarContent').children().map(node => node.key());
-    expect(keys).to.deep.equal(['home', 'todo', 'filter']);
+    expect(keys).to.deep.equal(['home', 'projects']);
   });
 
   it('renders locales', () => {
@@ -44,8 +44,7 @@ describe('LayoutTwo: <Sidebar />', () => {
       locale: 'en',
       messages: {
         'app.home': 'Home',
-        'app.todo': 'Todo',
-        'app.filter': 'Filter',
+        'app.projects': 'Projects',
       },
     });
   });

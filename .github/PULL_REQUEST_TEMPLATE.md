@@ -2,8 +2,3 @@
 https://harshverma.atlassian.net/browse/WD-*
 
 #### Summary (optional, depending on complexity of the change)
-*
-
-#### Reviewer:
-- [ ] Unit tests
-- [ ] Sufficient documentation

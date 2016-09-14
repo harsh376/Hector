@@ -2,6 +2,8 @@ import React from 'react';
 
 import CustomNavBarContainer from '../CustomNavBar/CustomNavBarContainer';
 
+// TODO: Add tests for `LayoutBootstrap` component
+
 function LayoutBootstrap({ content }) {
   return (
     <div>

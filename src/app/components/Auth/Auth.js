@@ -1,6 +1,5 @@
 import React from 'react';
 
-// import LayoutTwo from '../LayoutTwo/LayoutTwo';
 import LayoutBootstrap from '../../LayoutBootstrap/LayoutBootstrap';
 
 // for unit test, need this default value
@@ -28,12 +27,6 @@ export default class Auth extends React.Component {
       <div>
         {isLoggedIn && (
           <LayoutBootstrap content={this.props.children} />
-          /*
-          <LayoutTwo
-            user={this.props.user}
-            content={this.props.children}
-          />
-          */
         )}
         {!isLoggedIn && (
           <div className="loggedOut">

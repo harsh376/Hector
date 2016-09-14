@@ -53,6 +53,8 @@ const navOptions = items.map(item =>
   </LinkContainer>
 );
 
+// TODO: Add tests for `CustomNavBar` component
+
 class CustomNavBar extends React.Component {
   constructor(props) {
     super(props);

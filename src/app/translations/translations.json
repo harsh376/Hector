@@ -1,10 +1,16 @@
 {
   "en": {
-    "app.home": "Home",
-    "app.projects": "Projects"
+    "app.resume": "Resume",
+    "app.projects": "Projects",
+    "app.language": "Language",
+    "app.english": "English",
+    "app.italian": "Italian"
   },
   "it": {
-    "app.home": "Casa",
-    "app.projects": "Progetti"
+    "app.resume": "Curriculum vitae",
+    "app.projects": "Progetti",
+    "app.language": "Lingua",
+    "app.english": "Inglese",
+    "app.italian": "Italiano"
   }
 }

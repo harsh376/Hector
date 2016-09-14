@@ -43,8 +43,11 @@ describe('LayoutTwo: <Sidebar />', () => {
     expect(data).to.deep.equal({
       locale: 'en',
       messages: {
-        'app.home': 'Home',
+        'app.resume': 'Resume',
         'app.projects': 'Projects',
+        'app.language': 'Language',
+        'app.english': 'English',
+        'app.italian': 'Italian',
       },
     });
   });

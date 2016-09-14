@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
 import Auth from './Auth';
-import LayoutTwo from '../LayoutTwo/LayoutTwo';
+import LayoutBootstrap from '../../LayoutBootstrap/LayoutBootstrap';
 
 describe('<Auth />', () => {
   let user;
@@ -24,10 +24,12 @@ describe('<Auth />', () => {
         enableAuth
         user={user}
         fetchAccountDetails={stub}
-      />
+      >
+        Hello
+      </Auth>
     );
 
-    expect(wrapper.find(LayoutTwo).at(0).props().user).to.equal(user);
+    expect(wrapper.find(LayoutBootstrap).at(0).props().content).to.equal('Hello');
   });
 
   it('auth enabled and user not logged in', () => {
@@ -61,9 +63,11 @@ describe('<Auth />', () => {
         enableAuth={false}
         user={user}
         fetchAccountDetails={stub}
-      />
+      >
+        Hello
+      </Auth>
     );
 
-    expect(wrapper.find(LayoutTwo).at(0).props().user).to.equal(null);
+    expect(wrapper.find(LayoutBootstrap).at(0).props().content).to.equal('Hello');
   });
 });

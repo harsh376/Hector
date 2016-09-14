@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LayoutTwo from '../LayoutTwo/LayoutTwo';
+import LayoutBootstrap from '../../LayoutBootstrap/LayoutBootstrap';
 
 // for unit test, need this default value
 let imageUrl = '/static/google_signin.png';
@@ -26,10 +26,7 @@ export default class Auth extends React.Component {
     return (
       <div>
         {isLoggedIn && (
-          <LayoutTwo
-            user={this.props.user}
-            content={this.props.children}
-          />
+          <LayoutBootstrap content={this.props.children} />
         )}
         {!isLoggedIn && (
           <div className="loggedOut">

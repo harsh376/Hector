@@ -2359,7 +2359,12 @@
       "version": "15.2.1"
     },
     "react-bootstrap": {
-      "version": "0.30.3"
+      "version": "0.30.3",
+      "dependencies": {
+        "warning": {
+          "version": "3.0.0"
+        }
+      }
     },
     "react-dom": {
       "version": "15.2.1"
@@ -2379,16 +2384,44 @@
       "version": "2.1.3"
     },
     "react-overlays": {
-      "version": "0.6.6"
+      "version": "0.6.6",
+      "dependencies": {
+        "warning": {
+          "version": "3.0.0"
+        }
+      }
     },
     "react-prop-types": {
-      "version": "0.4.0"
+      "version": "0.4.0",
+      "dependencies": {
+        "warning": {
+          "version": "3.0.0"
+        }
+      }
     },
     "react-redux": {
       "version": "4.4.5"
     },
     "react-router": {
-      "version": "2.6.0"
+      "version": "2.6.0",
+      "dependencies": {
+        "warning": {
+          "version": "3.0.0"
+        }
+      }
+    },
+    "react-router-bootstrap": {
+      "version": "0.23.1",
+      "dependencies": {
+        "history": {
+          "version": "2.1.2",
+          "dependencies": {
+            "query-string": {
+              "version": "3.0.3"
+            }
+          }
+        }
+      }
     },
     "read-json-sync": {
       "version": "1.1.1"
@@ -2851,7 +2884,7 @@
       "version": "0.0.4"
     },
     "warning": {
-      "version": "3.0.0"
+      "version": "2.1.0"
     },
     "watchpack": {
       "version": "0.2.9",

@@ -7,8 +7,10 @@ import io from 'socket.io-client';
 // TODO: Uncomment on adding `onEnter` to routes
 // import { isLoggedIn } from './auth';
 import App from './containers/App';
-import TodoContainer from './Todo/TodoContainer';
 import NomatchContainer from './containers/NomatchContainer';
+import ResumeContainer from './Resume/ResumeContainer';
+import ProjectsContainer from './Projects/ProjectsContainer';
+
 import { setState } from './actions/action_creators';
 import configureStore from './store/configureStore';
 import rootReducer from './reducers/index';
@@ -55,7 +57,8 @@ socket.on('state', state => {
 // is mounted (i.e on refresh), and not when the route changes
 const routes = (
   <Route path="/" component={App}>
-    <Route path="projects" component={TodoContainer} />
+    <Route path="resume" component={ResumeContainer} />
+    <Route path="projects" component={ProjectsContainer} />
     <Route path="*" component={NomatchContainer} />
   </Route>
 );

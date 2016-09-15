@@ -6,6 +6,10 @@ $headerHeight: 50px;
 $footerHeight: 40px;
 $sidebarWidth: 150px;
 
+// both should be the same value in `breadcrumbs.scss`
+$breadcrumbsHeight: 50px;
+$navBarHeight: 50px;
+
 .header {
   position: absolute;
   top: 0px;
@@ -70,13 +74,13 @@ $itemTextColorActive: white;
 $itemBgColorActive: #16171B;
 
 .contentTwo {
-  position: absolute;
+  // position: absolute;
   margin-left: $sidebarTwoWidth;
   overflow: auto;
   top: 0px;
-  left: 0px;
+  // left: 0px;
 
-  background: #65B9FF;
+  // background: #65B9FF;
 }
 
 .sidebarTwo {
@@ -149,6 +153,8 @@ $itemBgColorActive: #16171B;
   background: $sidebarColorLight;
 }
 
+// ..........................................
+
 .locales {
   list-style: none;
 }
@@ -163,13 +169,17 @@ $itemBgColorActive: #16171B;
  **********************
  */
 
-.headerBoot {
-  height: 200px;
-  background: blue;
-}
-
 .contentBoot {
-  margin-top: 100px;
-  background: green;
-}
+  top: $navBarHeight;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+  overflow-y: auto;
 
+  background: #eeeeee;
+
+  &.topOffset {
+    top: $navBarHeight + $breadcrumbsHeight;
+  }
+}

@@ -1,14 +1,34 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 import SidebarContainer from './components/SidebarContainer';
 import randomText from '../../constants/randomText';
 
-function LayoutTwo({ content }) {
+function LayoutTwo({ content, routes }) {
+  const depth = routes.length;
   return (
     <div>
       <SidebarContainer />
       <div className="contentTwo">
-        {content || <div>{randomText.long}</div>}
+
+        <ul className="breadcrumbs-list fixed">
+          {routes.map((item, index) =>
+            <li key={index}>
+              <Link
+                onlyActiveOnIndex
+                activeClassName="breadcrumb-active"
+                to={item.path || ''}
+              >
+                {item.component.title}
+              </Link>
+              {(index + 1) < depth && '/'}
+            </li>
+          )}
+        </ul>
+
+        <div className="routeBody">
+          {content || randomText}
+        </div>
       </div>
     </div>
   );
@@ -19,6 +39,7 @@ LayoutTwo.propTypes = {
     React.PropTypes.arrayOf(React.PropTypes.node),
     React.PropTypes.node,
   ]),
+  routes: React.PropTypes.arrayOf(React.PropTypes.object),
 };
 
 export default LayoutTwo;

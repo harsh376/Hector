@@ -1,0 +1,59 @@
+/*
+ *********************
+ * BREADCRUMBS
+ *********************
+ */
+
+// both should be the same value in `layout.scss`
+$breadcrumbsHeight: 50px;
+$navBarHeight: 50px;
+
+@media screen and (min-width: 768px) {
+  ul.breadcrumbs-list {
+    width: 750px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  ul.breadcrumbs-list {
+    width: 970px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  ul.breadcrumbs-list {
+    width: 1170px;
+  }
+}
+
+ul.breadcrumbs-list {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px 0px 0px 15px;
+
+  height: $breadcrumbsHeight;
+
+  &.fixed {
+    position: fixed;
+    top: $navBarHeight;
+    left: 0;
+    right: 0;
+  }
+}
+
+ul.breadcrumbs-list li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+ul.breadcrumbs-list li a:not(.breadcrumb-active) {
+  text-decoration: underline;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+ul.breadcrumbs-list li a.breadcrumb-active {
+  text-decoration: none;
+  font-weight: 200;
+  cursor: default;
+}

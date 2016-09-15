@@ -8,6 +8,7 @@ import { fetchAccountDetails } from '../actions/action_creators';
 // http://stackoverflow.com/questions/30347722/importing-css-files-in-isomorphic-react-components
 if (process.env.BROWSER) {
   require('../stylesheets/layout.scss');
+  require('../stylesheets/breadcrumbs.scss');
   require('../Todo/stylesheets/Item.scss');
 }
 
@@ -20,6 +21,7 @@ function App(props) {
         enableAuth={enableAuth}
         user={props.user}
         fetchAccountDetails={props.fetchAccountDetails}
+        routes={props.routes}
       >
           {props.children}
       </Auth>
@@ -33,6 +35,7 @@ App.propTypes = {
     React.PropTypes.arrayOf(React.PropTypes.node),
     React.PropTypes.node,
   ]),
+  routes: React.PropTypes.arrayOf(React.PropTypes.object),
   fetchAccountDetails: React.PropTypes.func,
 };
 App.defaultProps = {

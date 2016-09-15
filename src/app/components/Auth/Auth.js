@@ -26,7 +26,10 @@ export default class Auth extends React.Component {
     return (
       <div>
         {isLoggedIn && (
-          <LayoutBootstrap content={this.props.children} />
+          <LayoutBootstrap
+            content={this.props.children}
+            routes={this.props.routes}
+          />
         )}
         {!isLoggedIn && (
           <div className="loggedOut">
@@ -51,5 +54,6 @@ Auth.propTypes = {
     React.PropTypes.arrayOf(React.PropTypes.node),
     React.PropTypes.node,
   ]),
+  routes: React.PropTypes.arrayOf(React.PropTypes.object),
   fetchAccountDetails: React.PropTypes.func,
 };

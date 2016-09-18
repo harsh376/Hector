@@ -6,6 +6,10 @@ import {
 } from 'react-intl';
 
 const componentMessages = defineMessages({
+  aboutMe: {
+    id: 'app.aboutme',
+    defaultMessage: 'About me',
+  },
   resume: {
     id: 'app.resume',
     defaultMessage: 'Resume',
@@ -21,20 +25,37 @@ const componentMessages = defineMessages({
 function Breadcrumbs({ routes }) {
   const depth = routes.length;
   return (
-    <ul className="breadcrumbs-list fixed">
-      {routes.map((item, index) =>
-        <li key={index}>
-          <Link
-            onlyActiveOnIndex
-            activeClassName="breadcrumb-active"
-            to={item.path || ''}
-          >
-            <FormattedMessage {...componentMessages[item.component.title]} />
-          </Link>
-          {(index + 1) < depth && '/'}
-        </li>
+    <div>
+      {depth && (
+        <ul className="breadcrumbs-list fixed">
+          {routes.map((item, index) =>
+            <li key={index}>
+              <Link
+                onlyActiveOnIndex
+                activeClassName="breadcrumb-active"
+                to={item.path || ''}
+              >
+                <FormattedMessage {...componentMessages[item.component.title]} />
+              </Link>
+              {(index + 1) < depth && '/'}
+            </li>
+          )}
+        </ul>
       )}
-    </ul>
+      {!depth && (
+        <ul className="breadcrumbs-list fixed">
+          <li key="aboutMe">
+            <Link
+              onlyActiveOnIndex
+              activeClassName="breadcrumb-active"
+              to={'/'}
+            >
+              <FormattedMessage {...componentMessages.aboutMe} />
+            </Link>
+          </li>
+        </ul>
+      )}
+    </div>
   );
 }
 

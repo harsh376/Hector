@@ -1,5 +1,6 @@
 {
   "en": {
+    "app.aboutme": "About me",
     "app.resume": "Resume",
     "app.projects": "Projects",
     "app.language": "Language",
@@ -7,6 +8,7 @@
     "app.italian": "Italian"
   },
   "it": {
+    "app.aboutme": "A proposito di me",
     "app.resume": "Curriculum vitae",
     "app.projects": "Progetti",
     "app.language": "Lingua",

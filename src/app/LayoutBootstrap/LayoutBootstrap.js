@@ -1,25 +1,19 @@
 import React from 'react';
 
 import CustomNavBarContainer from '../CustomNavBar/CustomNavBarContainer';
+import Home from '../Home/Home';
 import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
-import randomText from '../constants/randomText';
 
 // TODO: Add tests for `LayoutBootstrap` component
 
 function LayoutBootstrap({ content, routes }) {
   routes.splice(0, 1);
-  const showBreadcrumbs = routes.length;
-  const offsetClass = showBreadcrumbs ? 'topOffset' : '';
-  const contentClassName = `contentBoot ${offsetClass}`;
-
   return (
     <div>
       <CustomNavBarContainer />
-
-      {showBreadcrumbs && (<Breadcrumbs routes={routes} />)}
-
-      <div className={contentClassName}>
-        {content || randomText.long}
+      <Breadcrumbs routes={routes} />
+      <div className="contentBoot topOffset">
+        {content || <Home />}
       </div>
     </div>
   );

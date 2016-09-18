@@ -8,9 +8,10 @@ import { fetchAccountDetails } from '../actions/action_creators';
 // http://stackoverflow.com/questions/30347722/importing-css-files-in-isomorphic-react-components
 if (process.env.BROWSER) {
   require('../stylesheets/layout.scss');
-  require('../stylesheets/breadcrumbs.scss');
+  require('../Breadcrumbs/stylesheets/Breadcrumbs.scss');
   require('../Todo/stylesheets/Item.scss');
   require('../Resume/stylesheets/Resume.scss');
+  require('../Home/stylesheets/Home.scss');
 }
 
 const enableAuth = process.env.USER_AUTH === 'enabled';

@@ -10,6 +10,7 @@ if (process.env.BROWSER) {
   require('../stylesheets/layout.scss');
   require('../stylesheets/breadcrumbs.scss');
   require('../Todo/stylesheets/Item.scss');
+  require('../Resume/stylesheets/Resume.scss');
 }
 
 const enableAuth = process.env.USER_AUTH === 'enabled';

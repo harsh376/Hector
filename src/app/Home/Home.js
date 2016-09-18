@@ -10,7 +10,7 @@ bootstrapUtils.addStyle(Row, 'custom');
 let imageUrl;
 
 // TODO: Add loader to webpack config files
-if (process.env.BROWSER) {
+if (process.env.BROWSER || process.env.NODE_ENV === 'production') {
   imageUrl = require('file!../static/profile_pic.jpg');
 }
 

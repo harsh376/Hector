@@ -7,7 +7,6 @@ import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 // TODO: Add tests for `LayoutBootstrap` component
 
 function LayoutBootstrap({ content, routes }) {
-  routes.splice(0, 1);
   return (
     <div>
       <CustomNavBarContainer />

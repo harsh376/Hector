@@ -18,22 +18,34 @@ const componentMessages = defineMessages({
     id: 'app.projects',
     defaultMessage: 'Projects',
   },
+  backToHome: {
+    id: 'app.backToHome',
+    defaultMessage: 'Go Back to Home',
+  },
 });
 
 // TODO: Add tests for component
 
 function Breadcrumbs({ routes }) {
-  const depth = routes.length;
+  const newRoutes = [];
+  routes.forEach(item => {
+    if (item.path !== '/') {
+      newRoutes.push(item);
+    }
+  });
+  const depth = newRoutes.length;
   return (
     <div>
+
+      {/* All routes except home */}
       {depth && (
         <ul className="breadcrumbs-list fixed">
-          {routes.map((item, index) =>
+          {newRoutes.map((item, index) =>
             <li key={index}>
               <Link
                 onlyActiveOnIndex
                 activeClassName="breadcrumb-active"
-                to={item.path || ''}
+                to={item.path !== '*' ? item.path : '/'}
               >
                 <FormattedMessage {...componentMessages[item.component.title]} />
               </Link>
@@ -42,6 +54,8 @@ function Breadcrumbs({ routes }) {
           )}
         </ul>
       )}
+
+      {/* Home route */}
       {!depth && (
         <ul className="breadcrumbs-list fixed">
           <li key="aboutMe">

@@ -1,5 +1,6 @@
 {
   "en": {
+    "app.backToHome": "Go back to Home",
     "app.aboutme": "About me",
     "app.resume": "Resume",
     "app.projects": "Projects",
@@ -8,6 +9,7 @@
     "app.italian": "Italian"
   },
   "it": {
+    "app.backToHome": "Torna a casa",
     "app.aboutme": "A proposito di me",
     "app.resume": "Curriculum vitae",
     "app.projects": "Progetti",

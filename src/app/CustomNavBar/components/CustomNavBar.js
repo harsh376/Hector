@@ -42,7 +42,7 @@ const componentMessages = defineMessages({
 
 const items = [
   { path: '/resume', label: 'resume' },
-  { path: '/projects', label: 'projects' },
+  // { path: '/projects', label: 'projects' },
 ];
 
 const navOptions = items.map(item =>

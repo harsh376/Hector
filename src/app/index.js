@@ -9,7 +9,7 @@ import io from 'socket.io-client';
 import App from './containers/App';
 import NomatchContainer from './containers/NomatchContainer';
 import ResumeContainer from './Resume/ResumeContainer';
-import ProjectsContainer from './Projects/ProjectsContainer';
+// import ProjectsContainer from './Projects/ProjectsContainer';
 
 import { setState } from './actions/action_creators';
 import configureStore from './store/configureStore';
@@ -58,7 +58,7 @@ socket.on('state', state => {
 const routes = (
   <Route path="/" component={App}>
     <Route path="resume" component={ResumeContainer} />
-    <Route path="projects" component={ProjectsContainer} />
+{/*    <Route path="projects" component={ProjectsContainer} />*/}
     <Route path="*" component={NomatchContainer} />
   </Route>
 );

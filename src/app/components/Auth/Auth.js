@@ -12,7 +12,9 @@ if (process.env.BROWSER) {
 
 export default class Auth extends React.Component {
   componentDidMount() {
-    this.props.fetchAccountDetails();
+    if (this.props.enableAuth) {
+      this.props.fetchAccountDetails();
+    }
   }
   isLoggedIn(user) {
     return user || false;

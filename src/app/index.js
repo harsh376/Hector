@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
-import io from 'socket.io-client';
 
 // TODO: Uncomment on adding `onEnter` to routes
 // import { isLoggedIn } from './auth';
@@ -11,7 +10,6 @@ import NomatchContainer from './containers/NomatchContainer';
 import ResumeContainer from './Resume/ResumeContainer';
 // import ProjectsContainer from './Projects/ProjectsContainer';
 
-import { setState } from './actions/action_creators';
 import configureStore from './store/configureStore';
 import rootReducer from './reducers/index';
 
@@ -23,8 +21,6 @@ import it from 'react-intl/locale-data/it';
 // TODO: Move initialization into separate file
 addLocaleData(it);
 
-const addr = process.env.SERVER_ADDR ? process.env.SERVER_ADDR : 'http://localhost:8080';
-const socket = io.connect(addr);
 const initialState = {
   intl: {
     locale: 'en',
@@ -32,11 +28,7 @@ const initialState = {
   },
 };
 
-const store = configureStore(rootReducer, socket, initialState);
-
-socket.on('state', state => {
-  store.dispatch(setState(state));
-});
+const store = configureStore(rootReducer, initialState);
 
 // TODO: Uncomment on adding `onEnter` to routes
 // function requireAuth(nextState, replace, cb) {

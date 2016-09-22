@@ -1,7 +1,4 @@
 /* eslint no-unused-vars: ["error", { "args": "none" }]*/
-export default socket => store => next => action => {
-  if (action.meta && action.meta.remote) {
-    socket.emit('action', action);
-  }
-  return next(action);
-};
+const remoteActionMiddleware = store => next => action => next(action);
+
+export default remoteActionMiddleware;

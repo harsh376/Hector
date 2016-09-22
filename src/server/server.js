@@ -17,7 +17,11 @@ import passportGoogle from './auth/strategies/google';
 delete process.env.BROWSER;
 
 const RedisStore = require('connect-redis')(session);
+
+// ENVIRONMENT VARIABLES
 const isDeveloping = process.env.NODE_ENV !== 'production';
+const authEnabled = process.env.USER_AUTH === 'enabled';
+
 const port = isDeveloping ? 3000 : process.env.PORT;
 const server = express();
 // TODO: move session options into server config file
@@ -55,20 +59,21 @@ server.use(
   morgan(':remote-addr - - :date[clf] :method :url HTTP/:http-version :status -')
 );
 
-server.use(cookieParser());
-if (isDeveloping) {
-  server.use(session(sessionOptions));
-} else {
-  Object.assign(sessionOptions, {
-    store: new RedisStore({
-      client: createRedisClient(),
-    }),
-  });
-  server.use(session(sessionOptions));
+if (authEnabled) {
+  server.use(cookieParser());
+  if (isDeveloping) {
+    server.use(session(sessionOptions));
+  } else {
+    Object.assign(sessionOptions, {
+      store: new RedisStore({
+        client: createRedisClient(),
+      }),
+    });
+    server.use(session(sessionOptions));
+  }
+  server.use(passport.initialize());
+  server.use(passport.session());
 }
-
-server.use(passport.initialize());
-server.use(passport.session());
 
 /**
  ******************************************

@@ -7,6 +7,7 @@ import { fetchAccountDetails } from '../actions/action_creators';
 
 // http://stackoverflow.com/questions/30347722/importing-css-files-in-isomorphic-react-components
 if (process.env.BROWSER) {
+  require('font-awesome/scss/font-awesome.scss');
   require('../stylesheets/layout.scss');
   require('../Breadcrumbs/stylesheets/Breadcrumbs.scss');
   require('../Todo/stylesheets/Item.scss');

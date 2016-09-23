@@ -32,7 +32,7 @@ function Resume() {
           <li>EventMobi - Software developer (May 2015 - August 2016)
             <ul className="resume-list">
               <li>Was part of the engineering team that was responsible for the real-time user engagement products of the company</li>
-              <li>During my time there, delivered three new products: private chat, group discussions and live display(digital signage). Was also responsible for maintaining other products such as live polling, event surveys and gamfication.</li>
+              <li>During my time there, delivered three new products: private chat, group discussions and live display(digital signage). Was also responsible for maintaining other products such as live polling, event surveys and gamification.</li>
               <li>Heavily involved in writing the front-end for these applications using Angular, React, Node and integrating with third party services such as SocketIO, Pusher</li>
               <li>Was responsible for writing RESTful backend services for the above mentioned products</li>
               <li>Configured the live display(digital signage) React application for internalization</li>

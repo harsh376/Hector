@@ -15,7 +15,38 @@ $introTextColor: #5f5555;
 }
 
 .intro-text {
-  width: 300px;
+  width: 360px;
   margin: auto;
   color: $introTextColor;
+
+  p {
+    margin-bottom: 5px;
+  }
+}
+
+.intro-heading {
+  padding: 20px 0px 5px;
+}
+
+.row-social {
+  text-align: center;
+  padding-top: 25px;
+}
+
+a.social {
+  margin-right: 10px;
+
+  &.linkBlack {
+    color: black;
+  }
+  &.linkFacebook {
+    color: #3b5998;
+  }
+  &.linkLinkedin {
+    color: #0077B5;
+  }
+  &.linkTwitter {
+    color: #1DA1F2;
+  }
+
 }

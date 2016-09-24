@@ -3,3 +3,4 @@ dist
 npm-debug.log
 extracted-messages
 Hector.sublime-workspace
+Dockerrun.aws.json

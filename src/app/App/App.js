@@ -2,8 +2,8 @@ import React from 'react';
 import 'bootstrap/less/bootstrap.less';
 import { connect } from 'react-redux';
 
-import Auth from '../components/Auth/Auth';
-import { fetchAccountDetails } from '../actions/action_creators';
+import Auth from '../Auth/Auth';
+import { fetchAccountDetails } from '../Auth/actions/actionCreators';
 
 // http://stackoverflow.com/questions/30347722/importing-css-files-in-isomorphic-react-components
 if (process.env.BROWSER) {
@@ -46,8 +46,8 @@ App.defaultProps = {
 };
 
 function mapStateToProps(state) {
-  const { account } = state;
-  return { user: account.user };
+  const { auth } = state;
+  return { user: auth.user };
 }
 
 export default connect(mapStateToProps, {

@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 
-import { updateLocale } from '../../actions/action_creators';
-import reducer from './intl';
+import { updateLocale } from '../actions/action_creators';
+import reducer from './reducers';
 
-describe('reducers/intl', () => {
+describe('reducers/CustomNavBar', () => {
   it('handles UPDATE_LOCALE', () => {
     const intialData = {
       locale: 'en',

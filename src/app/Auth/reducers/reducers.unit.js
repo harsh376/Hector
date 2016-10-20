@@ -2,10 +2,10 @@ import { expect } from 'chai';
 
 import {
   FETCH_USER,
-} from '../../constants/actionTypes';
-import reducer from './account';
+} from '../constants/actionTypes';
+import reducer from './reducers';
 
-describe('reducers/account', () => {
+describe('reducers/auth', () => {
   it(`handles ${FETCH_USER}_REQUEST`, () => {
     const initialState = {};
     const action = { type: `${FETCH_USER}_REQUEST` };

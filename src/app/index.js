@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 
 // TODO: Uncomment on adding `onEnter` to routes
 // import { isLoggedIn } from './auth';
-import App from './containers/App';
-import NomatchContainer from './containers/NomatchContainer';
+import App from './App/App';
+import NoMatchContainer from './NoMatch/NoMatchContainer';
 import ResumeContainer from './Resume/ResumeContainer';
 // import ProjectsContainer from './Projects/ProjectsContainer';
 
@@ -14,7 +14,7 @@ import configureStore from './store/configureStore';
 import rootReducer from './reducers/index';
 
 import { addLocaleData } from 'react-intl';
-import ConnectedIntlProvider from './components/ConnectedIntlProvider/ConnectedIntlProvider';
+import ConnectedIntlProvider from './ConnectedIntlProvider/ConnectedIntlProvider';
 import translations from './translations/translations';
 import it from 'react-intl/locale-data/it';
 
@@ -51,7 +51,7 @@ const routes = (
   <Route path="/" component={App}>
     <Route path="resume" component={ResumeContainer} />
 {/*    <Route path="projects" component={ProjectsContainer} />*/}
-    <Route path="*" component={NomatchContainer} />
+    <Route path="*" component={NoMatchContainer} />
   </Route>
 );
 

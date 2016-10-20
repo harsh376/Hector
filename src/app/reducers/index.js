@@ -1,12 +1,10 @@
 import { combineReducers } from 'redux';
-import filterState from './Filter/filter';
-import account from './Account/account';
-import intl from './Intl/intl';
+import auth from '../Auth/reducers/reducers';
 import todo from '../Todo/reducers/reducers';
+import intl from '../CustomNavBar/reducers/reducers';
 
 export default combineReducers({
-  filterState,
   todo,
-  account,
+  auth,
   intl,
 });

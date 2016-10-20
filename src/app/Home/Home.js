@@ -12,7 +12,7 @@ let imageUrl;
 
 // TODO: Add loader to webpack config files
 if (process.env.BROWSER || process.env.NODE_ENV === 'production') {
-  imageUrl = require('file!../static/profile_pic.jpg');
+  imageUrl = require('file!./static/profile_pic.jpg');
 }
 
 /* eslint-disable max-len */

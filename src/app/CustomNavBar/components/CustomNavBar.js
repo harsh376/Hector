@@ -74,7 +74,7 @@ class CustomNavBar extends React.Component {
 
   render() {
     return (
-      <Navbar fixedTop>
+      <Navbar fixedTop inverse>
         <Navbar.Header>
           <Navbar.Brand>
             <a href="/">Harsh Verma</a>

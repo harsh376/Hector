@@ -3,9 +3,19 @@ import React from 'react';
 
 // TODO: Add tests
 
+let fileUrl = '../static/Resume_Harsh_Verma.docx';
+if (process.env.BROWSER) {
+  fileUrl = require('file?name=Resume_Harsh_Verma.docx!../static/Resume_Harsh_Verma.docx');
+}
+
 function Resume() {
   return (
     <div className="resume">
+      <div className="download-options">
+        <form action={fileUrl} method="GET">
+          <button>Download</button>
+        </form>
+      </div>
       <div className="resume-section">
         <h5>EDUCATION</h5>
         <span className="resume-education">University of Toronto, St. George Campus</span>

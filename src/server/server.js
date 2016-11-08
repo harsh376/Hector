@@ -161,6 +161,12 @@ if (isDeveloping) {
   });
 }
 
+
+/*
+ *************************************************
+ * Running the server
+ *************************************************
+ */
 server.listen(port, '0.0.0.0', (err) => {
   if (err) {
     console.error(err);

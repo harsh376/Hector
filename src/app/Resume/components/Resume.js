@@ -1,11 +1,31 @@
 /* eslint-disable max-len */
 import React from 'react';
+import Button from 'react-bootstrap/lib/Button';
 
 // TODO: Add tests
+
+let pdfUrl = '../static/Resume_Harsh_Verma.pdf';
+let wordUrl = '../static/Resume_Harsh_Verma.docx';
+if (process.env.BROWSER) {
+  pdfUrl = require('file?name=Resume_Harsh_Verma.pdf!../static/Resume_Harsh_Verma.pdf');
+  wordUrl = require('file?name=Resume_Harsh_Verma.docx!../static/Resume_Harsh_Verma.docx');
+}
 
 function Resume() {
   return (
     <div className="resume">
+      <div className="download-resume">
+        <div className="download-option">
+          <form action={pdfUrl} method="GET">
+            <Button type="submit" bsStyle="primary">PDF</Button>
+          </form>
+        </div>
+        <div className="download-option">
+          <form action={wordUrl} method="GET">
+            <Button type="submit" bsStyle="primary">Word</Button>
+          </form>
+        </div>
+      </div>
       <div className="resume-section">
         <h5>EDUCATION</h5>
         <span className="resume-education">University of Toronto, St. George Campus</span>

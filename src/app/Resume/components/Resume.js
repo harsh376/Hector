@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/lib/Button';
 
 let pdfUrl = '../static/Resume_Harsh_Verma.pdf';
 let wordUrl = '../static/Resume_Harsh_Verma.docx';
-if (process.env.BROWSER) {
+if (process.env.BROWSER || process.env.NODE_ENV === 'production') {
   pdfUrl = require('file?name=Resume_Harsh_Verma.pdf!../static/Resume_Harsh_Verma.pdf');
   wordUrl = require('file?name=Resume_Harsh_Verma.docx!../static/Resume_Harsh_Verma.docx');
 }

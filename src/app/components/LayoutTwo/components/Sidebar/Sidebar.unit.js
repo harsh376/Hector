@@ -46,6 +46,7 @@ describe('LayoutTwo: <Sidebar />', () => {
         'app.backToHome': 'Go back to Home',
         'app.aboutme': 'About me',
         'app.resume': 'Resume',
+        'app.portal': 'Portal',
         'app.projects': 'Projects',
         'app.language': 'Language',
         'app.english': 'English',

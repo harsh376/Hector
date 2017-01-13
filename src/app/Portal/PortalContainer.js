@@ -1,12 +1,21 @@
 import React from 'react';
 
-import Portal from './components/Portal';
+import Signin from './components/Signin';
+import Signup from './components/Signup';
 
 // TODO: Add tests for component
 
 function PortalContainer() {
   return (
-    <Portal />
+    <div>
+      <Signin />
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <Signup />
+    </div>
   );
 }
 

@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import App from './App/App';
 import NoMatchContainer from './NoMatch/NoMatchContainer';
 import ResumeContainer from './Resume/ResumeContainer';
+import PortalContainer from './Portal/PortalContainer';
 // import ProjectsContainer from './Projects/ProjectsContainer';
 
 import configureStore from './store/configureStore';
@@ -50,6 +51,7 @@ const store = configureStore(rootReducer, initialState);
 const routes = (
   <Route path="/" component={App}>
     <Route path="resume" component={ResumeContainer} />
+    <Route path="portal" component={PortalContainer} />
 {/*    <Route path="projects" component={ProjectsContainer} />*/}
     <Route path="*" component={NoMatchContainer} />
   </Route>

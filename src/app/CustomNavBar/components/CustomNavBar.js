@@ -22,6 +22,10 @@ const componentMessages = defineMessages({
     id: 'app.resume',
     defaultMessage: 'Resume',
   },
+  portal: {
+    id: 'app.portal',
+    defaultMessage: 'Portal',
+  },
   projects: {
     id: 'app.projects',
     defaultMessage: 'Projects',
@@ -42,6 +46,7 @@ const componentMessages = defineMessages({
 
 const items = [
   { path: '/resume', label: 'resume' },
+  { path: '/portal', label: 'portal' },
   // { path: '/projects', label: 'projects' },
 ];
 

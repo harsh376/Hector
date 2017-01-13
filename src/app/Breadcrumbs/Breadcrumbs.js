@@ -14,6 +14,10 @@ const componentMessages = defineMessages({
     id: 'app.resume',
     defaultMessage: 'Resume',
   },
+  portal: {
+    id: 'app.portal',
+    defaultMessage: 'Portal',
+  },
   projects: {
     id: 'app.projects',
     defaultMessage: 'Projects',

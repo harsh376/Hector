@@ -2,28 +2,30 @@ import React from 'react';
 import {
   Grid,
   Row,
+  Button,
 } from 'react-bootstrap';
 import { bootstrapUtils } from 'react-bootstrap/lib/utils';
 
+bootstrapUtils.addStyle(Row, 'top');
 bootstrapUtils.addStyle(Row, 'custom');
 bootstrapUtils.addStyle(Row, 'social');
 
 let imageUrl;
+let pdfUrl = './static/Resume_Harsh_Verma.pdf';
 
 // TODO: Add loader to webpack config files
 if (process.env.BROWSER || process.env.NODE_ENV === 'production') {
   imageUrl = require('file!./static/profile_pic.jpg');
+  pdfUrl = require('file?name=Resume_Harsh_Verma.pdf!./static/Resume_Harsh_Verma.pdf');
 }
 
 /* eslint-disable max-len */
-const intro1 = 'My name is Harsh. I am a 4th year Computer Engineering student at the University of Toronto. I recently finished a 15 month long internship as a full-stack software developer and am now seeking a full-time sofware developer position starting in summer 2017.';
-const intro2 = 'My motivation behind creating this site was to use this as a playground for experimenting with technologies that I was interested in as well as to consolidate some of my learnings from my internship. Some of the tech/tooling used for creating this site: React, Redux, Express, Webpack, Docker.';
-const intro3 = 'Feel free to contact me via mail or on any of the social networking platforms. Cheers!';
+const aboutMe = 'Senior Year Computer Engineering, University of Toronto. Full-stack developer. Interested in frontend web technologies, crawlers. Love playing football.';
 /* eslint-enable max-len */
 
 const gridInstance = (
   <Grid>
-    <Row className="show-grid">
+    <Row bsStyle="top">
       <img
         src={imageUrl}
         className="image-profile-pic align-center"
@@ -31,13 +33,6 @@ const gridInstance = (
       />
     </Row>
     <Row bsStyle="social">
-      <a
-        className="social linkFacebook"
-        target="_blank"
-        href="https://www.facebook.com/harsh376"
-      >
-          <i className="fa fa-facebook-official fa-3x" aria-hidden="true" />
-      </a>
 
       <a
         className="social linkBlack"
@@ -72,12 +67,18 @@ const gridInstance = (
     </Row>
     <Row bsStyle="custom">
       <div className="intro-text">
-        <h4 className="intro-heading">Who am I?</h4>
-        <p>{intro1}</p>
-        <p>{intro2}</p>
-        <p>{intro3}</p>
+        <h4 className="intro-heading">{aboutMe}</h4>
       </div>
     </Row>
+
+    <Row bsStyle="custom">
+      <div>
+        <form action={pdfUrl} method="GET" target="_blank">
+          <Button type="submit" bsStyle="primary">Resume</Button>
+        </form>
+      </div>
+    </Row>
+
   </Grid>
 );
 

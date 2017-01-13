@@ -23,7 +23,7 @@ describe('LayoutTwo: <Sidebar />', () => {
 
     expect(wrapper.find('.locales').children()).to.have.length(2);
     const localeKeys = wrapper.find('.locales').children().map(node => node.key());
-    expect(localeKeys).to.deep.equal(['en', 'it']);
+    expect(localeKeys).to.deep.equal(['en', 'fr']);
   });
 
   it('calls updateLocale', () => {
@@ -45,11 +45,10 @@ describe('LayoutTwo: <Sidebar />', () => {
       messages: {
         'app.backToHome': 'Go back to Home',
         'app.aboutme': 'About me',
-        'app.resume': 'Resume',
         'app.projects': 'Projects',
         'app.language': 'Language',
         'app.english': 'English',
-        'app.italian': 'Italian',
+        'app.french': 'French',
       },
     });
   });

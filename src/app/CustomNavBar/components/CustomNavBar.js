@@ -18,10 +18,6 @@ import translations from '../../translations/translations';
 
 // Needed for extracting text tagged for translations
 const componentMessages = defineMessages({
-  resume: {
-    id: 'app.resume',
-    defaultMessage: 'Resume',
-  },
   projects: {
     id: 'app.projects',
     defaultMessage: 'Projects',
@@ -34,14 +30,13 @@ const componentMessages = defineMessages({
     id: 'app.english',
     defaultMessage: 'English',
   },
-  languageItalian: {
-    id: 'app.italian',
-    defaultMessage: 'Italian',
+  languageFrench: {
+    id: 'app.french',
+    defaultMessage: 'French',
   },
 });
 
 const items = [
-  { path: '/resume', label: 'resume' },
   // { path: '/projects', label: 'projects' },
 ];
 
@@ -100,10 +95,10 @@ class CustomNavBar extends React.Component {
               </MenuItem>
 
               <MenuItem
-                eventKey="it"
+                eventKey="fr"
                 onSelect={this.changeLocale}
               >
-                {this.props.intl.formatMessage(componentMessages.languageItalian)}
+                {this.props.intl.formatMessage(componentMessages.languageFrench)}
               </MenuItem>
 
             </NavDropdown>

@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 // import { isLoggedIn } from './auth';
 import App from './App/App';
 import NoMatchContainer from './NoMatch/NoMatchContainer';
-import ResumeContainer from './Resume/ResumeContainer';
 // import ProjectsContainer from './Projects/ProjectsContainer';
 
 import configureStore from './store/configureStore';
@@ -16,10 +15,10 @@ import rootReducer from './reducers/index';
 import { addLocaleData } from 'react-intl';
 import ConnectedIntlProvider from './ConnectedIntlProvider/ConnectedIntlProvider';
 import translations from './translations/translations';
-import it from 'react-intl/locale-data/it';
+import fr from 'react-intl/locale-data/fr';
 
 // TODO: Move initialization into separate file
-addLocaleData(it);
+addLocaleData(fr);
 
 const initialState = {
   intl: {
@@ -49,7 +48,6 @@ const store = configureStore(rootReducer, initialState);
 // is mounted (i.e on refresh), and not when the route changes
 const routes = (
   <Route path="/" component={App}>
-    <Route path="resume" component={ResumeContainer} />
 {/*    <Route path="projects" component={ProjectsContainer} />*/}
     <Route path="*" component={NoMatchContainer} />
   </Route>

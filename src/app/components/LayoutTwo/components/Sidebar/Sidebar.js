@@ -52,7 +52,7 @@ export default class Sidebar extends React.Component {
   }
 
   render() {
-    const locales = ['en', 'it'];
+    const locales = ['en', 'fr'];
     const localeNodes = locales.map(locale =>
       <li key={locale}>
         <input type="button" value={locale} onClick={this.changeLocale} />

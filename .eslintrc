@@ -6,5 +6,12 @@
     "it": false,
     "before": false,
     "beforeEach": false,
+    "after": false,
+    "afterEach": false,
+    "expect": false,
+    "jest": false,
+  },
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
   }
 }

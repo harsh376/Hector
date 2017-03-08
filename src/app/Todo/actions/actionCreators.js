@@ -33,14 +33,14 @@ export function fetchItems() {
 
     return fetch('/api/items', { credentials: 'include' })
     .then(
-      response => {
+      (response) => {
         if (response.ok) {
           return response.json();
         }
         throw new Error(response.statusText);
-      }
+      },
     )
-    .then(items => dispatch(fetchItemsSuccess(items)))
+    .then(data => dispatch(fetchItemsSuccess(data.items)))
     .catch(e => dispatch(fetchItemsFailure(e)));
   };
 }
@@ -82,12 +82,12 @@ export function deleteItem(id) {
       credentials: 'include',
     })
     .then(
-      response => {
+      (response) => {
         if (response.ok) {
           return response.json();
         }
         throw new Error(response.statusText);
-      }
+      },
     )
     .then(item => dispatch(deleteItemSuccess(item.id)))
     .catch(e => dispatch(deleteItemFailure(id, e)));
@@ -136,12 +136,12 @@ export function addItem(itemName) {
       }),
     })
     .then(
-      response => {
+      (response) => {
         if (response.ok) {
           return response.json();
         }
         throw new Error(response.statusText);
-      }
+      },
     )
     .then(item => dispatch(addItemSuccess(item)))
     .catch(e => dispatch(addItemFailure(e)));
@@ -191,12 +191,12 @@ export function updateItem(id, value) {
       }),
     })
     .then(
-      response => {
+      (response) => {
         if (response.ok) {
           return response.json();
         }
         throw new Error(response.statusText);
-      }
+      },
     )
     .then(item => dispatch(updateItemSuccess(item)))
     .catch(e => dispatch(updateItemFailure(id, e)));

@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 // import { isLoggedIn } from './auth';
 import App from './App/App';
 import NoMatchContainer from './NoMatch/NoMatchContainer';
-// import ProjectsContainer from './Projects/ProjectsContainer';
+import ProjectsContainer from './Projects/ProjectsContainer';
 
 import configureStore from './store/configureStore';
 import rootReducer from './reducers/index';
@@ -48,7 +48,7 @@ const store = configureStore(rootReducer, initialState);
 // is mounted (i.e on refresh), and not when the route changes
 const routes = (
   <Route path="/" component={App}>
-{/*    <Route path="projects" component={ProjectsContainer} />*/}
+    <Route path="projects" component={ProjectsContainer} />
     <Route path="*" component={NoMatchContainer} />
   </Route>
 );

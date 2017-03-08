@@ -2,13 +2,13 @@
 
 ---
 
-### Usage
-
-**Installation**
+### Installation
 
 `yarn`
 
-#### Dev
+---
+
+### Dev
 
 **Running the application**
 
@@ -18,23 +18,33 @@
 
 `yarn run start`
 
-**Running tests**
+or
 
-`yarn est`
+`yarn run start:noauth`
 
-**Adding npm dependencies**
+---
 
-`yarn add <package>`
+### Production
 
-#### Prod
+`nvm use`
 
 `yarn run deploy`
 
 ---
 
-### Docker
+### Tests
 
-#### Docker: dev
+`yarn test`
+
+---
+
+### Managing dependencies
+
+`yarn add <package>`
+
+---
+
+### Docker
 
 **Need node_modules since we are mounting the directory**
 
@@ -53,6 +63,10 @@
 `docker login`
 
 `docker push harsh376/<imageName>`
+
+**Run container**
+
+`docker run -p 49160:3000 -d harsh376/hector:tag`
 
 ---
 

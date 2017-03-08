@@ -6,18 +6,12 @@ import {
 } from 'react-bootstrap';
 import { bootstrapUtils } from 'react-bootstrap/lib/utils';
 
+import imageUrl from './static/profile_pic.jpg';
+import pdfUrl from './static/Resume_Harsh_Verma.pdf';
+
 bootstrapUtils.addStyle(Row, 'top');
 bootstrapUtils.addStyle(Row, 'custom');
 bootstrapUtils.addStyle(Row, 'social');
-
-let imageUrl;
-let pdfUrl = './static/Resume_Harsh_Verma.pdf';
-
-// TODO: Add loader to webpack config files
-if (process.env.BROWSER || process.env.NODE_ENV === 'production') {
-  imageUrl = require('file!./static/profile_pic.jpg');
-  pdfUrl = require('file?name=Resume_Harsh_Verma.pdf!./static/Resume_Harsh_Verma.pdf');
-}
 
 /* eslint-disable max-len */
 const aboutMe = 'Senior Year Computer Engineering, University of Toronto. Full-stack developer. Interested in frontend web technologies, crawlers. Love playing football.';

@@ -2,13 +2,7 @@ import React from 'react';
 
 import LayoutBootstrap from '../LayoutBootstrap/LayoutBootstrap';
 
-// for unit test, need this default value
-let imageUrl = '/static/google_signin.png';
-
-// TODO: Add loader to webpack config files
-if (process.env.BROWSER) {
-  imageUrl = require('file!./static/google_signin.png');
-}
+import imageUrl from './static/google_signin.png';
 
 export default class Auth extends React.Component {
   componentDidMount() {

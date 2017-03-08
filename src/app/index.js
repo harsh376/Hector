@@ -14,7 +14,7 @@ import rootReducer from './reducers/index';
 
 import { addLocaleData } from 'react-intl';
 import ConnectedIntlProvider from './ConnectedIntlProvider/ConnectedIntlProvider';
-import translations from './translations/translations';
+import translations from './translations/translations.json';
 import fr from 'react-intl/locale-data/fr';
 
 // TODO: Move initialization into separate file

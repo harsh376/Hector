@@ -14,7 +14,7 @@ import {
   injectIntl,
 } from 'react-intl';
 
-import translations from '../../translations/translations';
+import translations from '../../translations/translations.json';
 
 // Needed for extracting text tagged for translations
 const componentMessages = defineMessages({

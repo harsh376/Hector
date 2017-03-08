@@ -45,7 +45,7 @@ const navOptions = items.map(item =>
     <NavItem eventKey={item.label}>
       <FormattedMessage {...componentMessages[item.label]} />
     </NavItem>
-  </LinkContainer>
+  </LinkContainer>,
 );
 
 // TODO: Add tests for `CustomNavBar` component

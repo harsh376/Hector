@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Sidebar from '../Sidebar/Sidebar';
-import randomText from '../../constants/randomText';
 
 function LayoutOne({ user, content }) {
   return (
@@ -17,21 +16,21 @@ function LayoutOne({ user, content }) {
         <Sidebar className="sidebarOne" />
 
         <div className="contentOne">
-          {content || <div>{randomText.long}</div>}
+          {content}
         </div>
       </div>
 
-      <div className="footer"></div>
+      <div className="footer" />
     </div>
   );
 }
 
 LayoutOne.propTypes = {
-  user: React.PropTypes.object,
+  user: React.PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
   content: React.PropTypes.oneOfType([
     React.PropTypes.arrayOf(React.PropTypes.node),
     React.PropTypes.node,
-  ]),
+  ]).isRequired,
 };
 
 export default LayoutOne;

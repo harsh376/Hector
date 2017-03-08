@@ -29,7 +29,6 @@ export class TodoContainer extends React.Component {
       <div>
         <Button bsStyle="primary" onClick={this.props.fetchItems}>Refresh items</Button>
         <input
-          ref="newItem"
           type="text"
           placeholder="Add new item"
           onKeyUp={this.handleEnter}
@@ -48,11 +47,16 @@ export class TodoContainer extends React.Component {
 
 TodoContainer.propTypes = {
   isFetching: React.PropTypes.bool,
-  data: React.PropTypes.array,
+  data: React.PropTypes.arrayOf(React.PropTypes.object),
   fetchItems: React.PropTypes.func.isRequired,
   deleteItem: React.PropTypes.func.isRequired,
   addItem: React.PropTypes.func.isRequired,
   updateItem: React.PropTypes.func.isRequired,
+};
+
+TodoContainer.defaultProps = {
+  isFetching: false,
+  data: [],
 };
 
 function mapStateToProps(state) {

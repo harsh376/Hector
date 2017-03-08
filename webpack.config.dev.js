@@ -62,6 +62,7 @@ const rules = [
 ];
 
 module.exports = {
+  devtool: 'eval',
   context: sourcePath,
   entry: [
     'webpack-hot-middleware/client?reload=true',

@@ -35,7 +35,7 @@ export function upsert(url, params, data, headers) {
   const deferred = q.defer();
 
   makeRequest('GET', url, params, null, headers)
-    .then(resp1 => {
+    .then((resp1) => {
       if (resp1.length) {
         const detailUrl = `${url}/${resp1[0].id}`;
         makeRequest('PATCH', detailUrl, null, data, headers)

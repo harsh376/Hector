@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../../stylesheets/Item.scss';
+
 function Item({ id, value, deleteItem, updateItem }) {
   return (
     <div className="item">
@@ -14,10 +16,10 @@ function Item({ id, value, deleteItem, updateItem }) {
 }
 
 Item.propTypes = {
-  id: React.PropTypes.string,
-  value: React.PropTypes.string,
-  deleteItem: React.PropTypes.func,
-  updateItem: React.PropTypes.func,
+  id: React.PropTypes.string.isRequired,
+  value: React.PropTypes.string.isRequired,
+  deleteItem: React.PropTypes.func.isRequired,
+  updateItem: React.PropTypes.func.isRequired,
 };
 
 export default Item;

@@ -6,6 +6,7 @@ import {
 } from 'react-bootstrap';
 import { bootstrapUtils } from 'react-bootstrap/lib/utils';
 
+import './stylesheets/Home.scss';
 import imageUrl from './static/profile_pic.jpg';
 import pdfUrl from './static/Resume_Harsh_Verma.pdf';
 
@@ -31,6 +32,7 @@ const gridInstance = (
       <a
         className="social linkBlack"
         target="_blank"
+        rel="noopener noreferrer"
         href="https://www.github.com/harsh376"
       >
         <i className="fa fa-github fa-3x" aria-hidden="true" />
@@ -39,6 +41,7 @@ const gridInstance = (
       <a
         className="social linkLinkedin"
         target="_blank"
+        rel="noopener noreferrer"
         href="https://ca.linkedin.com/in/harsh376"
       >
         <i className="fa fa-linkedin-square fa-3x" aria-hidden="true" />
@@ -47,6 +50,7 @@ const gridInstance = (
       <a
         className="social linkTwitter"
         target="_blank"
+        rel="noopener noreferrer"
         href="https://www.twitter.com/harsh376"
       >
         <i className="fa fa-twitter-square fa-3x" aria-hidden="true" />

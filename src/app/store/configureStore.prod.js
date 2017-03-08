@@ -7,7 +7,7 @@ export default function configureStore(rootReducer, initialState) {
     applyMiddleware(
       thunk,
       remoteActionMiddleware,
-    )
+    ),
   )(createStore);
 
   return createStoreWithMiddleware(rootReducer, initialState);

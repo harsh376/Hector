@@ -8,7 +8,7 @@ import Sidebar from './Sidebar';
 describe('LayoutTwo: <Sidebar />', () => {
   it('renders menu items', () => {
     const wrapper = shallow(
-      <Sidebar updateLocale={data => data} />
+      <Sidebar updateLocale={data => data} />,
     );
 
     expect(wrapper.find('.sidebarContent').children()).to.have.length(2);
@@ -18,7 +18,7 @@ describe('LayoutTwo: <Sidebar />', () => {
 
   it('renders locales', () => {
     const wrapper = shallow(
-      <Sidebar updateLocale={data => data} />
+      <Sidebar updateLocale={data => data} />,
     );
 
     expect(wrapper.find('.locales').children()).to.have.length(2);
@@ -28,13 +28,13 @@ describe('LayoutTwo: <Sidebar />', () => {
 
   it('calls updateLocale', () => {
     let data;
-    const updateLocale = newData => {
+    const updateLocale = (newData) => {
       data = newData;
     };
     const wrapper = mount(
       <IntlProvider locale="en">
         <Sidebar updateLocale={updateLocale} />
-      </IntlProvider>
+      </IntlProvider>,
     );
 
     const enLi = wrapper.find('.locales').childAt(0);

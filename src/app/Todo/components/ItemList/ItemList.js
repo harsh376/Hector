@@ -23,7 +23,7 @@ function ItemList({ list, deleteItem, updateItem }) {
       value={item.name}
       deleteItem={deleteItem}
       updateItem={updateItem}
-    />
+    />,
   );
   return (
     <div>
@@ -33,9 +33,9 @@ function ItemList({ list, deleteItem, updateItem }) {
 }
 
 ItemList.propTypes = {
-  list: React.PropTypes.array,
-  deleteItem: React.PropTypes.func,
-  updateItem: React.PropTypes.func,
+  list: React.PropTypes.arrayOf(React.PropTypes.object),
+  deleteItem: React.PropTypes.func.isRequired,
+  updateItem: React.PropTypes.func.isRequired,
 };
 ItemList.defaultProps = {
   list: [],

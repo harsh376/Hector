@@ -10,6 +10,9 @@
     "afterEach": false,
     "expect": false,
     "jest": false,
+    "document": false,
+    "window": false,
+    "Headers": false,
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],

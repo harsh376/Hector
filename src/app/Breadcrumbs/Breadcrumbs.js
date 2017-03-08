@@ -5,6 +5,8 @@ import {
   FormattedMessage,
 } from 'react-intl';
 
+import './stylesheets/Breadcrumbs.scss';
+
 const componentMessages = defineMessages({
   aboutMe: {
     id: 'app.aboutme',
@@ -28,7 +30,7 @@ const componentMessages = defineMessages({
 
 function Breadcrumbs({ routes }) {
   const newRoutes = [];
-  routes.forEach(item => {
+  routes.forEach((item) => {
     if (item.path !== '/') {
       newRoutes.push(item);
     }
@@ -41,7 +43,7 @@ function Breadcrumbs({ routes }) {
       {depth && (
         <ul className="breadcrumbs-list fixed">
           {newRoutes.map((item, index) =>
-            <li key={index}>
+            <li key={item.path}>
               <Link
                 onlyActiveOnIndex
                 activeClassName="breadcrumb-active"
@@ -50,7 +52,7 @@ function Breadcrumbs({ routes }) {
                 <FormattedMessage {...componentMessages[item.component.title]} />
               </Link>
               {(index + 1) < depth && '/'}
-            </li>
+            </li>,
           )}
         </ul>
       )}
@@ -74,7 +76,7 @@ function Breadcrumbs({ routes }) {
 }
 
 Breadcrumbs.propTypes = {
-  routes: React.PropTypes.arrayOf(React.PropTypes.object),
+  routes: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
 };
 
 export default Breadcrumbs;

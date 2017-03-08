@@ -3,7 +3,7 @@
 import passport from 'passport';
 import { OAuth2Strategy as GoogleStrategy } from 'passport-google-oauth';
 
-import authConfig from '../credentials';
+import authConfig from '../credentials.json';
 import init from '../init';
 import { upsert } from '../../lib/util';
 
@@ -30,7 +30,7 @@ function passportInit() {
       upsert('/users', params, data)
         .then(resp => done(null, resp))
         .catch(err => done(err));
-    }
+    },
   ));
 }
 

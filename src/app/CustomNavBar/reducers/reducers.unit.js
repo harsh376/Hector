@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { updateLocale } from '../actions/action_creators';
+import updateLocale from '../actions/action_creators';
 import reducer from './reducers';
 
 describe('reducers/CustomNavBar', () => {

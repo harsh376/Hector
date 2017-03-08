@@ -16,7 +16,7 @@ describe('Todo: <Item />', () => {
         value={item}
         deleteItem={deleteItem}
         updateItem={updateItem}
-      />
+      />,
     );
 
     const items = wrapper.find('.item');
@@ -39,7 +39,7 @@ describe('Todo: <Item />', () => {
         value={item}
         deleteItem={deleteItem}
         updateItem={updateItem}
-      />
+      />,
     );
 
     const items = wrapper.find('.item');
@@ -63,7 +63,7 @@ describe('Todo: <Item />', () => {
         value={item}
         deleteItem={deleteItem}
         updateItem={updateItem}
-      />
+      />,
     );
 
     const items = wrapper.find('.item');

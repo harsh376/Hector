@@ -10,13 +10,13 @@ import ResultsList from '../ResultsList/ResultsList';
 describe('<Filter />', () => {
   it('renders `ResultsList`', () => {
     const entries = List.of('Ross', 'Rachel', 'Chandler');
-    const filterEntries = (v) => v;
+    const filterEntries = v => v;
     const styles = {
       border: '1px solid',
       width: 400,
     };
     const wrapper = shallow(
-      <Filter input="" entries={entries} filterEntries={filterEntries} />
+      <Filter input="" entries={entries} filterEntries={filterEntries} />,
     );
 
     expect(wrapper.prop('style')).to.deep.equal(styles);

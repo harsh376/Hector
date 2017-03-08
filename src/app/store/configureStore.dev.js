@@ -8,7 +8,7 @@ export default function configureStore(rootReducer, initialState) {
       thunk,
       remoteActionMiddleware,
     ),
-    window.devToolsExtension ? window.devToolsExtension() : f => f
+    window.devToolsExtension ? window.devToolsExtension() : f => f,
   )(createStore);
 
   return createStoreWithMiddleware(rootReducer, initialState);

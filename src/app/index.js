@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
+import { addLocaleData } from 'react-intl';
+import fr from 'react-intl/locale-data/fr';
 
 // TODO: Uncomment on adding `onEnter` to routes
 // import { isLoggedIn } from './auth';
@@ -12,10 +14,8 @@ import ProjectsContainer from './Projects/ProjectsContainer';
 import configureStore from './store/configureStore';
 import rootReducer from './reducers/index';
 
-import { addLocaleData } from 'react-intl';
 import ConnectedIntlProvider from './ConnectedIntlProvider/ConnectedIntlProvider';
 import translations from './translations/translations.json';
-import fr from 'react-intl/locale-data/fr';
 
 // TODO: Move initialization into separate file
 addLocaleData(fr);
@@ -59,5 +59,5 @@ ReactDOM.render(
       <Router history={browserHistory}>{routes}</Router>
     </ConnectedIntlProvider>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );

@@ -1,4 +1,4 @@
-import { UPDATE_LOCALE } from '../constants/actionTypes';
+import UPDATE_LOCALE from '../constants/actionTypes';
 
 function updateLocale(state, newState) {
   return { ...state, ...newState };

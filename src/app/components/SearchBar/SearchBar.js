@@ -23,7 +23,6 @@ export default class SearchBar extends Component {
     return (
       <div style={styles}>
         <input
-          ref="searchInput"
           type="text"
           placeholder="Enter character name"
           onChange={this.handleEnter}

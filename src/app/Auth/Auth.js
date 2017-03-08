@@ -1,14 +1,7 @@
 import React from 'react';
 
 import LayoutBootstrap from '../LayoutBootstrap/LayoutBootstrap';
-
-// for unit test, need this default value
-let imageUrl = '/static/google_signin.png';
-
-// TODO: Add loader to webpack config files
-if (process.env.BROWSER) {
-  imageUrl = require('file!./static/google_signin.png');
-}
+import imageUrl from './static/google_signin.png';
 
 export default class Auth extends React.Component {
   componentDidMount() {
@@ -16,13 +9,10 @@ export default class Auth extends React.Component {
       this.props.fetchAccountDetails();
     }
   }
-  isLoggedIn(user) {
-    return user || false;
-  }
   render() {
     const isLoggedIn = (
       !this.props.enableAuth ||
-      (this.props.enableAuth && this.isLoggedIn(this.props.user))
+      (this.props.enableAuth && this.props.user)
     );
 
     return (
@@ -50,12 +40,19 @@ export default class Auth extends React.Component {
 }
 
 Auth.propTypes = {
-  enableAuth: React.PropTypes.bool,
-  user: React.PropTypes.object,
+  enableAuth: React.PropTypes.bool.isRequired,
+  user: React.PropTypes.object,   // eslint-disable-line react/forbid-prop-types
   children: React.PropTypes.oneOfType([
     React.PropTypes.arrayOf(React.PropTypes.node),
     React.PropTypes.node,
   ]),
   routes: React.PropTypes.arrayOf(React.PropTypes.object),
-  fetchAccountDetails: React.PropTypes.func,
+  fetchAccountDetails: React.PropTypes.func.isRequired,
+};
+
+
+Auth.defaultProps = {
+  user: {},
+  children: null,
+  routes: [],
 };

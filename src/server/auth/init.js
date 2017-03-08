@@ -14,6 +14,6 @@ export default function init() {
   });
 
   passport.deserializeUser((sessionUser, done) =>
-    done(null, sessionUser)
+    done(null, sessionUser),
   );
 }

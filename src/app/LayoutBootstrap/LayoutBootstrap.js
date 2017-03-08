@@ -23,7 +23,11 @@ LayoutBootstrap.propTypes = {
     React.PropTypes.arrayOf(React.PropTypes.node),
     React.PropTypes.node,
   ]),
-  routes: React.PropTypes.arrayOf(React.PropTypes.object),
+  routes: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+};
+
+LayoutBootstrap.defaultProps = {
+  content: null,
 };
 
 export default LayoutBootstrap;

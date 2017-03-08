@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { defineMessages, FormattedMessage } from 'react-intl';
 
-import translations from '../../../../translations/translations';
+import translations from '../../../../translations/translations.json';
 
 // Needed for extracting text tagged for translations
 const componentMessages = defineMessages({
@@ -29,7 +29,7 @@ const nodes = items.map(item =>
     >
       <FormattedMessage {...componentMessages[item.label]} />
     </Link>
-  </li>
+  </li>,
 );
 
 export default class Sidebar extends React.Component {
@@ -56,12 +56,12 @@ export default class Sidebar extends React.Component {
     const localeNodes = locales.map(locale =>
       <li key={locale}>
         <input type="button" value={locale} onClick={this.changeLocale} />
-      </li>
+      </li>,
     );
 
     return (
       <div className="sidebarTwo">
-        <div className="sidebarHeader"></div>
+        <div className="sidebarHeader" />
 
         <ul className="sidebarContent">
           {nodes}

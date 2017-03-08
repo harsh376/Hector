@@ -1,5 +1,4 @@
 import React from 'react';
-import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
 import Item from './Item';
@@ -17,12 +16,12 @@ describe('Todo: <Item />', () => {
         value={item}
         deleteItem={deleteItem}
         updateItem={updateItem}
-      />
+      />,
     );
 
     const items = wrapper.find('.item');
-    expect(items).to.have.length(1);
-    expect(items.find('input').props().value).to.equal('Ross');
+    expect(items.length).toEqual(1);
+    expect(items.find('input').props().value).toEqual('Ross');
   });
 
   it('calls deleteItem correctly', () => {
@@ -40,13 +39,13 @@ describe('Todo: <Item />', () => {
         value={item}
         deleteItem={deleteItem}
         updateItem={updateItem}
-      />
+      />,
     );
 
     const items = wrapper.find('.item');
-    expect(delVal).to.equal('abc');
+    expect(delVal).toEqual('abc');
     items.find('button').simulate('click');
-    expect(delVal).to.equal(someId);
+    expect(delVal).toEqual(someId);
   });
 
   it('calls updateItem correctly', () => {
@@ -64,13 +63,13 @@ describe('Todo: <Item />', () => {
         value={item}
         deleteItem={deleteItem}
         updateItem={updateItem}
-      />
+      />,
     );
 
     const items = wrapper.find('.item');
-    expect(updateVal).to.deep.equal({});
+    expect(updateVal).toEqual({});
     items.find('input').simulate('change', { target: { value: 'Ross' } });
-    expect(updateVal).to.deep.equal({
+    expect(updateVal).toEqual({
       id: someId,
       value: 'Ross',
     });

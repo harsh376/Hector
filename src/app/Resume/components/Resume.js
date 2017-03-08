@@ -2,14 +2,9 @@
 import React from 'react';
 import Button from 'react-bootstrap/lib/Button';
 
-// TODO: Add tests
-
-let pdfUrl = '../static/Resume_Harsh_Verma.pdf';
-let wordUrl = '../static/Resume_Harsh_Verma.docx';
-if (process.env.BROWSER || process.env.NODE_ENV === 'production') {
-  pdfUrl = require('file?name=Resume_Harsh_Verma.pdf!../static/Resume_Harsh_Verma.pdf');
-  wordUrl = require('file?name=Resume_Harsh_Verma.docx!../static/Resume_Harsh_Verma.docx');
-}
+import '../stylesheets/Resume.scss';
+import pdfUrl from '../static/Resume_Harsh_Verma.pdf';
+import wordUrl from '../static/Resume_Harsh_Verma.docx';
 
 function Resume() {
   return (
@@ -49,7 +44,7 @@ function Resume() {
       <div className="resume-section">
         <h5>WORK EXPERIENCE</h5>
         <ul className="resume-list">
-          <li><a target="_blank" href="http://www.eventmobi.com">EventMobi</a> - Software developer (May 2015 - August 2016)
+          <li><a target="_blank" rel="noopener noreferrer" href="http://www.eventmobi.com">EventMobi</a> - Software developer (May 2015 - August 2016)
             <ul className="resume-list">
               <li>Was part of the engineering team that was responsible for the real-time user engagement products of the company</li>
               <li>During my time there, delivered three new products: private chat, group discussions and live display(digital signage). Was also responsible for maintaining other products such as live polling, event surveys and gamification.</li>
@@ -67,14 +62,14 @@ function Resume() {
         <ul className="resume-list">
           <li>Web development
             <ul className="resume-list">
-              <li><a target="_blank" href="https://github.com/harsh376/Hector">ReactJS application</a></li>
-              <li>Used ExpressJS for serving the application, and python-flask for the <a target="_blank" href="https://github.com/harsh376/Ajax">API layer</a></li>
+              <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/harsh376/Hector">ReactJS application</a></li>
+              <li>Used ExpressJS for serving the application, and python-flask for the <a target="_blank" rel="noopener noreferrer" href="https://github.com/harsh376/Ajax">API layer</a></li>
               <li>Continuously developing reusable React components (for e.g image uploader, drag-drop, location)</li>
               <li>Used Redux for maintaining, updating the state of the application in accordance with the concept of unidirectional data flow</li>
               <li>Used Docker in conjunction with Elastic Beanstalk to deploy the multi-containerized application</li>
             </ul>
           </li>
-          <li><a target="_blank" href="https://github.com/harsh376/datasci">Data Analysis</a>
+          <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/harsh376/datasci">Data Analysis</a>
             <ul className="resume-list">
               <li>Twitter stream analysis: Sentiment score analysis, top ten hashtags</li>
               <li>Similarity matrix: Term-document vectors to determine similarity between documents by matrix multiplication</li>

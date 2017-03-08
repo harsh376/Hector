@@ -16,7 +16,7 @@ function Sidebar({ className }) {
       >
         {item.label}
       </Link>
-    </li>
+    </li>,
   );
 
   return (
@@ -29,7 +29,7 @@ function Sidebar({ className }) {
 }
 
 Sidebar.propTypes = {
-  className: React.PropTypes.string,
+  className: React.PropTypes.string.isRequired,
 };
 
 export default Sidebar;

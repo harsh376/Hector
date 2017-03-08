@@ -1,19 +1,11 @@
 import React from 'react';
 import 'bootstrap/less/bootstrap.less';
 import { connect } from 'react-redux';
+import 'font-awesome/scss/font-awesome.scss';
+import '../stylesheets/layout.scss';
 
 import Auth from '../Auth/Auth';
-import { fetchAccountDetails } from '../Auth/actions/actionCreators';
-
-// http://stackoverflow.com/questions/30347722/importing-css-files-in-isomorphic-react-components
-if (process.env.BROWSER) {
-  require('font-awesome/scss/font-awesome.scss');
-  require('../stylesheets/layout.scss');
-  require('../Breadcrumbs/stylesheets/Breadcrumbs.scss');
-  require('../Todo/stylesheets/Item.scss');
-  require('../Resume/stylesheets/Resume.scss');
-  require('../Home/stylesheets/Home.scss');
-}
+import fetchAccountDetails from '../Auth/actions/actionCreators';
 
 const enableAuth = process.env.USER_AUTH === 'enabled';
 
@@ -26,23 +18,25 @@ function App(props) {
         fetchAccountDetails={props.fetchAccountDetails}
         routes={props.routes}
       >
-          {props.children}
+        {props.children}
       </Auth>
     </div>
   );
 }
 
 App.propTypes = {
-  user: React.PropTypes.object,
+  user: React.PropTypes.object,   // eslint-disable-line react/forbid-prop-types
   children: React.PropTypes.oneOfType([
     React.PropTypes.arrayOf(React.PropTypes.node),
     React.PropTypes.node,
   ]),
   routes: React.PropTypes.arrayOf(React.PropTypes.object),
-  fetchAccountDetails: React.PropTypes.func,
+  fetchAccountDetails: React.PropTypes.func.isRequired,
 };
 App.defaultProps = {
+  user: {},
   children: null,
+  routes: [],
 };
 
 function mapStateToProps(state) {

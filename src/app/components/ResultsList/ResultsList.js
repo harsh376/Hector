@@ -5,7 +5,7 @@ import Item from '../Item/Item';
 
 function ResultsList({ list }) {
   const itemNodes = list.map(item =>
-    <Item value={item} key={item} />
+    <Item value={item} key={item} />,
   );
   return (
     <div>

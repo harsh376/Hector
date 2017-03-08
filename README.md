@@ -6,7 +6,7 @@
 
 **Installation**
 
-`npm install`
+`yarn`
 
 #### Dev
 
@@ -14,23 +14,21 @@
 
 `nvm use`
 
-`npm run build:dev`
+`yarn run build:dev`
 
-`npm run start`
+`yarn run start`
 
 **Running tests**
 
-`npm test`
+`yarn est`
 
 **Adding npm dependencies**
 
-`npm install --save-dev <package>`
-
-`npm run shonkwrap`
+`yarn add <package>`
 
 #### Prod
 
-`npm run deploy`
+`yarn run deploy`
 
 ---
 
@@ -40,7 +38,7 @@
 
 **Need node_modules since we are mounting the directory**
 
-`cd ~/Desktop/dev/hector && npm install`
+`cd ~/Desktop/dev/hector && yarn`
 
 **Build image**
 
@@ -55,23 +53,6 @@
 `docker login`
 
 `docker push harsh376/<imageName>`
-
----
-
-### Component hierarchy**
-
-- App
-  + Auth
-    * LayoutTwo
-      - SidebarContainer
-        + Sidebar
-          * div: sidebarHeader
-          * div: sidebarContent
-          * div: sidebarFooter
-      - div: contentTwo
-        + TodoPageContainer
-        + FilterPageContainer
-        + NoMatchContainer
 
 ---
 

@@ -1,13 +1,16 @@
-FROM node:5.2.0
+FROM node:7.4.0
+
+RUN npm install --global yarn
 
 WORKDIR /usr/src/app
 
 ADD package.json /usr/src/app/package.json
-RUN npm install
+ADD yarn.lock /usr/src/app/yarn.lock
+RUN yarn
 ADD . /usr/src/app
 
 ENV DOCKER_ENABLED=true
 
 EXPOSE 4000
 
-CMD ["sh", "-c", "npm run deploy"]
+CMD ["sh", "-c", "yarn run deploy"]

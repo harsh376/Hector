@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Sidebar from './Sidebar/Sidebar';
-import { updateLocale } from '../../../actions/action_creators';
+import { updateLocale } from '../../../CustomNavBar/actions/action_creators';
 
 function SidebarContainer(props) {
   return (
@@ -17,5 +17,5 @@ SidebarContainer.propTypes = {
 export default connect(null,
   { updateLocale },
   null,
-  { pure: false }
+  { pure: false },
 )(SidebarContainer);

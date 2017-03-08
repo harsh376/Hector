@@ -26,7 +26,7 @@ describe('<Auth />', () => {
         fetchAccountDetails={stub}
       >
         Hello
-      </Auth>
+      </Auth>,
     );
 
     expect(wrapper.find(LayoutBootstrap).at(0).props().content).to.equal('Hello');
@@ -40,7 +40,7 @@ describe('<Auth />', () => {
         enableAuth
         user={user}
         fetchAccountDetails={stub}
-      />
+      />,
     );
 
     expect(wrapper.find('.loggedOut')).to.have.length(1);
@@ -51,7 +51,7 @@ describe('<Auth />', () => {
           alt="Sign in with Google"
           height="40"
         />
-      </a>
+      </a>,
     )).to.equal(true);
   });
 
@@ -65,7 +65,7 @@ describe('<Auth />', () => {
         fetchAccountDetails={stub}
       >
         Hello
-      </Auth>
+      </Auth>,
     );
 
     expect(wrapper.find(LayoutBootstrap).at(0).props().content).to.equal('Hello');

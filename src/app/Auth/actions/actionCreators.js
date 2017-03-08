@@ -1,7 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import {
-  FETCH_USER,
-} from '../constants/actionTypes';
+import FETCH_USER from '../constants/actionTypes';
 
 function fetchUserSuccess(user) {
   return {
@@ -17,17 +15,17 @@ function fetchUserFailure(error) {
   };
 }
 
-export function fetchAccountDetails() {
+export default function fetchAccountDetails() {
   return function getUser(dispatch) {
     dispatch({ type: `${FETCH_USER}_REQUEST` });
 
     return fetch('/account', { credentials: 'include' }).then(
-      response => {
+      (response) => {
         if (response.ok) {
           return response.json();
         }
         throw new Error(response.statusText);
-      }
+      },
     )
     .then(user => dispatch(fetchUserSuccess(user)))
     .catch(e => dispatch(fetchUserFailure(e)));

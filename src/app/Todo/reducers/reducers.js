@@ -21,7 +21,7 @@ function fetchItemRequest(state) {
  */
 
 function removeFromList(list, itemId) {
-  for (let i = list.length - 1; i >= 0; i--) {
+  for (let i = list.length - 1; i >= 0; i -= 1) {
     if (list[i].id === itemId) {
       list.splice(i, 1);
     }
@@ -67,7 +67,7 @@ function deleteItemFailure(state, itemId, error) {
 
 function addToList(list, item) {
   let itemAdded = false;
-  for (let i = 0; i < list.length && !itemAdded; i++) {
+  for (let i = 0; i < list.length && !itemAdded; i += 1) {
     if (list[i].order >= item.order) {
       list.splice(i, 0, item);
       itemAdded = true;
@@ -115,7 +115,7 @@ function addItemFailure(state, error) {
  */
 
 function updateItem(list, item) {
-  for (let i = list.length - 1; i >= 0; i--) {
+  for (let i = list.length - 1; i >= 0; i -= 1) {
     if (list[i].id === item.id) {
       Object.assign(list[i], item);
     }

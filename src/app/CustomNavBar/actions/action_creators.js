@@ -1,6 +1,6 @@
-import { UPDATE_LOCALE } from '../constants/actionTypes';
+import UPDATE_LOCALE from '../constants/actionTypes';
 
-export function updateLocale(payload) {
+export default function updateLocale(payload) {
   return {
     type: UPDATE_LOCALE,
     payload,

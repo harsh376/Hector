@@ -1,5 +1,3 @@
-import { expect } from 'chai';
-
 import reducer from './reducers';
 import {
   FETCH_ITEMS,
@@ -22,7 +20,7 @@ describe('Todo: reducers', () => {
     };
     const nextState = reducer(initialState, action);
 
-    expect(nextState).to.deep.equal({
+    expect(nextState).toEqual({
       isFetching: true,
       error: null,
     });
@@ -39,7 +37,7 @@ describe('Todo: reducers', () => {
     };
     const nextState = reducer(initialState, action);
 
-    expect(nextState).to.deep.equal({
+    expect(nextState).toEqual({
       isFetching: false,
       data: ['one', 'two', 'three'],
       error: null,
@@ -57,7 +55,7 @@ describe('Todo: reducers', () => {
     };
     const nextState = reducer(initialState, action);
 
-    expect(nextState).to.deep.equal({
+    expect(nextState).toEqual({
       isFetching: false,
       error: 'some error',
     });
@@ -78,7 +76,7 @@ describe('Todo: reducers', () => {
     };
     const nextState = reducer(initialState, action);
 
-    expect(nextState).to.deep.equal({
+    expect(nextState).toEqual({
       error: null,
       isDeleting: true,
       deleteItem: id,
@@ -100,7 +98,7 @@ describe('Todo: reducers', () => {
     };
     const nextState = reducer(initialState, action);
 
-    expect(nextState).to.deep.equal({
+    expect(nextState).toEqual({
       error: null,
       isDeleting: false,
       deleteItem: itemId,
@@ -121,7 +119,7 @@ describe('Todo: reducers', () => {
     };
     const nextState = reducer(initialState, action);
 
-    expect(nextState).to.deep.equal({
+    expect(nextState).toEqual({
       error: 'some error',
       isDeleting: false,
       deleteItem: itemId,
@@ -142,7 +140,7 @@ describe('Todo: reducers', () => {
     };
     const nextState = reducer(initialState, action);
 
-    expect(nextState).to.deep.equal({
+    expect(nextState).toEqual({
       error: null,
       isAdding: true,
     });
@@ -166,7 +164,7 @@ describe('Todo: reducers', () => {
       data,
     };
     const nextState = reducer(initialState, action);
-    expect(nextState).to.deep.equal({
+    expect(nextState).toEqual({
       error: null,
       isAdding: false,
       data: [
@@ -193,7 +191,7 @@ describe('Todo: reducers', () => {
       data,
     };
     const nextState = reducer(initialState, action);
-    expect(nextState).to.deep.equal({
+    expect(nextState).toEqual({
       error: null,
       isAdding: false,
       data: [
@@ -217,7 +215,7 @@ describe('Todo: reducers', () => {
       data,
     };
     const nextState = reducer(initialState, action);
-    expect(nextState).to.deep.equal({
+    expect(nextState).toEqual({
       error: null,
       isAdding: false,
       data: [
@@ -234,7 +232,7 @@ describe('Todo: reducers', () => {
     };
     const nextState = reducer(initialState, action);
 
-    expect(nextState).to.deep.equal({
+    expect(nextState).toEqual({
       error: 'some error',
       isAdding: false,
     });
@@ -255,7 +253,7 @@ describe('Todo: reducers', () => {
     };
     const nextState = reducer(initialState, action);
 
-    expect(nextState).to.deep.equal({
+    expect(nextState).toEqual({
       error: null,
       isUpdating: true,
       updatingItem: itemId,
@@ -283,7 +281,7 @@ describe('Todo: reducers', () => {
     };
     const nextState = reducer(initialState, action);
 
-    expect(nextState).to.deep.equal({
+    expect(nextState).toEqual({
       error: null,
       isUpdating: false,
       updatingItem: itemId,
@@ -308,7 +306,7 @@ describe('Todo: reducers', () => {
     };
     const nextState = reducer(initialState, action);
 
-    expect(nextState).to.deep.equal({
+    expect(nextState).toEqual({
       error: 'some error',
       isUpdating: false,
       updatingItem: itemId,

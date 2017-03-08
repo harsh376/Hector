@@ -12,7 +12,7 @@ describe('<SearchBar />', () => {
     };
     const newValue = 'Ross';
     const wrapper = shallow(
-      <SearchBar handleEnter={handleEnter} />
+      <SearchBar handleEnter={handleEnter} />,
     );
 
     wrapper.find('input').simulate('change', { target: { value: 'Ross' } });

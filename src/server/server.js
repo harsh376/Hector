@@ -56,7 +56,7 @@ function ensureAuthenticated(req, res, next) {
 // TODO: Move log format into server config file
 // Log requests to stdout
 server.use(
-  morgan(':remote-addr - - :date[clf] :method :url HTTP/:http-version :status -')
+  morgan(':remote-addr - - :date[clf] :method :url HTTP/:http-version :status -'),
 );
 
 if (authEnabled) {
@@ -81,14 +81,14 @@ if (authEnabled) {
  ******************************************
  */
 server.get('/auth/google',
-  passportGoogle.authenticate('google', { scope: ['openid email profile'] })
+  passportGoogle.authenticate('google', { scope: ['openid email profile'] }),
 );
 
 server.get('/auth/google/callback',
   passportGoogle.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
     res.redirect('/');
-  }
+  },
 );
 
 server.get('/account', ensureAuthenticated, (req, res) => {

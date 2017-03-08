@@ -14,7 +14,7 @@ import {
   injectIntl,
 } from 'react-intl';
 
-import translations from '../../translations/translations';
+import translations from '../../translations/translations.json';
 
 // Needed for extracting text tagged for translations
 const componentMessages = defineMessages({
@@ -45,7 +45,7 @@ const navOptions = items.map(item =>
     <NavItem eventKey={item.label}>
       <FormattedMessage {...componentMessages[item.label]} />
     </NavItem>
-  </LinkContainer>
+  </LinkContainer>,
 );
 
 // TODO: Add tests for `CustomNavBar` component

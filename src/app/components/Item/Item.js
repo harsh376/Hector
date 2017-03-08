@@ -9,13 +9,9 @@ function Item({ value }) {
 }
 
 Item.propTypes = {
-  item: React.PropTypes.string,
-  key: React.PropTypes.string,
   value: React.PropTypes.string,
 };
 Item.defaultProps = {
-  item: '',
-  key: '',
   value: '',
 };
 

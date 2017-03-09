@@ -1,1 +1,1 @@
-web: npm run deploy
+web: yarn run deploy:heroku

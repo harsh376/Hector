@@ -8,6 +8,7 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import passport from 'passport';
+import compression from 'compression';
 
 import createRedisClient from './lib/redisClient';
 import webpackConfig from '../../webpack.config.dev';
@@ -56,6 +57,7 @@ function ensureAuthenticated(req, res, next) {
 server.use(
   morgan(':remote-addr - - :date[clf] :method :url HTTP/:http-version :status -'),
 );
+server.use(compression());
 
 if (authEnabled) {
   server.use(cookieParser());
@@ -139,31 +141,20 @@ if (isDeveloping) {
 
   server.use(middleware);
   server.use(webpackHotMiddleware(compiler));
-
-  // serve static assets normally
-  server.use(express.static(path.join(__dirname, '../app')));
-
-  // handle every other route with index.html, which will
-  // contain a script tag to your application's JavaScript
-  // file(s).
-  server.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../app/index.html'));
-  });
 } else {
   console.log('PRODUCTION');
-  server.use(express.static(path.join(__dirname, '../app')));
 
-  server.get('*.js', (req, res, next) => {
-    req.url += '.gz';         // eslint-disable-line no-param-reassign
+  server.get('*.js', (req, res) => {
+    const fileName = `${req.url}.gz`;
     res.set('Content-Encoding', 'gzip');
-    next();
-  });
-
-  // sending file so that on page refresh app doesn't break
-  server.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../app/index.html'));
+    res.sendFile(path.join(__dirname, `../app/${fileName}`));
   });
 }
+
+server.use(express.static(path.join(__dirname, '../app')));
+server.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../app/index.html'));
+});
 
 
 /*

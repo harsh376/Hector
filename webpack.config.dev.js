@@ -62,16 +62,18 @@ const rules = [
 ];
 
 module.exports = {
-  devtool: 'eval',
+  devtool: 'cheap-module-source-map',
   context: sourcePath,
-  entry: [
-    'webpack-hot-middleware/client?reload=true',
-    './index.js',
-    './index.html',
-  ],
+  entry: {
+    hot: 'webpack-hot-middleware/client?reload=true',
+    main: './index.js',
+    html: './index.html',
+    vendor: ['react'],
+  },
   output: {
     path: destPath,
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
+    sourceMapFilename: '[name].map',
   },
   module: {
     rules,
@@ -84,6 +86,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: ['vendor'],
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new ExtractTextPlugin('style.css'),

@@ -30,6 +30,12 @@ or
 
 `yarn run deploy`
 
+#### Deploy
+
+`heroku login`
+
+`git push heroku master`
+
 ---
 
 ### Tests

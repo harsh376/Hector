@@ -12,7 +12,7 @@
     "build:prod": "yarn run clean && yarn run bundle:prod && yarn run build:server",
     "deploy": "yarn run build:prod && NODE_ENV=production PORT=4000 USER_AUTH=disabled node dist/server/server.js",
     "heroku-postbuild": "yarn run build:prod",
-    "deploy:heroku": "NODE_ENV=production PORT=4000 USER_AUTH=disabled node dist/server/server.js",
+    "deploy:heroku": "NODE_ENV=production USER_AUTH=disabled node dist/server/server.js",
     "start": "npm rebuild node-sass && USER_AUTH=enabled babel-node dist/server/server.js",
     "start:noauth": "npm rebuild node-sass && USER_AUTH=disabled babel-node dist/server/server.js",
     "test": "yarn run lint && yarn run jest",

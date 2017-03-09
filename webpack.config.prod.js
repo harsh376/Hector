@@ -3,6 +3,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const sourcePath = path.join(__dirname, './src/app');
 const destPath = path.join(__dirname, './dist/app');
@@ -66,13 +67,15 @@ const rules = [
 module.exports = {
   devtool: 'source-map',
   context: sourcePath,
-  entry: [
-    './index.js',
-    './index.html',
-  ],
+  entry: {
+    main: './index.js',
+    html: './index.html',
+    vendor: ['react'],
+  },
   output: {
     path: destPath,
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
+    sourceMapFilename: '[name].map',
   },
   module: {
     rules,
@@ -85,21 +88,41 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: ['vendor'],
+    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
-      'process.env': Object.keys(process.env).reduce((o, k) => {
-        o[k] = JSON.stringify(process.env[k]);
-        return o;
-      }, {}),
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+        USER_AUTH: JSON.stringify(process.env.USER_AUTH),
+      },
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false,
     }),
     new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        warnings: false,
+      beautify: false,
+      mangle: {
+        screw_ie8: true,
+        keep_fnames: true,
       },
+      compress: {
+        screw_ie8: true,
+      },
+      comments: false,
     }),
     new ExtractTextPlugin({
       filename: 'style.css',
       allChunks: true,
+    }),
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8,
     }),
   ],
 };

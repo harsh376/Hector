@@ -14,8 +14,6 @@ import webpackConfig from '../../webpack.config.dev';
 import ajaxProxyRouter from './lib/ajaxProxyRouter';
 import passportGoogle from './auth/strategies/google';
 
-delete process.env.BROWSER;
-
 const RedisStore = require('connect-redis')(session);
 
 // ENVIRONMENT VARIABLES
@@ -154,6 +152,12 @@ if (isDeveloping) {
 } else {
   console.log('PRODUCTION');
   server.use(express.static(path.join(__dirname, '../app')));
+
+  server.get('*.js', (req, res, next) => {
+    req.url += '.gz';         // eslint-disable-line no-param-reassign
+    res.set('Content-Encoding', 'gzip');
+    next();
+  });
 
   // sending file so that on page refresh app doesn't break
   server.use('*', (req, res) => {

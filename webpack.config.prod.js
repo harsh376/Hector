@@ -3,6 +3,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const sourcePath = path.join(__dirname, './src/app');
 const destPath = path.join(__dirname, './dist/app');
@@ -87,10 +88,10 @@ module.exports = {
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
-      'process.env': Object.keys(process.env).reduce((o, k) => {
-        o[k] = JSON.stringify(process.env[k]);
-        return o;
-      }, {}),
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+        USER_AUTH: JSON.stringify(process.env.USER_AUTH),
+      },
     }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
@@ -100,6 +101,13 @@ module.exports = {
     new ExtractTextPlugin({
       filename: 'style.css',
       allChunks: true,
+    }),
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8,
     }),
   ],
 };

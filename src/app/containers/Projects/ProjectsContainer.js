@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Todo from '../Todo/TodoContainer';
+import Todo from '../../Todo/TodoContainer';
 
 // TODO: Add tests for component
 

@@ -7,14 +7,14 @@ import fr from 'react-intl/locale-data/fr';
 
 // TODO: Uncomment on adding `onEnter` to routes
 // import { isLoggedIn } from './auth';
-import App from './App/App';
-import NoMatchContainer from './NoMatch/NoMatchContainer';
-import ProjectsContainer from './Projects/ProjectsContainer';
+import App from './containers/App/App';
+import NoMatchContainer from './containers/NoMatch/NoMatchContainer';
+import ProjectsContainer from './containers/Projects/ProjectsContainer';
 
-import configureStore from './store/configureStore';
-import rootReducer from './reducers/index';
+import configureStore from './redux/configureStore';
+import rootReducer from './redux/rootReducer';
 
-import ConnectedIntlProvider from './ConnectedIntlProvider/ConnectedIntlProvider';
+import ConnectedIntlProvider from './components/ConnectedIntlProvider/ConnectedIntlProvider';
 import translations from './translations/translations.json';
 
 // TODO: Move initialization into separate file

@@ -1,8 +1,9 @@
 import React from 'react';
 
-import CustomNavBarContainer from '../CustomNavBar/CustomNavBarContainer';
+import CustomNavBarContainer from '../../components/CustomNavBar/CustomNavBar';
 import Home from '../Home/Home';
-import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
+import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
+import './stylesheets/Layout.scss';
 
 // TODO: Add tests for `LayoutBootstrap` component
 

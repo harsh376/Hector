@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import CustomNavBar from './components/CustomNavBar';
-import updateLocale from './actions/action_creators';
+import CustomNavBar from '../MyNavBar/MyNavBar';
+import updateLocale from '../../redux/modules/CustomNavBar/actionCreators';
 
 function CustomNavBarContainer(props) {
   return (

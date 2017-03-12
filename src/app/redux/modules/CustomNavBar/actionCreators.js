@@ -1,4 +1,4 @@
-import UPDATE_LOCALE from '../constants/actionTypes';
+import UPDATE_LOCALE from './constants';
 
 export default function updateLocale(payload) {
   return {

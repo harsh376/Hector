@@ -1,6 +1,6 @@
 import { compose, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import remoteActionMiddleware from '../middlewares/remote_action_middleware';
+import remoteActionMiddleware from '../middleware/remoteActionMiddleware';
 
 export default function configureStore(rootReducer, initialState) {
   const createStoreWithMiddleware = compose(

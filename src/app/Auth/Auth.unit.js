@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import { shallow } from 'enzyme';
 
 import Auth from './Auth';
-import LayoutBootstrap from '../LayoutBootstrap/LayoutBootstrap';
+import LayoutBootstrap from '../containers/LayoutBootstrap/LayoutBootstrap';
 
 describe('<Auth />', () => {
   let user;

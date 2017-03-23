@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LayoutBootstrap from '../LayoutBootstrap/LayoutBootstrap';
+import LayoutBootstrap from '../containers/LayoutBootstrap/LayoutBootstrap';
 import imageUrl from './static/google_signin.png';
 
 export default class Auth extends React.Component {

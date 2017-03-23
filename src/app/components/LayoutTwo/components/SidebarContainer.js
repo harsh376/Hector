@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import Sidebar from './Sidebar/Sidebar';
-import { updateLocale } from '../../../CustomNavBar/actions/action_creators';
+import { updateLocale } from '../../../redux/modules/CustomNavBar/actionCreators';
 
 function SidebarContainer(props) {
   return (

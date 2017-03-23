@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const sourcePath = path.join(__dirname, './src/app');
 const destPath = path.join(__dirname, './dist/app');
@@ -65,10 +66,10 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   context: sourcePath,
   entry: {
-    hot: 'webpack-hot-middleware/client?reload=true',
-    main: './index.js',
-    html: './index.html',
-    vendor: ['react'],
+    main: [
+      'webpack-hot-middleware/client?reload=true',
+      './index.js',
+    ],
   },
   output: {
     path: destPath,
@@ -86,17 +87,30 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: ['vendor'],
-    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new ExtractTextPlugin('style.css'),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development'),
         USER_AUTH: JSON.stringify(process.env.USER_AUTH),
       },
     }),
+    new HtmlWebpackPlugin({
+      inject: false,
+      title: 'Harsh Verma',
+      template: 'template.ejs',
+      appMountId: 'root',
+      files: {
+        css: {
+          style: 'style.css',
+        },
+        chunks: {
+          main: {
+            entry: `${destPath}/main.bundle.js`,
+          },
+        },
+      },
+    }),
+    new ExtractTextPlugin('style.css'),
   ],
 };

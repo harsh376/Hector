@@ -4,6 +4,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const sourcePath = path.join(__dirname, './src/app');
 const destPath = path.join(__dirname, './dist/app');
@@ -69,7 +70,6 @@ module.exports = {
   context: sourcePath,
   entry: {
     main: './index.js',
-    html: './index.html',
     vendor: ['react'],
   },
   output: {
@@ -123,6 +123,25 @@ module.exports = {
       test: /\.js$|\.css$|\.html$/,
       threshold: 10240,
       minRatio: 0.8,
+    }),
+    new HtmlWebpackPlugin({
+      inject: false,
+      title: 'Harsh Verma',
+      template: 'template.ejs',
+      appMountId: 'root',
+      files: {
+        css: {
+          style: 'style.css',
+        },
+        chunks: {
+          main: {
+            entry: `${destPath}/main.bundle.js`,
+          },
+          vendor: {
+            entry: `${destPath}/vendor.bundle.js`,
+          },
+        },
+      },
     }),
   ],
 };

@@ -141,18 +141,19 @@ if (isDeveloping) {
 
   server.use(middleware);
   server.use(webpackHotMiddleware(compiler));
+  server.use(express.static(path.join(__dirname, '../app')));
 } else {
   console.log('PRODUCTION');
 
-  server.get('*.js', (req, res) => {
+  server.use(express.static(path.join(__dirname, '../app')));
+  server.use('*.js', (req, res) => {
     const fileName = `${req.url}.gz`;
     res.set('Content-Encoding', 'gzip');
     res.sendFile(path.join(__dirname, `../app/${fileName}`));
   });
 }
 
-server.use(express.static(path.join(__dirname, '../app')));
-server.get('*', (req, res) => {
+server.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../app/index.html'));
 });
 

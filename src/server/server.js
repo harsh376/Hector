@@ -11,7 +11,7 @@ import passport from 'passport';
 import compression from 'compression';
 
 import createRedisClient from './lib/redisClient';
-import webpackConfig from '../../webpack.config.dev';
+import webpackConfig from '../../webpack/webpack.config.dev';
 import ajaxProxyRouter from './lib/ajaxProxyRouter';
 import passportGoogle from './auth/strategies/google';
 

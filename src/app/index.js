@@ -9,7 +9,7 @@ import fr from 'react-intl/locale-data/fr';
 // import { isLoggedIn } from './auth';
 import App from './containers/App/App';
 import NoMatchContainer from './containers/NoMatch/NoMatchContainer';
-import ProjectsContainer from './containers/Projects/ProjectsContainer';
+// import ProjectsContainer from './containers/Projects/ProjectsContainer';
 
 import configureStore from './redux/configureStore';
 import rootReducer from './redux/rootReducer';
@@ -48,7 +48,7 @@ const store = configureStore(rootReducer, initialState);
 // is mounted (i.e on refresh), and not when the route changes
 const routes = (
   <Route path="/" component={App}>
-    <Route path="projects" component={ProjectsContainer} />
+    {/* <Route path="projects" component={ProjectsContainer} /> */}
     <Route path="*" component={NoMatchContainer} />
   </Route>
 );

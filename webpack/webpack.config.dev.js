@@ -1,13 +1,11 @@
-/* eslint no-param-reassign: ["error", { "props": false }] */
-
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const sourcePath = path.join(__dirname, './src/app');
-const destPath = path.join(__dirname, './dist/app');
+const sourcePath = path.join(__dirname, '../src/app');
+const destPath = path.join(__dirname, '../dist/app');
+
 
 const rules = [
   {
@@ -64,13 +62,14 @@ const rules = [
   },
 ];
 
-
 module.exports = {
-  devtool: 'source-map',
+  devtool: 'cheap-module-source-map',
   context: sourcePath,
   entry: {
-    main: './index.js',
-    vendor: ['react'],
+    main: [
+      'webpack-hot-middleware/client?reload=true',
+      'index.js',
+    ],
   },
   output: {
     path: destPath,
@@ -83,46 +82,18 @@ module.exports = {
   resolve: {
     extensions: ['.webpack-loader.js', '.web-loader.js', '.loader.js', '.js', '.jsx'],
     modules: [
-      path.resolve(__dirname, 'node_modules'),
+      path.resolve(__dirname, '../node_modules'),
       sourcePath,
     ],
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: ['vendor'],
-    }),
-    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production'),
+        NODE_ENV: JSON.stringify('development'),
         USER_AUTH: JSON.stringify(process.env.USER_AUTH),
       },
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false,
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      beautify: false,
-      mangle: {
-        screw_ie8: true,
-        keep_fnames: true,
-      },
-      compress: {
-        screw_ie8: true,
-      },
-      comments: false,
-    }),
-    new ExtractTextPlugin({
-      filename: 'style.css',
-      allChunks: true,
-    }),
-    new CompressionPlugin({
-      asset: '[path].gz[query]',
-      algorithm: 'gzip',
-      test: /\.js$|\.css$|\.html$/,
-      threshold: 10240,
-      minRatio: 0.8,
     }),
     new HtmlWebpackPlugin({
       inject: false,
@@ -137,11 +108,9 @@ module.exports = {
           main: {
             entry: `${destPath}/main.bundle.js`,
           },
-          vendor: {
-            entry: `${destPath}/vendor.bundle.js`,
-          },
         },
       },
     }),
+    new ExtractTextPlugin('style.css'),
   ],
 };

@@ -15,7 +15,8 @@ import NoMatchContainer from './containers/NoMatch/NoMatchContainer';
 import configureStore from './redux/configureStore';
 import rootReducer from './redux/rootReducer';
 
-import ConnectedIntlProvider from './components/ConnectedIntlProvider/ConnectedIntlProvider';
+import ConnectedIntlProvider
+  from './components/ConnectedIntlProvider/ConnectedIntlProvider';
 import translations from './translations/translations.json';
 
 // TODO: Move initialization into separate file

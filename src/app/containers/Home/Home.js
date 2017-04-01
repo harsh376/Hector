@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  Grid,
-  Row,
-  Button,
-} from 'react-bootstrap';
+import { Grid, Row, Button } from 'react-bootstrap';
 import { bootstrapUtils } from 'react-bootstrap/lib/utils';
 
 import './stylesheets/Home.scss';
@@ -56,10 +52,7 @@ const gridInstance = (
         <i className="fa fa-twitter-square fa-3x" aria-hidden="true" />
       </a>
 
-      <a
-        className="social linkBlack"
-        href="mailto:harsh376@gmail.com"
-      >
+      <a className="social linkBlack" href="mailto:harsh376@gmail.com">
         <i className="fa fa-envelope fa-3x" aria-hidden="true" />
       </a>
     </Row>
@@ -81,9 +74,7 @@ const gridInstance = (
 );
 
 function Home() {
-  return (
-    <div>{gridInstance}</div>
-  );
+  return <div>{gridInstance}</div>;
 }
 
 export default Home;

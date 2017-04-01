@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import {
-  defineMessages,
-  FormattedMessage,
-} from 'react-intl';
+import { defineMessages, FormattedMessage } from 'react-intl';
 
 import './stylesheets/Breadcrumbs.scss';
 
@@ -30,7 +27,7 @@ const componentMessages = defineMessages({
 
 function Breadcrumbs({ routes }) {
   const newRoutes = [];
-  routes.forEach((item) => {
+  routes.forEach(item => {
     if (item.path !== '/') {
       newRoutes.push(item);
     }
@@ -40,25 +37,26 @@ function Breadcrumbs({ routes }) {
     <div>
 
       {/* All routes except home */}
-      {depth && (
+      {depth &&
         <ul className="breadcrumbs-list fixed">
-          {newRoutes.map((item, index) =>
+          {newRoutes.map((item, index) => (
             <li key={item.path}>
               <Link
                 onlyActiveOnIndex
                 activeClassName="breadcrumb-active"
                 to={item.path !== '*' ? item.path : '/'}
               >
-                <FormattedMessage {...componentMessages[item.component.title]} />
+                <FormattedMessage
+                  {...componentMessages[item.component.title]}
+                />
               </Link>
-              {(index + 1) < depth && '/'}
-            </li>,
-          )}
-        </ul>
-      )}
+              {index + 1 < depth && '/'}
+            </li>
+          ))}
+        </ul>}
 
       {/* Home route */}
-      {!depth && (
+      {!depth &&
         <ul className="breadcrumbs-list fixed">
           <li key="aboutMe">
             <Link
@@ -69,8 +67,7 @@ function Breadcrumbs({ routes }) {
               <FormattedMessage {...componentMessages.aboutMe} />
             </Link>
           </li>
-        </ul>
-      )}
+        </ul>}
     </div>
   );
 }

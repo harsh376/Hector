@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Navbar,
-  Nav,
-  NavItem,
-  NavDropdown,
-  MenuItem,
-} from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import {
   defineMessages,
@@ -36,21 +30,19 @@ const componentMessages = defineMessages({
   },
 });
 
-const items = [
-  // { path: '/projects', label: 'projects' },
-];
+const items = [{ path: '/projects', label: 'projects' }];
 
-const navOptions = items.map(item =>
+const navOptions = items.map(item => (
   <LinkContainer to={item.path} key={item.label}>
     <NavItem eventKey={item.label}>
       <FormattedMessage {...componentMessages[item.label]} />
     </NavItem>
-  </LinkContainer>,
-);
+  </LinkContainer>
+));
 
-// TODO: Add tests for `CustomNavBar` component
+// TODO: Add tests for `MyNavBar` component
 
-class CustomNavBar extends React.Component {
+class MyNavBar extends React.Component {
   constructor(props) {
     super(props);
     this.changeLocale = this.changeLocale.bind(this);
@@ -69,7 +61,7 @@ class CustomNavBar extends React.Component {
 
   render() {
     return (
-      <Navbar fixedTop inverse>
+      <Navbar fixedTop inverse collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
             <a href="/">Harsh Verma</a>
@@ -87,18 +79,16 @@ class CustomNavBar extends React.Component {
               title={this.props.intl.formatMessage(componentMessages.language)}
             >
 
-              <MenuItem
-                eventKey="en"
-                onSelect={this.changeLocale}
-              >
-                {this.props.intl.formatMessage(componentMessages.languageEnglish)}
+              <MenuItem eventKey="en" onSelect={this.changeLocale}>
+                {this.props.intl.formatMessage(
+                  componentMessages.languageEnglish
+                )}
               </MenuItem>
 
-              <MenuItem
-                eventKey="fr"
-                onSelect={this.changeLocale}
-              >
-                {this.props.intl.formatMessage(componentMessages.languageFrench)}
+              <MenuItem eventKey="fr" onSelect={this.changeLocale}>
+                {this.props.intl.formatMessage(
+                  componentMessages.languageFrench
+                )}
               </MenuItem>
 
             </NavDropdown>
@@ -109,9 +99,9 @@ class CustomNavBar extends React.Component {
   }
 }
 
-CustomNavBar.propTypes = {
+MyNavBar.propTypes = {
   intl: intlShape.isRequired,
   updateLocale: React.PropTypes.func.isRequired,
 };
 
-export default injectIntl(CustomNavBar);
+export default injectIntl(MyNavBar);

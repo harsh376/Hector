@@ -6,14 +6,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const sourcePath = path.join(__dirname, '../src/app');
 const destPath = path.join(__dirname, '../dist/app');
 
-
 const rules = [
   {
     test: /\.(js|jsx)$/,
     exclude: /node_modules/,
-    use: [
-      'babel-loader',
-    ],
+    use: ['babel-loader'],
   },
   {
     test: /\.html$/,
@@ -27,11 +24,7 @@ const rules = [
   },
   {
     test: /\.less$/,
-    use: [
-      'style-loader',
-      'css-loader',
-      'less-loader',
-    ],
+    use: ['style-loader', 'css-loader', 'less-loader'],
   },
   {
     test: /\.scss$/,
@@ -66,10 +59,7 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   context: sourcePath,
   entry: {
-    main: [
-      'webpack-hot-middleware/client?reload=true',
-      'index.js',
-    ],
+    main: ['webpack-hot-middleware/client?reload=true', 'index.js'],
   },
   output: {
     path: destPath,
@@ -80,11 +70,14 @@ module.exports = {
     rules,
   },
   resolve: {
-    extensions: ['.webpack-loader.js', '.web-loader.js', '.loader.js', '.js', '.jsx'],
-    modules: [
-      path.resolve(__dirname, '../node_modules'),
-      sourcePath,
+    extensions: [
+      '.webpack-loader.js',
+      '.web-loader.js',
+      '.loader.js',
+      '.js',
+      '.jsx',
     ],
+    modules: [path.resolve(__dirname, '../node_modules'), sourcePath],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

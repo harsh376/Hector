@@ -10,9 +10,11 @@ bootstrapUtils.addStyle(Row, 'top');
 bootstrapUtils.addStyle(Row, 'custom');
 bootstrapUtils.addStyle(Row, 'social');
 
-/* eslint-disable max-len */
-const aboutMe = 'Senior Year Computer Engineering, University of Toronto. Full-stack developer. Interested in frontend web technologies, crawlers. Love playing football.';
-/* eslint-enable max-len */
+const aboutMe = [
+  'Senior Year Computer Engineering, University of Toronto. ',
+  'Full-stack developer. Interested in frontend web technologies, crawlers. ',
+  'Love playing football.',
+].join('');
 
 const gridInstance = (
   <Grid>

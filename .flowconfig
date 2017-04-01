@@ -1,0 +1,8 @@
+[ignore]
+.*/node_modules/nock/node_modules/changelog/examples/node.json
+
+[include]
+
+[libs]
+
+[options]

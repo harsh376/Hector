@@ -2,9 +2,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { FormattedMessage } from 'react-intl';
-import { Grid, Row, Col } from 'react-bootstrap';
 
-import defaultImageSrc from '../../static/loading.jpg';
+import loader from '../../static/loader.gif';
+
 import './ProjectOverview.scss';
 
 type Props = {
@@ -26,11 +26,13 @@ class ProjectOverview extends React.PureComponent {
       .then(image => {
         this.setState({ image: image });
       })
-      .catch(function(err) {});
+      .catch(function(err) {
+        console.log(err);
+      });
   }
 
   render() {
-    const imageSrc = this.state.image ? this.state.image : defaultImageSrc;
+    const imageSrc = this.state.image ? this.state.image : loader;
     const linkedText = (
       <Link to="#"><FormattedMessage {...this.props.title} /></Link>
     );

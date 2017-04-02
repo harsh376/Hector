@@ -11,9 +11,9 @@ bootstrapUtils.addStyle(Row, 'custom');
 bootstrapUtils.addStyle(Row, 'social');
 
 const aboutMe = [
-  'Senior Year Computer Engineering, University of Toronto. ',
-  'Full-stack developer. Interested in frontend web technologies, crawlers. ',
-  'Love playing football.',
+  'Hi! I am a Computer Engineering student at the University of Toronto. ',
+  'Interested in frontend technologies and web crawlers. Enjoy tinkering ',
+  'with things. Love playing football. Feel free to say hi :)',
 ].join('');
 
 const gridInstance = (

@@ -32,7 +32,7 @@ const items = [
         id: 'app.searchEngine.description',
         defaultMessage: "A friend of mine and I implemented a basic search \
         engine for a university course (CSC326). We wrote a web crawler \
-        to index documents online and rank them using Google's page \
+        to index online documents and rank them using Google's page \
         rank algorithm. See details: {linkedText}",
       },
     }),

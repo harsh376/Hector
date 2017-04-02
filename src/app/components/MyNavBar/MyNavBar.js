@@ -78,19 +78,16 @@ class MyNavBar extends React.Component {
               id="basic-nav-dropdown"
               title={this.props.intl.formatMessage(componentMessages.language)}
             >
-
               <MenuItem eventKey="en" onSelect={this.changeLocale}>
                 {this.props.intl.formatMessage(
                   componentMessages.languageEnglish
                 )}
               </MenuItem>
-
               <MenuItem eventKey="fr" onSelect={this.changeLocale}>
                 {this.props.intl.formatMessage(
                   componentMessages.languageFrench
                 )}
               </MenuItem>
-
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

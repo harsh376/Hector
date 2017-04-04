@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import { addLocaleData } from 'react-intl';
 import fr from 'react-intl/locale-data/fr';
@@ -11,6 +11,8 @@ import fr from 'react-intl/locale-data/fr';
 import App from './containers/App/App';
 import NoMatchContainer from './containers/NoMatch/NoMatchContainer';
 import ProjectsContainer from './containers/Projects/ProjectsContainer';
+import ProjectsList from './components/ProjectsList/ProjectsList';
+import Capstone from './components/Capstone/Capstone';
 
 import configureStore from './redux/configureStore';
 import rootReducer from './redux/rootReducer';
@@ -50,7 +52,10 @@ const store = configureStore(rootReducer, initialState);
 // is mounted (i.e on refresh), and not when the route changes
 const routes = (
   <Route path="/" component={App}>
-    <Route path="projects" component={ProjectsContainer} />
+    <Route path="projects" component={ProjectsContainer}>
+      <IndexRoute component={ProjectsList} />
+      <Route path="capstone" component={Capstone} />
+    </Route>
     <Route path="*" component={NoMatchContainer} />
   </Route>
 );
@@ -61,5 +66,5 @@ ReactDOM.render(
       <Router history={browserHistory}>{routes}</Router>
     </ConnectedIntlProvider>
   </Provider>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );

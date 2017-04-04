@@ -34,7 +34,9 @@ class ProjectOverview extends React.PureComponent {
   render() {
     const imageSrc = this.state.image ? this.state.image : loader;
     const linkedText = (
-      <Link to="#"><FormattedMessage {...this.props.title} /></Link>
+      <Link to={`/projects/${this.props.name}`}>
+        <FormattedMessage {...this.props.title} />
+      </Link>
     );
 
     return (

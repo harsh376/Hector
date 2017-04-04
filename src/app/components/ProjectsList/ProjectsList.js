@@ -5,7 +5,7 @@ import { defineMessages } from 'react-intl';
 
 import ProjectOverview from '../ProjectOverview/ProjectOverview';
 
-const items = [
+export const projects = [
   {
     name: 'capstone',
     componentMessages: defineMessages({
@@ -31,7 +31,7 @@ const items = [
       description: {
         id: 'app.searchEngine.description',
         defaultMessage: "A friend of mine and I implemented a basic search \
-        engine for a university course (CSC326). We wrote a web crawler \
+        engine for a university course project (CSC326). We wrote a web crawler \
         to index online documents and rank them using Google's page \
         rank algorithm. See details: {linkedText}",
       },
@@ -39,18 +39,21 @@ const items = [
   },
 ];
 
-function ProjectsList() {
-  const nodes = items.map(item => {
-    return (
-      <ProjectOverview
-        key={item.name}
-        name={item.name}
-        title={item.componentMessages.title}
-        description={item.componentMessages.description}
-      />
-    );
-  });
-  return <div className="projects-list">{nodes}</div>;
+class ProjectsList extends React.Component {
+  render() {
+    const nodes = projects.map(item => {
+      return (
+        <ProjectOverview
+          key={item.name}
+          name={item.name}
+          title={item.componentMessages.title}
+          description={item.componentMessages.description}
+        />
+      );
+    });
+
+    return <div className="projects-list">{nodes}</div>;
+  }
 }
 
 export default ProjectsList;

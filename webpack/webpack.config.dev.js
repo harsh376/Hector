@@ -62,6 +62,7 @@ module.exports = {
     main: ['webpack-hot-middleware/client?reload=true', 'index.js'],
   },
   output: {
+    publicPath: '/',
     path: destPath,
     filename: '[name].bundle.js',
     sourceMapFilename: '[name].map',

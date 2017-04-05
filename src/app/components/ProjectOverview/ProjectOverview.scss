@@ -31,6 +31,8 @@ $imageDimDesktop: 200px;
 @media screen and (min-width: 650px) {
   .project-container {
     width: 100%;
+    float: left;
+    margin-bottom: 30px;
   }
 
   .project-header {
@@ -43,7 +45,6 @@ $imageDimDesktop: 200px;
   .project-content {
     width: 100%;
     padding-left: 15px;
-    height: 80px;
   }
 
   .project-description {

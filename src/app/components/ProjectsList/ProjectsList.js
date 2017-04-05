@@ -8,6 +8,7 @@ import ProjectOverview from '../ProjectOverview/ProjectOverview';
 export const projects = [
   {
     name: 'capstone',
+    isExternalLink: false,
     componentMessages: defineMessages({
       title: {
         id: 'app.capstone.title',
@@ -23,6 +24,7 @@ export const projects = [
   },
   {
     name: 'searchEngine',
+    isExternalLink: false,
     componentMessages: defineMessages({
       title: {
         id: 'app.searchEngine.title',
@@ -37,6 +39,26 @@ export const projects = [
       },
     }),
   },
+  {
+    name: 'restfulAPI',
+    isExternalLink: true,
+    externalLink: 'https://github.com/harsh376/Ajax/tree/master/ajax',
+    componentMessages: defineMessages({
+      title: {
+        id: 'app.restfulAPI.title',
+        defaultMessage: 'RESTful API',
+      },
+      description: {
+        id: 'app.restfulAPI.description',
+        defaultMessage: 'I am really interested about how to implement  \
+        clean, modular APIs. Last summer I thought it would be an \
+        interesting proposition to implement a RESTful API that one could use \
+        in production environment. I went on to implement a basic API using \
+        Python-Flask and Flask-RESTful and interfaced it over a MYSQL \
+        database. Feel free to check it out: {linkedText}',
+      },
+    }),
+  },
 ];
 
 class ProjectsList extends React.Component {
@@ -48,6 +70,8 @@ class ProjectsList extends React.Component {
           name={item.name}
           title={item.componentMessages.title}
           description={item.componentMessages.description}
+          isExternalLink={item.isExternalLink}
+          externalLink={item.externalLink || ''}
         />
       );
     });

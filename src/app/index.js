@@ -13,6 +13,7 @@ import NoMatchContainer from './containers/NoMatch/NoMatchContainer';
 import ProjectsContainer from './containers/Projects/ProjectsContainer';
 import ProjectsList from './components/ProjectsList/ProjectsList';
 import Capstone from './components/Capstone/Capstone';
+import SearchEngine from './components/SearchEngine/SearchEngine';
 
 import configureStore from './redux/configureStore';
 import rootReducer from './redux/rootReducer';
@@ -55,6 +56,7 @@ const routes = (
     <Route path="projects" component={ProjectsContainer}>
       <IndexRoute component={ProjectsList} />
       <Route path="capstone" component={Capstone} />
+      <Route path="searchEngine" component={SearchEngine} />
     </Route>
     <Route path="*" component={NoMatchContainer} />
   </Route>

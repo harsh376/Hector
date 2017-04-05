@@ -27,6 +27,10 @@ const componentMessages = defineMessages({
     id: 'app.breadcrumbs.capstone',
     defaultMessage: 'Bullet Detection System',
   },
+  searchEngine: {
+    id: 'app.breadcrumbs.searchEngine',
+    defaultMessage: 'Search Engine and Web Crawler',
+  },
 });
 
 // TODO: Add tests for component

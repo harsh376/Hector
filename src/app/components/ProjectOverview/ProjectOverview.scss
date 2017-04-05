@@ -19,13 +19,6 @@ $imageDimDesktop: 200px;
     font-weight: 500;
   }
 
-  .project-image {
-    width: $imageDimMobile;
-    height: $imageDimMobile;
-    margin: auto;
-    display: block;
-  }
-
   .project-description {
     width: $imageDimMobile;
     margin: auto;
@@ -38,36 +31,23 @@ $imageDimDesktop: 200px;
 @media screen and (min-width: 650px) {
   .project-container {
     width: 100%;
-    background-color: #f9f9f9;
-    margin-bottom: 15px;
-    padding-bottom: 25px;
   }
 
   .project-header {
     width: 100%;
     padding: 15px;
-    font-size: 18px;
+    font-size: 15px;
+    font-weight: 500;
   }
 
   .project-content {
     width: 100%;
     padding-left: 15px;
-    height: $imageDimDesktop;
-  }
-
-  .project-image-container {
-    width: 250px;
-    float: left;
-  }
-
-  .project-image {
-    width: $imageDimDesktop;
-    height: $imageDimDesktop;
+    height: 80px;
   }
 
   .project-description {
-    width: 350px;
-    height: $imageDimDesktop;
+    width: 400px;
     float: left;
   }
 }

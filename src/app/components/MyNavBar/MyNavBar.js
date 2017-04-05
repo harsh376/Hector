@@ -16,6 +16,10 @@ const componentMessages = defineMessages({
     id: 'app.projects',
     defaultMessage: 'Projects',
   },
+  work: {
+    id: 'app.work',
+    defaultMessage: 'Work Experience',
+  },
   language: {
     id: 'app.language',
     defaultMessage: 'Language',
@@ -30,7 +34,10 @@ const componentMessages = defineMessages({
   },
 });
 
-const items = [{ path: '/projects', label: 'projects' }];
+const items = [
+  { path: '/projects', label: 'projects' },
+  { path: '/work', label: 'work' },
+];
 
 const navOptions = items.map(item => (
   <LinkContainer to={item.path} key={item.label}>

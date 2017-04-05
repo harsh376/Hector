@@ -18,6 +18,10 @@ const componentMessages = defineMessages({
     id: 'app.projects',
     defaultMessage: 'Projects',
   },
+  work: {
+    id: 'app.work',
+    defaultMessage: 'Work Experience',
+  },
   backToHome: {
     id: 'app.backToHome',
     defaultMessage: 'Go Back to Home',

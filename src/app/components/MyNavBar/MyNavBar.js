@@ -79,7 +79,8 @@ class MyNavBar extends React.Component {
           <Nav>
             {navOptions}
           </Nav>
-          <Nav pullRight>
+          {/* TODO: add this later */}
+          {/* <Nav pullRight>
             <NavDropdown
               eventKey={1}
               id="basic-nav-dropdown"
@@ -96,7 +97,7 @@ class MyNavBar extends React.Component {
                 )}
               </MenuItem>
             </NavDropdown>
-          </Nav>
+          </Nav> */}
         </Navbar.Collapse>
       </Navbar>
     );

@@ -6,7 +6,7 @@ class CapstoneOutcome extends React.Component {
       <div>
         <h4>Outcome and learnings</h4>
         <p>
-          On integrating the different parts of the system, this is what the prototype looked like. We weren’t able to get the high-speed circuitry finished in time and so had to revert to a low-speed circuit to ensure a working proof-of-concept which decreased the probability of a detection due to lower sampling rate. By sheer luck, the low-speed system the sampling time instant and time at which the bullet passed the system matched and we were able to observer 1 detection. This gave us reason to believe that a high-speed circuit of sensors could very well detect bullets accurately and consistently. Here are my learnings from this project:
+          On integrating the different parts of the system, this is what the prototype looked like. We weren’t able to get the high-speed circuitry finished in time and so had to revert to a low-speed circuit to ensure a working proof-of-concept which decreased the probability of a detection due to lower sampling rate. By sheer luck, the low-speed system sampling time instant and time at which the bullet passed the system matched and we were able to observe 1 detection. This gave us reason to believe that a high-speed circuit of sensors could very well detect bullets accurately and consistently. Here are my learnings from this project:
         </p>
         <ul>
           <li>

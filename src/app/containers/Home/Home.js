@@ -10,9 +10,12 @@ bootstrapUtils.addStyle(Row, 'top');
 bootstrapUtils.addStyle(Row, 'custom');
 bootstrapUtils.addStyle(Row, 'social');
 
-/* eslint-disable max-len */
-const aboutMe = 'Senior Year Computer Engineering, University of Toronto. Full-stack developer. Interested in frontend web technologies, crawlers. Love playing football.';
-/* eslint-enable max-len */
+const aboutMe = [
+  'Hi! I am a Computer Engineering student at the University of Toronto. ',
+  'Interested in frontend technologies and web crawlers. Enjoy tinkering ',
+  'with code related things. Love playing football. Feel free to get in touch.',
+  ' Cheers!',
+].join('');
 
 const gridInstance = (
   <Grid>
@@ -56,6 +59,9 @@ const gridInstance = (
         <i className="fa fa-envelope fa-3x" aria-hidden="true" />
       </a>
     </Row>
+
+    <br />
+
     <Row bsStyle="custom">
       <div className="intro-text">
         <h4 className="intro-heading">{aboutMe}</h4>

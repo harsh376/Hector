@@ -1,6 +1,7 @@
 import React from 'react';
 
-import CustomNavBarContainer from '../../components/CustomNavBar/CustomNavBar';
+import ConnectedCustomNavBar
+  from '../../components/ConnectedCustomNavBar/ConnectedCustomNavBar';
 import Home from '../Home/Home';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import './stylesheets/Layout.scss';
@@ -10,7 +11,7 @@ import './stylesheets/Layout.scss';
 function LayoutBootstrap({ content, routes }) {
   return (
     <div>
-      <CustomNavBarContainer />
+      <ConnectedCustomNavBar />
       <Breadcrumbs routes={routes} />
       <div className="contentBoot topOffset">
         {content || <Home />}

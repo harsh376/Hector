@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
-import {
-  defineMessages,
-  FormattedMessage,
-} from 'react-intl';
+import { defineMessages, FormattedMessage } from 'react-intl';
 
 import './stylesheets/Breadcrumbs.scss';
+import { projects } from '../ProjectsList/ProjectsList';
 
 const componentMessages = defineMessages({
   aboutMe: {
@@ -20,59 +18,81 @@ const componentMessages = defineMessages({
     id: 'app.projects',
     defaultMessage: 'Projects',
   },
+  work: {
+    id: 'app.work',
+    defaultMessage: 'Work Experience',
+  },
   backToHome: {
     id: 'app.backToHome',
     defaultMessage: 'Go Back to Home',
+  },
+  // TODO: Make using translations DRY
+  capstone: {
+    id: 'app.breadcrumbs.capstone',
+    defaultMessage: 'Bullet Detection System',
+  },
+  searchEngine: {
+    id: 'app.breadcrumbs.searchEngine',
+    defaultMessage: 'Search Engine and Web Crawler',
   },
 });
 
 // TODO: Add tests for component
 
-function Breadcrumbs({ routes }) {
-  const newRoutes = [];
-  routes.forEach((item) => {
-    if (item.path !== '/') {
-      newRoutes.push(item);
-    }
-  });
-  const depth = newRoutes.length;
-  return (
-    <div>
+class Breadcrumbs extends React.Component {
+  getNewRoutes(routes) {
+    const newRoutes = [];
+    let runningPath = '';
+    this.props.routes.forEach(item => {
+      if (item.path && item.path !== '/') {
+        runningPath = `${runningPath}/${item.path}`;
+        item['absolutePath'] = runningPath;
+        newRoutes.push(item);
+      }
+    });
+    return newRoutes;
+  }
 
-      {/* All routes except home */}
-      {depth && (
-        <ul className="breadcrumbs-list fixed">
-          {newRoutes.map((item, index) =>
-            <li key={item.path}>
+  render() {
+    const newRoutes = this.getNewRoutes(this.props.routes);
+    const depth = newRoutes.length;
+    return (
+      <div>
+        {/* All routes except home */}
+        {depth &&
+          <ul className="breadcrumbs-list fixed">
+            {newRoutes.map((item, index) => (
+              <li key={item.path}>
+                <Link
+                  onlyActiveOnIndex
+                  activeClassName="breadcrumb-active"
+                  to={item.absolutePath !== '/*' ? item.absolutePath : '/'}
+                >
+                  <FormattedMessage
+                    {...componentMessages[item.component.title]}
+                  />
+                </Link>
+                {index + 1 < depth && '/'}
+              </li>
+            ))}
+          </ul>}
+
+        {/* Home route */}
+        {!depth &&
+          <ul className="breadcrumbs-list fixed">
+            <li key="aboutMe">
               <Link
                 onlyActiveOnIndex
                 activeClassName="breadcrumb-active"
-                to={item.path !== '*' ? item.path : '/'}
+                to={'/'}
               >
-                <FormattedMessage {...componentMessages[item.component.title]} />
+                <FormattedMessage {...componentMessages.aboutMe} />
               </Link>
-              {(index + 1) < depth && '/'}
-            </li>,
-          )}
-        </ul>
-      )}
-
-      {/* Home route */}
-      {!depth && (
-        <ul className="breadcrumbs-list fixed">
-          <li key="aboutMe">
-            <Link
-              onlyActiveOnIndex
-              activeClassName="breadcrumb-active"
-              to={'/'}
-            >
-              <FormattedMessage {...componentMessages.aboutMe} />
-            </Link>
-          </li>
-        </ul>
-      )}
-    </div>
-  );
+            </li>
+          </ul>}
+      </div>
+    );
+  }
 }
 
 Breadcrumbs.propTypes = {

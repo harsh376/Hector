@@ -5,12 +5,7 @@ import 'font-awesome/scss/font-awesome.scss';
 import LayoutBootstrap from '../LayoutBootstrap/LayoutBootstrap';
 
 function App(props) {
-  return (
-    <LayoutBootstrap
-      content={props.children}
-      routes={props.routes}
-    />
-  );
+  return <LayoutBootstrap content={props.children} routes={props.routes} />;
 }
 
 App.propTypes = {

@@ -55,7 +55,9 @@ function ensureAuthenticated(req, res, next) {
 // TODO: Move log format into server config file
 // Log requests to stdout
 server.use(
-  morgan(':remote-addr - - :date[clf] :method :url HTTP/:http-version :status -'),
+  morgan(
+    ':remote-addr - - :date[clf] :method :url HTTP/:http-version :status -'
+  )
 );
 server.use(compression());
 
@@ -80,15 +82,17 @@ if (authEnabled) {
  * user auth endpoints
  ******************************************
  */
-server.get('/auth/google',
-  passportGoogle.authenticate('google', { scope: ['openid email profile'] }),
+server.get(
+  '/auth/google',
+  passportGoogle.authenticate('google', { scope: ['openid email profile'] })
 );
 
-server.get('/auth/google/callback',
+server.get(
+  '/auth/google/callback',
   passportGoogle.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
     res.redirect('/');
-  },
+  }
 );
 
 server.get('/account', ensureAuthenticated, (req, res) => {
@@ -96,7 +100,7 @@ server.get('/account', ensureAuthenticated, (req, res) => {
 });
 
 server.get('/logout', (req, res) => {
-  req.session.destroy((err) => {
+  req.session.destroy(err => {
     if (err) {
       console.log(err);
     } else {
@@ -157,13 +161,12 @@ server.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../app/index.html'));
 });
 
-
 /*
  *************************************************
  * Running the server
  *************************************************
  */
-server.listen(port, '0.0.0.0', (err) => {
+server.listen(port, '0.0.0.0', err => {
   if (err) {
     console.error(err);
   }

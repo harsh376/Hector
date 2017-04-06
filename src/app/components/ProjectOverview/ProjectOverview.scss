@@ -1,0 +1,54 @@
+$imageDimMobile: 300px;
+$imageDimDesktop: 200px;
+
+// mobile
+@media screen and (max-width: 649px) {
+  .project-container {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  .project-header {
+    width: $imageDimMobile;
+    display: block;
+    margin: auto;
+    padding: 10px 0px 10px 0px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .project-description {
+    width: $imageDimMobile;
+    margin: auto;
+    display: block;
+    padding: 10px 0px 10px 0px;
+  }
+}
+
+// desktop
+@media screen and (min-width: 650px) {
+  .project-container {
+    width: 100%;
+    float: left;
+    margin-bottom: 30px;
+  }
+
+  .project-header {
+    width: 100%;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .project-content {
+    width: 100%;
+    padding-left: 15px;
+  }
+
+  .project-description {
+    width: 400px;
+    float: left;
+  }
+}

@@ -1,15 +1,13 @@
+// @flow
 import React from 'react';
 
-import Todo from '../../Todo/TodoContainer';
-
-// TODO: Add tests for component
-
-function ProjectsContainer() {
-  return (
-    <Todo />
-  );
+class ProjectsContainer extends React.Component {
+  static title: string = 'projects';
+  render() {
+    return (
+      <div style={{ height: '100%', width: '100%' }}>{this.props.children}</div>
+    );
+  }
 }
-
-ProjectsContainer.title = 'projects';
 
 export default ProjectsContainer;

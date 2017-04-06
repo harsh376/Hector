@@ -13,9 +13,7 @@ const rules = [
   {
     test: /\.(js|jsx)$/,
     exclude: /node_modules/,
-    use: [
-      'babel-loader',
-    ],
+    use: ['babel-loader'],
   },
   {
     test: /\.html$/,
@@ -29,11 +27,7 @@ const rules = [
   },
   {
     test: /\.less$/,
-    use: [
-      'style-loader',
-      'css-loader',
-      'less-loader',
-    ],
+    use: ['style-loader', 'css-loader', 'less-loader'],
   },
   {
     test: /\.scss$/,
@@ -64,7 +58,6 @@ const rules = [
   },
 ];
 
-
 module.exports = {
   devtool: 'source-map',
   context: sourcePath,
@@ -73,6 +66,7 @@ module.exports = {
     vendor: ['react'],
   },
   output: {
+    publicPath: '/',
     path: destPath,
     filename: '[name].bundle.js',
     sourceMapFilename: '[name].map',
@@ -81,11 +75,14 @@ module.exports = {
     rules,
   },
   resolve: {
-    extensions: ['.webpack-loader.js', '.web-loader.js', '.loader.js', '.js', '.jsx'],
-    modules: [
-      path.resolve(__dirname, '../node_modules'),
-      sourcePath,
+    extensions: [
+      '.webpack-loader.js',
+      '.web-loader.js',
+      '.loader.js',
+      '.js',
+      '.jsx',
     ],
+    modules: [path.resolve(__dirname, '../node_modules'), sourcePath],
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({

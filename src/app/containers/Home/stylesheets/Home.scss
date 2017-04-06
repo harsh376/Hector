@@ -1,7 +1,7 @@
 $introTextColor: #5f5555;
 
 .image-profile-pic {
-  height: 240px;
+  height: 180px;
   border-radius: 50%;
 
   &.align-center {
@@ -11,7 +11,7 @@ $introTextColor: #5f5555;
 }
 
 .row-top {
-  padding-top: 50px;
+  padding-top: 15px;
 }
 
 .row-custom {
@@ -29,7 +29,6 @@ $introTextColor: #5f5555;
 }
 
 .intro-heading {
-  padding: 20px 0px 5px;
   line-height: 30px;
 }
 

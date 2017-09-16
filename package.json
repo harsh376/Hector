@@ -76,7 +76,6 @@
     "node-sass": "^4.5.0",
     "passport": "^0.3.2",
     "passport-google-oauth": "^1.0.0",
-    "prettier": "^0.22.0",
     "q": "^1.4.1",
     "react": "^15.0.1",
     "react-addons-test-utils": "^15.0.1",
@@ -107,5 +106,8 @@
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js"
     }
+  },
+  "devDependencies": {
+    "prettier": "^1.7.0"
   }
 }

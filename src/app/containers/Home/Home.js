@@ -11,10 +11,10 @@ bootstrapUtils.addStyle(Row, 'custom');
 bootstrapUtils.addStyle(Row, 'social');
 
 const aboutMe = [
-  'Hi! I am a Computer Engineering student at the University of Toronto. ',
-  'Interested in frontend technologies and web crawlers. Enjoy tinkering ',
-  'with code related things. Love playing football. Feel free to get in touch.',
-  ' Cheers!',
+  'Hi! I recently graduated from the University of Toronto (Computer ',
+  "Engineering). I'm currently working at Top Hat in Toronto. Love picking ",
+  'up new things. Interested in frontend technologies and web crawlers. ',
+  'Play football on weekends. Feel free to get in touch. Cheers!',
 ].join('');
 
 const gridInstance = (
@@ -27,7 +27,6 @@ const gridInstance = (
       />
     </Row>
     <Row bsStyle="social">
-
       <a
         className="social linkBlack"
         target="_blank"
@@ -68,14 +67,15 @@ const gridInstance = (
       </div>
     </Row>
 
-    <Row bsStyle="custom">
+    {/* <Row bsStyle="custom">
       <div>
         <form action={pdfUrl} method="GET" target="_blank">
-          <Button type="submit" bsStyle="primary">Resume</Button>
+          <Button type="submit" bsStyle="primary">
+            Resume
+          </Button>
         </form>
       </div>
-    </Row>
-
+    </Row> */}
   </Grid>
 );
 

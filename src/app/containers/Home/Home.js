@@ -1,21 +1,20 @@
-import React from 'react';
-import { Grid, Row, Button } from 'react-bootstrap';
-import { bootstrapUtils } from 'react-bootstrap/lib/utils';
+import React from 'react'
+import { Grid, Row, Button } from 'react-bootstrap'
+import { bootstrapUtils } from 'react-bootstrap/lib/utils'
 
-import './stylesheets/Home.scss';
-import imageUrl from './static/profile_pic.jpg';
-import pdfUrl from './static/Resume_Harsh_Verma.pdf';
+import './stylesheets/Home.scss'
+import imageUrl from './static/profile_pic.jpg'
+import pdfUrl from './static/Resume_Harsh_Verma.pdf'
 
-bootstrapUtils.addStyle(Row, 'top');
-bootstrapUtils.addStyle(Row, 'custom');
-bootstrapUtils.addStyle(Row, 'social');
+bootstrapUtils.addStyle(Row, 'top')
+bootstrapUtils.addStyle(Row, 'custom')
+bootstrapUtils.addStyle(Row, 'social')
 
 const aboutMe = [
-  'Hi! I recently graduated from the University of Toronto (Computer ',
-  "Engineering). I'm currently working at Top Hat in Toronto. Love picking ",
-  'up new things. Interested in frontend technologies and web crawlers. ',
-  'Play football on weekends. Feel free to get in touch. Cheers!',
-].join('');
+  'Working at Top Hat, Toronto. University of Toronto Computer ',
+  "Engineering, '17. Interested in frontend tech and natural language ",
+  'parsing. Feel free to say hi. Cheers!',
+].join('')
 
 const gridInstance = (
   <Grid>
@@ -77,10 +76,10 @@ const gridInstance = (
       </div>
     </Row> */}
   </Grid>
-);
+)
 
 function Home() {
-  return <div>{gridInstance}</div>;
+  return <div>{gridInstance}</div>
 }
 
-export default Home;
+export default Home

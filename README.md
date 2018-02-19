@@ -18,10 +18,6 @@
 
 `yarn run start`
 
-or
-
-`yarn run start:noauth`
-
 ---
 
 ### Production

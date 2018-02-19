@@ -1,4 +1,4 @@
-FROM node:7.4.0
+FROM node:8.9.1
 
 RUN npm install --global yarn
 

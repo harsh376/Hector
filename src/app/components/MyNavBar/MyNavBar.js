@@ -1,14 +1,14 @@
-import React from 'react';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import React from 'react'
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 import {
   defineMessages,
   FormattedMessage,
   intlShape,
   injectIntl,
-} from 'react-intl';
+} from 'react-intl'
 
-import translations from '../../translations/translations.json';
+import translations from '../../translations/translations.json'
 
 // Needed for extracting text tagged for translations
 const componentMessages = defineMessages({
@@ -32,12 +32,12 @@ const componentMessages = defineMessages({
     id: 'app.french',
     defaultMessage: 'French',
   },
-});
+})
 
 const items = [
   { path: '/projects', label: 'projects' },
   { path: '/work', label: 'work' },
-];
+]
 
 const navOptions = items.map(item => (
   <LinkContainer to={item.path} key={item.label}>
@@ -45,25 +45,25 @@ const navOptions = items.map(item => (
       <FormattedMessage {...componentMessages[item.label]} />
     </NavItem>
   </LinkContainer>
-));
+))
 
 // TODO: Add tests for `MyNavBar` component
 
 class MyNavBar extends React.Component {
   constructor(props) {
-    super(props);
-    this.changeLocale = this.changeLocale.bind(this);
+    super(props)
+    this.changeLocale = this.changeLocale.bind(this)
   }
 
   changeLocale(eventKey) {
-    const locale = eventKey;
-    const messages = translations[locale];
+    const locale = eventKey
+    const messages = translations[locale]
     const data = {
       locale,
       messages,
-    };
+    }
 
-    this.props.updateLocale(data);
+    this.props.updateLocale(data)
   }
 
   render() {
@@ -75,38 +75,14 @@ class MyNavBar extends React.Component {
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav>
-            {navOptions}
-          </Nav>
-          {/* TODO: add this later */}
-          {/* <Nav pullRight>
-            <NavDropdown
-              eventKey={1}
-              id="basic-nav-dropdown"
-              title={this.props.intl.formatMessage(componentMessages.language)}
-            >
-              <MenuItem eventKey="en" onSelect={this.changeLocale}>
-                {this.props.intl.formatMessage(
-                  componentMessages.languageEnglish
-                )}
-              </MenuItem>
-              <MenuItem eventKey="fr" onSelect={this.changeLocale}>
-                {this.props.intl.formatMessage(
-                  componentMessages.languageFrench
-                )}
-              </MenuItem>
-            </NavDropdown>
-          </Nav> */}
-        </Navbar.Collapse>
       </Navbar>
-    );
+    )
   }
 }
 
 MyNavBar.propTypes = {
   intl: intlShape.isRequired,
   updateLocale: React.PropTypes.func.isRequired,
-};
+}
 
-export default injectIntl(MyNavBar);
+export default injectIntl(MyNavBar)

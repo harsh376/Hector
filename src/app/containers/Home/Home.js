@@ -13,7 +13,7 @@ bootstrapUtils.addStyle(Row, 'social')
 const aboutMe = [
   'Working at Top Hat, Toronto. University of Toronto Computer ',
   "Engineering, '17. Interested in frontend tech and natural language ",
-  'parsing. Feel free to say hi. Cheers!',
+  'processing. Feel free to say hi. Cheers!',
 ].join('')
 
 const gridInstance = (
@@ -53,9 +53,9 @@ const gridInstance = (
         <i className="fa fa-twitter-square fa-3x" aria-hidden="true" />
       </a>
 
-      <a className="social linkBlack" href="mailto:harsh376@gmail.com">
+      {/* <a className="social linkBlack" href="mailto:harsh376@gmail.com">
         <i className="fa fa-envelope fa-3x" aria-hidden="true" />
-      </a>
+      </a> */}
     </Row>
 
     <br />
